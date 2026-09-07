@@ -75,11 +75,13 @@ export default function RoomsList({ widthCard, rooms, action }: RoomsListProps) 
     return (
         <div className="w-full flex flex-wrap gap-4">
             {rooms.map(room => (
-                <CardRoom key={room.id} width={widthCard} room={room} buttonFunction={action == 'EDIT' ? () => handleOpenModal(room.id) : () => redirectToPage(room.id)}/>
+                <CardRoom key={room.id} width={widthCard} room={room} buttonFunction={action == 'EDIT' ? () => handleOpenModal(room.id) : () => redirectToPage(room.id)} admin={action === 'EDIT'} />
             ))}
-            <Modal size="4xl" isOpen={openModal} onClose={closeModal} title={`Editar quarto ID: ${idSelected}`}>
-                <RoomForm submit={edit} id={idSelected}/>
-            </Modal>
+            {action === 'EDIT' && 
+                <Modal size="4xl" isOpen={openModal} onClose={closeModal} title={`Editar quarto ID: ${idSelected}`}>
+                    <RoomForm submit={edit} id={idSelected}/>
+                </Modal>
+            }
         </div>
     )
 }
