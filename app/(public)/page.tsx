@@ -1,6 +1,6 @@
 import FeaturedRooms from "@/components/home/FeaturedRooms/FeaturedRooms";
 import Gallery from "@/components/home/Gallery/Gallery";
-import HeroSection from "@/components/home/HeroSection";
+import HeroSection from "@/components/home/Hero/HeroSection";
 import Location from "@/components/home/Location";
 import Offer from "@/components/home/Offer";
 import Reviews from "@/components/home/Reviews/Reviews";
