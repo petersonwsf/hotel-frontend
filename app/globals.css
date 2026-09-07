@@ -3,7 +3,7 @@
 @import "swiper/css/navigation";
 @import 'swiper/css/pagination';
 
-/* Customização das setas do Swiper Lúmen */
+
 .swiper-button-next,
 .swiper-button-prev {
   background: rgba(255, 255, 255, 0.7);
@@ -20,7 +20,6 @@
   background: white;
 }
 
-/* Diminuir o tamanho do ícone interno (a setinha em si) */
 .swiper-button-next:after,
 .swiper-button-prev:after {
   font-size: 20px !important;
