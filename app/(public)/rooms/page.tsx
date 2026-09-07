@@ -2,19 +2,22 @@ import Filter from "@/components/rooms/Filter";
 import Pagination from "@/components/ui/Pagination";
 import RoomsList from "@/components/rooms/RoomsList";
 import { getRooms } from "@/lib/api/rooms";
-import { RoomCategory, StatusRoom } from "@/types/Room.types";
 
-interface RoomsProps {
-    searchParams: Promise<{ page?: string, status?: StatusRoom, floor?: string[], category?: RoomCategory[] }>;
-}
+type PageProps = {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
 
-export default async function Rooms({ searchParams } : RoomsProps) {
+export default async function Rooms({ searchParams } : PageProps) {
     
     const resolvedSearchParams = await searchParams;
-    const currentPage = Number(resolvedSearchParams.page) || 0;
+    const currentPage = resolvedSearchParams.page || '0';
     const categories = resolvedSearchParams.category || []
     const floors = resolvedSearchParams.floor || []
-    const rooms = await getRooms({ page: currentPage, size: 10, category: categories, floor: floors });
+    const checkInDate = resolvedSearchParams.checkInDate || undefined;
+    const checkOutDate = resolvedSearchParams.checkOutDate || undefined;
+    const capacity = resolvedSearchParams.capacity || undefined;
+
+    const rooms = await getRooms({ page: currentPage, size: '10', category: categories, floor: floors, checkInDate, checkOutDate, capacity });
 
     return (
         <section id="rooms" aria-label="Quartos disponíveis" className="my-[4rem] w-7xl m-auto">

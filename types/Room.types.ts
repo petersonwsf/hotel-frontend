@@ -1,16 +1,16 @@
 export interface RoomQueryParams {
-    page?: number;
-    size?: number;
-    category?: RoomCategory[];
-    capacity?: number;
-    minPrice?: number;
-    maxPrice?: number;
-    checkInDate?: string;
-    checkOutDate?: string;
-    code?: string;
-    floor?: string[];
-    status?: StatusRoom[];
-    sort?: string;
+    page?: string | string[];
+    size?: string | string[];
+    category?: string | string[];
+    capacity?: string | string[];
+    minPrice?: string | string[];
+    maxPrice?: string | string[];
+    checkInDate?: string | string[];
+    checkOutDate?: string | string[];
+    code?: string | string[];
+    floor?: string | string[];
+    status?: string | string[];
+    sort?: string | string[];
 }
 
 export interface RoomList {
