@@ -11,7 +11,7 @@ export default function Offer() {
     return (
         <section id="offer" className="my-[4rem]" aria-label="Oferecimento Hotel">
             <div className="w-[50%]">
-                <span className="text-[#002179] font-[500]">Comodidades de classe mundial</span>
+                <span className="text-[#002179] font-[500] text-sm">COMODIDADES DE CLASSE MUNDIAL</span>
                 <h3 className="text-3xl font-[650] text-gray-800 font-sans">Tudo o que Você Precisa para uma Estadia Extraordinária</h3>
                 <p className="font-light text-gray-500">Das manhãs revigorantes à atmosfera sofisticada do anoitecer, desfrute de infraestrutura impecável concebida para atender aos mais altos padrões globais.</p>
             </div>
