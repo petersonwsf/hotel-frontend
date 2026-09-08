@@ -40,12 +40,15 @@ export default function RoomsList({ widthCard, rooms, action }: RoomsListProps) 
 
     async function edit(values : any) {
         const formData = new FormData()
+
+        console.log(values)
             
         const roomDataDto = {
             code: values.code,
             floor: values.floor,
             status: values.status,
             category: values.category,
+            description: values.description,
             customPrice: Number(values.customPrice),
             capacity: Number(values.capacity),
             bedconfig: values.bedconfig,

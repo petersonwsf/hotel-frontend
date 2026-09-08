@@ -58,6 +58,67 @@ const categoryLabelMap: Record<RoomCategory, string> = {
   SUP: "Superior",
 };
 
+export const amenityDescriptionMap: Record<string, string> = {
+  cama_de_casaL:
+    "Cama espaçosa de casal para garantir o descanso ideal a dois com o máximo conforto.",
+  cama_de_solteiro:
+    "Cama aconchegante para acomodação individual com colchão de alta qualidade.",
+  roupa_de_cama_extra:
+    "Kits adicionais de lençóis, fronhas e edredons higienizados e à disposição.",
+  travesseiros_extras:
+    "Travesseiros macios e antialérgicos adicionais para ajustar seu conforto.",
+  banheira:
+    "Banheira privativa projetada para proporcionar momentos relaxantes de imersão.",
+  chuveiro:
+    "Chuveiro com pressão de água excelente e controle de temperatura preciso.",
+  toalhas_de_banho:
+    "Toalhas felpudas 100% algodão, macias e com alta absorção para o seu pós-banho.",
+  roupao:
+    "Roupões confortáveis e macios para uso durante sua estadia no quarto.",
+  amenidades_de_banho:
+    "Kit com xampu, condicionador, sabonete e hidratante de alta qualidade.",
+  secador_de_cabelo:
+    "Secador de cabelo portátil com ajuste de temperatura disponível no banheiro.",
+  tv_a_cabo:
+    "Televisão HD com acesso a uma ampla grade de canais abertos e fechados.",
+  wifi_gratuito:
+    "Conexão à internet de alta velocidade ilimitada em todas as áreas do quarto.",
+  tomadas_usb:
+    "Entradas USB estrategicamente localizadas para facilitar o carregamento de dispositivos.",
+  cofre_eletronico:
+    "Cofre com senha digital para guardar seus pertences de valor com segurança.",
+  telefone_fixo:
+    "Aparelho de telefone para contato direto com a recepção e serviço de quarto.",
+  servico_de_streaming:
+    "Acesso facilitado às principais plataformas de filmes e séries na sua TV.",
+  ar_condicionado:
+    "Climatização com controle de temperatura individual para o seu total conforto.",
+  aquecedor:
+    "Sistema de aquecimento para manter o ambiente agradável nos dias frios.",
+  cortina_blackout:
+    "Bloqueio total da iluminação externa para garantir um sono tranquilo a qualquer hora.",
+  ventilador_de_teto:
+    "Circulação de ar ajustável no teto para manter a temperatura agradável.",
+  minibar:
+    "Seleção de bebidas e petiscos selecionados disponíveis diretamente na sua acomodação.",
+  cafeteira:
+    "Cafeteira elétrica no quarto com sachês ou cápsulas para preparar seu café na hora.",
+  micro_ondas:
+    "Aparelho prático para aquecer refeições rápidas e lanches a qualquer momento.",
+  frigobar:
+    "Pequeno refrigerador no quarto para manter suas bebidas e alimentos bem gelados.",
+  chaleira_eletrica:
+    "Equipamento para aquecer água rapidamente para o preparo de chás e cafés instantâneos.",
+  servico_de_quarto_24h:
+    "Cardápio variado de refeições e bebidas entregues no seu quarto a qualquer hora.",
+  servico_de_lavanderia:
+    "Opção de lavagem e secagem das suas peças de roupa com agilidade e cuidado.",
+  mesa_de_trabalho:
+    "Bancada funcional com iluminação adequada e cadeira confortável para home office.",
+  ferro_de_passar_roupa:
+    "Ferro e tábua de passar disponíveis para manter suas roupas impecáveis.",
+};
+
 export function getAmenityIcon(amenity: string): IconType | null {
   return amenityIconMap[amenity] ?? null;
 }

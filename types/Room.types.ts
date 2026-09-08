@@ -1,3 +1,7 @@
+export type StatusRoom = "AVAILABLE" | "OUT_OF_ORDER" | "OCCUPIED" | "MAINTENANCE" | "CLEANING"
+
+export type RoomCategory = 'STD' | 'SUP' | 'DLX' | 'STE' | 'STJ' | 'PRM' | 'PST'
+
 export interface RoomQueryParams {
     page?: string | string[];
     size?: string | string[];
@@ -31,7 +35,6 @@ export interface RoomList {
 export interface Room { 
     active: boolean;
     amenities: string[];
-    bedconfig: string;
     capacity: number;
     category: RoomCategory;
     code: string;
@@ -97,6 +100,18 @@ export const COMODIDADES = [
   { label: "Ferro de passar roupa", value: "ferro_de_passar_roupa" } 
 ]
 
-export type StatusRoom = "AVAILABLE" | "OUT_OF_ORDER" | "OCCUPIED" | "MAINTENANCE" | "CLEANING"
+export const roomStatusLabel: Record<StatusRoom, string> = {
+  AVAILABLE: "Disponível",
+  OCCUPIED: "Ocupado",
+  CLEANING: "Em Limpeza",
+  MAINTENANCE: "Em Manutenção",
+  OUT_OF_ORDER: "Fora de Serviço",
+};
 
-export type RoomCategory = 'STD' | 'SUP' | 'DLX' | 'STE' | 'STJ' | 'PRM' | 'PST'
+export const roomStatusColor: Record<StatusRoom, string> = {
+  AVAILABLE: "bg-emerald-500",
+  OCCUPIED: "bg-blue-500",
+  CLEANING: "bg-amber-500",
+  MAINTENANCE: "bg-orange-500",
+  OUT_OF_ORDER: "bg-rose-500",
+};
