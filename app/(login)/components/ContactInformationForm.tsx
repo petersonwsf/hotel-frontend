@@ -1,11 +1,15 @@
 "use client";
-import { Field, ErrorMessage } from "formik";
+
 import { FormSection } from "./FormRegister";
 import { UserRegister } from "@/types/User.types";
 import { useFormikContext } from "formik";
 import { useEffect, useMemo } from "react";
 import { getAddress } from "@/services/address";
 import { IoIosArrowBack } from "react-icons/io";
+import { IoLocationOutline } from "react-icons/io5";
+import { LuPhone } from "react-icons/lu";
+import InputText from "@/components/form/InputText";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 interface ContactInformationFormProps {
     setSection: (value: FormSection) => void;
@@ -14,7 +18,7 @@ interface ContactInformationFormProps {
 
 export default function ContactInformationForm({ setSection, isPending } : ContactInformationFormProps) {
 
-    const { values, setFieldValue, errors, touched } = useFormikContext<UserRegister>()
+    const { values, setFieldValue, errors } = useFormikContext<UserRegister>()
 
     async function fetchAddress(postalCode: string) {
         try {
@@ -44,59 +48,47 @@ export default function ContactInformationForm({ setSection, isPending } : Conta
 
     return (
         <div className="w-full flex flex-col">
-            <div className="flex items-center gap-2 font-light my-3 text-xl" onClick={() => setSection('PERSONAL')}>
-                <IoIosArrowBack fontSize={20} className="cursor-pointer"/>
+            <div className="flex items-center gap-1 font-light my-3 text-sm cursor-pointer" onClick={() => setSection('PERSONAL')}>
+                <IoIosArrowBack className="w-3 h-3"/>
                 Voltar
             </div>
-            <h2 className="font-light text-xl mb-2">Informações de contato</h2>
+            <div className="flex gap-1 items-center mb-[.5rem]">
+                <div className="bg-[#0033AD] p-[.5rem] text-white rounded-lg">
+                    <IoLocationOutline className="w-6 h-6" />
+                </div>
+                <div>
+                    <span className="text-sm font-medium tracking-[.05rem] text-gray-700">Etapa 2</span>
+                    <h2 className="font-[650] text-xl mb-2 text-gray-700">Dados de Contato e Endereço</h2>
+                </div>
+            </div>
             <div className="flex flex-col my-1">
-                <label htmlFor="phoneNumber" className="font-light">Telefone</label>
-                <Field name="contactInformation.phoneNumber" id="phoneNumber" className={`p-3 border-1 border-gray-300 outline-none font-light rounded-[10px] ${errors.contactInformation?.phoneNumber && touched.contactInformation?.phoneNumber ? 'border-red-500' : undefined}`} />
-                <ErrorMessage name="contactInformation.phoneNumber" component="span" className="text-xs mt-1 text-red-500"/>
+                <InputText name="contactInformation.phoneNumber" label="Número de telefone" placeholder="Informe seu número de telefone" icon={LuPhone} />
             </div>
             <div className="flex gap-[10px] my-1">
-                <div className="flex flex-col w-full">
-                    <label htmlFor="postalCode" className="font-light">CEP</label>
-                    <Field name="contactInformation.postalCode" id="postalCode" className={`p-3 border-1 border-gray-300 outline-none font-light rounded-[10px] ${errors.contactInformation?.postalCode && touched.contactInformation?.postalCode ? 'border-red-500' : undefined}`} />
-                    <ErrorMessage name="contactInformation.postalCode" component="span" className="text-xs mt-1 text-red-500"/>
-                </div>
-                <div className="flex flex-col w-full">
-                    <label htmlFor="neighborhood" className="font-light">Bairro</label>
-                    <Field name="contactInformation.neighborhood" id="neighborhood" className={`p-3 border-1 border-gray-300 outline-none font-light rounded-[10px] ${errors.contactInformation?.neighborhood && touched.contactInformation?.neighborhood ? 'border-red-500' : undefined}`} />
-                    <ErrorMessage name="contactInformation.neighborhood" component="span" className="text-xs mt-1 text-red-500"/>
-                </div>
+                <InputText name="contactInformation.postalCode" label="CEP" placeholder="Informe seu CEP" />
+                <InputText name="contactInformation.neighborhood" label="Bairro" placeholder="Informe seu bairro" />
             </div>
             <div className="flex gap-[10px] my-1">
-                <div className="flex flex-col w-full">
-                    <label htmlFor="street" className="font-light">Endereço</label>
-                    <Field name="contactInformation.street" id="street" className={`p-3 border-1 border-gray-300 outline-none font-light rounded-[10px] ${errors.contactInformation?.street && touched.contactInformation?.street ? 'border-red-500' : undefined}`} />
-                    <ErrorMessage name="contactInformation.street" component="span" className="text-xs mt-1 text-red-500"/>
+                <div className="w-[80%]">
+                    <InputText name="contactInformation.street" label="Endereço" placeholder="Informe seu endereço" />
                 </div>
-                <div className="flex flex-col w-[20%]">
-                    <label htmlFor="number" className="font-light">Número</label>
-                    <Field name="contactInformation.number" id="number" className={`p-3 border-1 border-gray-300 outline-none font-light rounded-[10px] ${errors.contactInformation?.number && touched.contactInformation?.number ? 'border-red-500' : undefined}`} />
-                    <ErrorMessage name="contactInformation.number" component="span" className="text-xs mt-1 text-red-500"/>
+                <div className="w-[20%]">
+                   <InputText name="contactInformation.number" label="Número" />
                 </div>
             </div>
-            <div className="flex flex-col w-full">
-                <label htmlFor="complement" className="font-light">Complemento</label>
-                <Field name="contactInformation.complement" id="complement" className={`p-3 border-1 border-gray-300 outline-none font-light rounded-[10px] ${errors.contactInformation?.complement && touched.contactInformation?.complement ? 'border-red-500' : undefined}`} />
-                <ErrorMessage name="contactInformation.complement" component="span" className="text-xs mt-1 text-red-500"/>
-            </div>
+            <InputText name="contactInformation.complement" label="Complemento" placeholder="Ex: Casa, Apto..." />
             <div className="flex gap-[10px] my-1">
-                <div className="flex flex-col w-full">
-                    <label htmlFor="city" className="font-light">Cidade</label>
-                    <Field name="contactInformation.city" id="city" className={`p-3 border-1 border-gray-300 outline-none font-light rounded-[10px] ${errors.contactInformation?.city && touched.contactInformation?.city ? 'border-red-500' : undefined}`} />
-                    <ErrorMessage name="contactInformation.city" component="span" className="text-xs mt-1 text-red-500"/>
-                </div>
-                <div className="flex flex-col w-full">
-                    <label htmlFor="state" className="font-light">Estado</label>
-                    <Field name="contactInformation.state" id="state" className={`p-3 border-1 border-gray-300 outline-none font-light rounded-[10px] ${errors.contactInformation?.state && touched.contactInformation?.state ? 'border-red-500' : undefined}`} />
-                    <ErrorMessage name="contactInformation.city" component="span" className="text-xs mt-1 text-red-500"/>
-                </div>
+                <InputText name="contactInformation.city" label="Cidade" placeholder="Informe sua cidade" />
+                <InputText name="contactInformation.state" label="Estado" placeholder="Informe seu estado" />
             </div>
             <div className="flex justify-center mb-[2rem] mt-[1rem]">
-                <button type="submit" className="bg-[#002BB3] py-2 px-4 rounded-[5px] text-white cursor-pointer" style={{ opacity: hasError || isPending ? '0.5' : undefined }} disabled={hasError || isPending}>{isPending ? 'Aguardde' : 'Registrar'}</button>
+                <button
+                    type="submit" 
+                    className={`group w-full gap-2 flex items-center justify-center bg-[#0033AD] duration-[.3s] py-2 rounded-[5px] text-white cursor-pointer hover:bg-[#002179] ${(hasError || isPending) ? 'opacity-[.5] pointer-events-none' : ''}`} 
+                    disabled={hasError}
+                >
+                   {isPending && <AiOutlineLoading3Quarters className="animate-spin" />} Registrar-se
+                </button>
             </div>
         </div>
     )

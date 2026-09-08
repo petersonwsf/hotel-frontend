@@ -2,10 +2,10 @@
 import { useState } from "react"
 import { Formik, Form } from "formik";
 import PersonalDataForm from "./PersonalDataForm";
-import { useRouter } from "next/navigation";
 import ContactInformationForm from "./ContactInformationForm";
 import * as Yup from 'yup'
 import useAuth from "@/hooks/useAuth";
+import Link from "next/link";
 
 const eighteenYearsAgo = new Date();
 eighteenYearsAgo.setFullYear(eighteenYearsAgo.getFullYear() - 18);
@@ -35,9 +35,7 @@ export default function FormRegister() {
     
     const [section, setSection] = useState<FormSection>('PERSONAL')
     
-    const { registerClient } = useAuth()
-    
-    const router = useRouter()
+    const { registerClient, loading } = useAuth()
 
     return (
         <Formik
@@ -62,16 +60,14 @@ export default function FormRegister() {
             validationSchema={validationSchem}
             onSubmit={registerClient}
         >
-            {({ isSubmitting }) => (
-                <Form className="w-[80%]">
-                    {section === 'PERSONAL'  ? (
-                        <PersonalDataForm setSection={setSection} />
-                    ) : (
-                        <ContactInformationForm setSection={setSection} isPending={isSubmitting} />
-                    )}
-                    <a onClick={() => router.push("/login")} className="text-[#002BB3] my-2 cursor-pointer">Já possui conta? Faça login</a>
-                </Form>
-            )}
+            <Form className="w-[90%]">
+                {section === 'PERSONAL'  ? (
+                    <PersonalDataForm setSection={setSection} />
+                ) : (
+                    <ContactInformationForm setSection={setSection} isPending={loading} />
+                )}
+                <p className="text-gray-600 font-light flex items-center gap-1">Já possui conta? <Link href="/login" className="text-[#0033AD] font-medium underline">Entre na sua conta</Link></p>
+            </Form>
         </Formik>
     )
 }

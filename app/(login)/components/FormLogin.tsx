@@ -1,10 +1,13 @@
 "use client";
-import { Field, ErrorMessage, Formik, Form } from "formik";
-import { useRouter } from "next/navigation";
+import { Formik, Form } from "formik";
 import * as Yup from 'yup'
 import useAuth from "@/hooks/useAuth";
-import { useState } from "react";
-import { UserRegister } from "@/types/User.types";
+import InputText from "@/components/form/InputText";
+import { MdOutlineMail } from "react-icons/md";
+import { CiLock } from "react-icons/ci";
+import { FaLongArrowAltRight } from "react-icons/fa";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import Link from "next/link";
 
 const validationSchema = Yup.object({
     login: Yup.string().email('Email inválido').required('Email obrigatório'),
@@ -13,9 +16,7 @@ const validationSchema = Yup.object({
 
 export default function LoginForm() {
 
-    const { login } = useAuth()
-
-    const router = useRouter()
+    const { login, loading } = useAuth()
 
     return (
         <Formik
@@ -26,25 +27,25 @@ export default function LoginForm() {
             validationSchema={validationSchema}
             onSubmit={login}
         >
-            {({errors, touched, isSubmitting }) => (
-                <Form className="w-[80%]">
-                    <div className="flex flex-col">
-                        <label htmlFor="login">Email</label>
-                        <Field type="email" name="login" id="login" className={`p-3 border-1 border-gray-300 outline-none font-light rounded-[10px] ${errors.login && touched.login ? 'border-red-500' : undefined}`} />
-                        <ErrorMessage name="login" component="span" className="text-red-500 text-xs mt-1"/>
-                    </div>
-                    <div className="flex flex-col">
-                        <label htmlFor="password">Senha</label>
-                        <Field type="password" name="password" id="password" className={`p-3 border-1 border-gray-300 outline-none font-light rounded-[10px] ${errors.password && touched.password ? 'border-red-500' : undefined}`} />
-                        <ErrorMessage name="password" component="span" className="text-red-500 text-xs mt-1"/>
-                    </div>
-                    <p className="text-[#002BB3] my-2">Esqueceu a senha?</p>
-                    <a onClick={() => router.push("/register")} className="text-[#002BB3] my-2 cursor-pointer">Não possui conta? Registre-se</a>
-                    <div className="w-full text-center my-5">
-                        <button type="submit" className="bg-[#002BB3] py-2 px-4 rounded-[5px] text-white cursor-pointer" disabled={isSubmitting} style={{opacity: isSubmitting ? '0.5' : undefined}}>{isSubmitting ? 'Aguarde' : 'Login'}</button>
-                    </div>
-                </Form>
-            )}
+            <Form className="w-[80%]">
+                <div className="mb-[.5rem]">
+                    <InputText name="login" label="Email" placeholder="Insira seu email" icon={MdOutlineMail} />
+                </div>
+                <div className="mb-[.5rem]">
+                    <InputText name="password" label="Senha" type="password" placeholder="Insira sua senha" icon={CiLock} />
+                </div>
+                <div className="w-full flex my-4">
+                    <button type="submit" className="flex w-full justify-center items-center bg-[#0033AD] duration-[.3s] py-2 rounded-[5px] text-white font-medium cursor-pointer hover:bg-[#002179]" disabled={loading} style={{opacity: loading ? '0.5' : undefined}}>
+                        {loading ? <span className="flex items-center gap-2"><AiOutlineLoading3Quarters className="animate-spin" /> Acessando</span> 
+                            :<span className="flex items-center gap-2">Acessar minha conta <FaLongArrowAltRight /></span>
+                        }
+                    </button>
+                </div>
+                <div className="my-3 flex flex-col gap-2">
+                    <p className="text-[#0033AD] font-medium">Esqueceu a senha?</p>
+                    <p className="text-gray-500 flex items-center gap-1">Não possui conta? <Link href="/register" className="text-[#0033AD] font-medium underline">Cadastre-se agora</Link> </p>
+                </div>
+            </Form>
         </Formik>
     )
 }
