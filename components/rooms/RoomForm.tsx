@@ -47,7 +47,7 @@ export default function RoomForm({ submit, id } : RoomFormProps) {
             setLoading(true)
             const roomResponse = await getRoomById(id!);
             setRoom(roomResponse)
-            setExistingImages(roomResponse.images)
+            setExistingImages(roomResponse.image)
             setLoading(false)
         }
         if (id) {
@@ -75,7 +75,6 @@ export default function RoomForm({ submit, id } : RoomFormProps) {
                         category: room ? room.category : '',
                         customPrice: room ? room.customPrice : 0,
                         capacity: room ? room.capacity : '',
-                        bedconfig: room ? room.bedconfig : '',
                         description: room ? room.description : '',
                         amenities: room ? room.amenities : [],
                         images: []

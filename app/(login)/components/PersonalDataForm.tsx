@@ -3,6 +3,13 @@ import { Field, useFormikContext, ErrorMessage } from "formik";
 import { FormSection } from "./FormRegister";
 import { UserRegister } from "@/types/User.types";
 import { useMemo } from "react";
+import { BsFillPersonVcardFill } from "react-icons/bs";
+import { MdPersonOutline } from "react-icons/md";
+import { CiLock } from "react-icons/ci";
+import { MdOutlineMail } from "react-icons/md";
+import { TiBusinessCard } from "react-icons/ti";
+import InputText from "@/components/form/InputText";
+import { FaLongArrowAltRight } from "react-icons/fa";
 
 interface PersonalDataFormProps {
     setSection: (value: FormSection) => void;
@@ -10,7 +17,7 @@ interface PersonalDataFormProps {
 
 export default function PersonalDataForm({ setSection } : PersonalDataFormProps) {
 
-    const { errors, touched, values } = useFormikContext<UserRegister>()
+    const { errors,  values } = useFormikContext<UserRegister>()
 
     const hasError = useMemo(() => {
         const emptyValues = Object.entries(values).some(([key, value]) => {
@@ -28,43 +35,38 @@ export default function PersonalDataForm({ setSection } : PersonalDataFormProps)
 
     return (
         <div className="w-full flex flex-col">
-            <h2 className="font-light text-xl mb-2">Dados pessoais</h2>
-            <div className="flex flex-col my-1">
-                <label htmlFor="name" className="font-light">Nome</label>
-                <Field name="name" id="name" className={`p-3 border-1 border-gray-300 outline-none font-light rounded-[10px] ${errors.name && touched.name ? 'border-red-500' : undefined}`} />
-                <ErrorMessage name="name" component="span" className="text-xs mt-1 text-red-500"/>
-            </div>
-            <div className="flex flex-col my-1">
-                <label htmlFor="email" className="font-light">Email</label>
-                <Field name="email" id="email" className={`p-3 border-1 border-gray-300 outline-none font-light rounded-[10px] ${errors.email && touched.email ? 'border-red-500' : undefined}`} />
-                <ErrorMessage name="email" component="span" className="text-xs mt-1 text-red-500"/>
-            </div>
-            <div className="flex gap-[10px] my-1">
-                <div className="flex flex-col w-full">
-                    <label htmlFor="password" className="font-light">Senha</label>
-                    <Field type="password" name="password" id="password" className={`p-3 border-1 border-gray-300 outline-none font-light rounded-[10px] ${errors.password && touched.password ? 'border-red-500' : undefined}`} />
-                    <ErrorMessage name="password" component="span" className="text-xs mt-1 text-red-500"/>
+            <div className="flex gap-1 items-center mb-[.5rem]">
+                <div className="bg-[#0033AD] p-[.5rem] text-white rounded-lg">
+                    <BsFillPersonVcardFill className="w-6 h-6" />
                 </div>
-                <div className="flex flex-col w-full">
-                    <label htmlFor="confirmPassword" className="font-light">Confirmar senha</label>
-                    <Field type="password" name="confirmPassword" id="confirmPassword" className={`p-3 border-1 border-gray-300 outline-none font-light rounded-[10px] ${errors.confirmPassword && touched.confirmPassword ? 'border-red-500' : undefined}`} />
-                    <ErrorMessage name="confirmPassword" component="span" className="text-xs mt-1 text-red-500"/>
+                <div>
+                    <span className="text-sm font-medium tracking-[.05rem] text-gray-700">Etapa 1</span>
+                    <h2 className="font-[650] text-xl mb-2 text-gray-700">Dados pessoais</h2>
                 </div>
+            </div>
+            <div className="flex flex-col my-1 my-1">
+                <InputText name="name" placeholder="Insira seu nome" label="Nome Completo" icon={MdPersonOutline} />
+            </div>
+            <div className="flex flex-col my-1 my-1">
+                <InputText type="emal" name="email" label="Email" placeholder="Insira seu email" icon={MdOutlineMail} />
             </div>
             <div className="flex gap-[10px] my-1">
-                <div className="flex flex-col w-full">
-                    <label htmlFor="pin" className="font-light">CPF</label>
-                    <Field name="pin" id="pin" className={`p-3 border-1 border-gray-300 outline-none font-light rounded-[10px] ${errors.pin && touched.pin ? 'border-red-500' : undefined}`} />
-                    <ErrorMessage name="pin" component="span" className="text-xs mt-1 text-red-500"/>
-                </div>
-                <div className="flex flex-col w-full">
-                    <label htmlFor="dateOfBirth" className="font-light">Data de nascimento</label>
-                    <Field type="date" name="dateOfBirth" id="dateOfBirth" className={`p-3 border-1 border-gray-300 outline-none font-light rounded-[10px] ${errors.dateOfBirth && touched.dateOfBirth ? 'border-red-500' : undefined}`} />
-                    <ErrorMessage name="dateOfBirth" component="span" className="text-xs mt-1 text-red-500"/>
-                </div>
+                <InputText type="password" name="password" label="Senha" placeholder="Insira sua senha" icon={CiLock} />
+                <InputText type="password" name="confirmPassword" label="Confirmar senha" placeholder="Confirme sua senha" icon={CiLock} />
+            </div>
+            <div className="flex gap-[10px] my-1">
+                <InputText name="pin" label="CPF" placeholder="Insira seu CPF" icon={TiBusinessCard} />
+                <InputText type="date" name="dateOfBirth" label="Data de nascimento" />
             </div>
             <div className="flex justify-center mb-[2rem] mt-[1rem]">
-                <button onClick={() => setSection('CONTACT')} type="button" className="bg-[#002BB3] py-2 px-4 rounded-[5px] text-white cursor-pointer" style={{opacity: hasError ? '0.5' : undefined}} disabled={hasError}>Seguir</button>
+                <button 
+                    onClick={() => setSection('CONTACT')} 
+                    type="button" 
+                    className={`group w-full gap-2 flex items-center justify-center bg-[#0033AD] duration-[.3s] py-2 rounded-[5px] text-white cursor-pointer hover:bg-[#002179] ${hasError ? 'opacity-[.5] pointer-events-none' : ''}`} 
+                    disabled={hasError}
+                >
+                    Seguir <FaLongArrowAltRight className="transition-transform duration-300 group-hover:translate-x-1"/>
+                </button>
             </div>
         </div>
     )

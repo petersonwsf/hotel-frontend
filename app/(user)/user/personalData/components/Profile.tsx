@@ -7,6 +7,7 @@ import FormUploadImage from "./FormUploadImage";
 import { handleToast } from "@/utils/handleToast";
 import { useRouter } from "next/navigation";
 import { useUser } from "@/hooks/useUser";
+import { useAuthContext } from "@/contexts/AuthContext";
 
 interface ProfileProps {
     client: Client;
@@ -15,6 +16,7 @@ interface ProfileProps {
 export default function Profile({ client } : ProfileProps) {
 
     const { updateProfilePicture } = useUser()
+    const { updateUser } = useAuthContext()
 
     const router = useRouter()
 
@@ -22,8 +24,9 @@ export default function Profile({ client } : ProfileProps) {
 
     const handleUploadProfilePicture = async (file : File, id: number) => {
         try {
-            await updateProfilePicture(file, id)
+            const response = await updateProfilePicture(file, id)
             handleToast("Foto de perfil atualizada com sucesso", "success")
+            updateUser({ imageKey: response.message })
             setOpenModalUpdatePicture(false)
             router.refresh()
         } catch (error : any) {

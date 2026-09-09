@@ -22,7 +22,7 @@ export default function Header() {
     }
 
     return (
-        <header className="bg-[#002BB3] p-5 text-white">
+        <header className="bg-[#002179] p-5 text-white">
             <nav className='flex items-center justify-between'>
                 <div>
                     <Image alt='logo Lúmen Hotel' src="/images/logo.png" width={75} height={75} priority/>

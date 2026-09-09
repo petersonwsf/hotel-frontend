@@ -4,12 +4,14 @@ import { useAuthContext, User } from "@/contexts/AuthContext";
 import { UserRegister } from "@/types/User.types";
 import { handleToast } from "@/utils/handleToast";
 import { useRouter } from "next/navigation";
-import { useTransition } from "react"
+import { useState, useTransition } from "react"
 
 export default function useAuth() {
-    const [, startTransition] = useTransition()
+    const [isPending, startTransition] = useTransition()
     const { setUser } = useAuthContext()
     const router = useRouter()
+
+    const [loading, setLoading] = useState<boolean>(false)
 
     async function login(data: {login: string, password: string}) {
         startTransition(async () => {
@@ -45,6 +47,7 @@ export default function useAuth() {
     async function registerClient(data: UserRegister) {
         startTransition(async () => {
             const response = await registerClientUser(null, data)
+            handleToast(response.message, response.data ? 'success' : 'error')
             if (response.data) {
                 const payload = {
                     name: response.data.name,
@@ -63,5 +66,6 @@ export default function useAuth() {
         login,
         logout,
         registerClient,
+        loading: isPending,
     }
 }

@@ -37,6 +37,7 @@ export default function ReservationPrice({ totalDays, allowed, room, createReser
             <div className="rounded-t-xl bg-[#002BB3] p-[1.5rem]">
                 <h3 className="text-white font-semibold text-3xl">Resumo Financeiro</h3>
                 <p className="font-normal text-[#96aaff]">Sua reserva está quase pronta</p>
+
             </div>
             <div className="flex flex-col px-[2rem] gap-3 py-3">
                 <div className="flex justify-between">
@@ -65,13 +66,18 @@ export default function ReservationPrice({ totalDays, allowed, room, createReser
                     </div>
                 </div>
                 <div>
-                    {allowed === null && (
+                    {(room.status === 'MAINTENANCE' || room.status === 'OUT_OF_ORDER') ? (
+                        <div className="p-[1rem] flex gap-2 items-center text-red-700 border-2 mb-3 rounded-lg border-red-700 bg-red-100">
+                            <CgDanger fontSize={20}/>
+                            Quarto indisponível neste momento
+                        </div>
+                    ) : allowed === null && (
                         <div className="p-[1rem] flex gap-2 items-center text-red-700 border-2 mb-3 rounded-lg border-red-700 bg-red-100">
                             <CgDanger fontSize={20}/>
                             Preencha o período da reserva antes de confirmar
                         </div>
                     )}
-                    <button className={`w-full py-[1rem] bg-[#002BB3] cursor-pointer text-white rounded-[10px] text-xl flex items-center justify-center gap-2 ${allowed === null || !allowed || loading ? 'opacity-[.5] pointer-events-none' : ''}`} onClick={handleCreateReservation}>
+                    <button className={`w-full py-[1rem] bg-[#002BB3] cursor-pointer text-white rounded-[10px] text-xl flex items-center justify-center gap-2 ${room.status === 'MAINTENANCE' || room.status === 'OUT_OF_ORDER' || allowed === null || !allowed || loading ? 'opacity-[.5] pointer-events-none' : ''}`} onClick={handleCreateReservation}>
                         {loading ? (
                             <>
                                 Confirmando reserva <span className="animate-spin"><AiOutlineLoading3Quarters /></span>
