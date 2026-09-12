@@ -3,6 +3,7 @@ import './globals.css'
 import Toast from "@/components/ui/Toast";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { getUser } from "@/utils/userServices";
+import Notification from "@/components/ui/Notification";
 
 export default async function Layout({ children } : Readonly<{ children: React.ReactNode}>) {
 
@@ -13,6 +14,7 @@ export default async function Layout({ children } : Readonly<{ children: React.R
             <body>
                 <Toast />
                 <AuthProvider user={user?.success ? user.user : null}>
+                    <Notification />
                     { children }
                 </AuthProvider>
             </body>

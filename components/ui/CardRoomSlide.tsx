@@ -23,7 +23,7 @@ export default function CardRoomSlide({ room } : CardRoomSlideProps) {
                 <img  alt="Imagem do Quarto" src={`${process.env.NEXT_PUBLIC_URL_MINIO}/${room.image}`} className="w-full h-full object-cover hover:scale-[1.1] duration-[.3s]" />
                 <div className="w-full absolute absolute top-5 flex justify-between px-[.5rem]">
                     <span className="rounded-xl bg-[#002179] text-white px-[1rem] py-[.1rem] inline-flex items-center gap-2 text-sm">{formatFloor(room.floor)}</span>
-                    <span className="rounded-xl bg-gray-200 px-[1rem] py-[.1rem] inline-flex items-center gap-2 text-sm"><FaStar className="w-3 h-3 text-[#002179]"/> 5.0</span>
+                    <span className="rounded-xl bg-gray-200 px-[1rem] py-[.1rem] inline-flex items-center gap-2 text-sm"><FaStar className="w-3 h-3 text-[#002179]"/> {room.ratingSummary.averageRating}</span>
                 </div>
                 <span className="rounded-xl bg-gray-200 px-[1rem] py-[.1rem] flex items-center gap-2"><FaStar className="w-3 h-3 text-[#002179]"/> 5.0</span>
             </div>

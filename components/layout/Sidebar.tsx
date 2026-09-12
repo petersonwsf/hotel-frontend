@@ -8,6 +8,7 @@ import { FaKey } from "react-icons/fa";
 import { MdAnalytics } from "react-icons/md";
 import Link from "next/link";
 import { IoPersonCircleOutline } from "react-icons/io5";
+import { MdOutlineComment } from "react-icons/md";
 
 export default function Sidebar() {
 
@@ -27,6 +28,7 @@ export default function Sidebar() {
                         <li className="my-4 border-b-1 border-gray-400 pb-2 cursor-pointer"><Link href="/admin/rooms" className="flex items-center gap-1"><LiaWarehouseSolid className="text-white w-5 h-5" />Quartos</Link></li>
                         <li className="my-4 border-b-1 border-gray-400 pb-2 cursor-pointer"><Link href="/admin/reservations" className="flex items-center gap-1"><FaKey className="text-white w-5 h-5" /> Reservas</Link></li>
                         <li className="my-4 border-b-1 border-gray-400 pb-2 cursor-pointer"><Link href={`/admin/account/${user?.id}`} className="flex items-center gap-1"><IoPersonCircleOutline className="text-white w-5 h-5" /> Meus dados</Link></li>
+                        <li className="my-4 border-b-1 border-gray-400 pb-2 cursor-pointer"><Link href={`/admin/reviews`} className="flex items-center gap-1"><MdOutlineComment className="text-white w-5 h-5" /> Avaliações</Link></li>
                         <li className="my-4 cursor-pointer"><Link href="/admin/dashboard" className="flex items-center gap-1"><MdAnalytics className="text-white w-5 h-5" /> Dashboard</Link></li>
                     </ul>
                 </nav>

@@ -30,6 +30,7 @@ export interface RoomList {
     id: number;
     status: StatusRoom;
     image: string;
+    ratingSummary: SummaryRating;
 }
 
 export interface Room { 
@@ -44,6 +45,12 @@ export interface Room {
     id: number;
     status: StatusRoom;
     image: string[];
+    ratingSummary: SummaryRating;
+}
+
+export interface SummaryRating {
+    averageRating: number;
+    totalReviews: number;
 }
 
 export const optionsFloor = [

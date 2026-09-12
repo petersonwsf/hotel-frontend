@@ -1,4 +1,4 @@
-import { RoomCategory, StatusRoom } from "./Room.types";
+import { RoomCategory, StatusRoom, SummaryRating } from "./Room.types";
 import { Role } from "./User.types";
 
 export type ReservationStatus = "PENDING" | "CONFIRMED" | "CHECKED_IN" | "CHECKED_OUT" | "CANCELED" | "NO_SHOW"
@@ -59,7 +59,8 @@ export interface Reservation {
         amenities: string[];
         capacity: number;
         category: RoomCategory;
-        image: string[]; 
+        image: string[];
+        ratingSummary: SummaryRating;
     };
     user: {
         id: number;

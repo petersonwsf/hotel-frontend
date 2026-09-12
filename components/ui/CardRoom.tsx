@@ -41,7 +41,7 @@ export default function CardRoom({ width, room, buttonFunction, admin }: CardRoo
             <div className="flex flex-col flex-1 min-w-0 p-[1rem] gap-2">
                 <div className="flex justify-between">
                     <span className="flex items-center gap-2 text-gray-600"><RiHotelLine /> {formatFloor(room.floor)}</span>
-                    <span className="flex items-center gap-2 font-light text-sm "><FaStar className="text-yellow-400"/> 4.9 ( 48 avalições )</span>
+                    <span className="flex items-center gap-2 font-light text-sm "><FaStar className="text-yellow-400"/> {room.ratingSummary.averageRating} ( {room.ratingSummary.totalReviews} avalições )</span>
                 </div>
                 <h4 className="text-2xl font-[600] font-sans text-[#002179]">{getRoomCategoryLabel(room.category)}</h4>
                 <span className="flex items-center gap-2 font-light text-md"><RiGroupLine className="text-[#002179]" /> Até {room.capacity} {room.capacity > 1 ? 'Adulto' : 'Adultos'}</span>
