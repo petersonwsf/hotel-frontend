@@ -1,8 +1,11 @@
 "use client";
 
 import { Review } from "@/types/Review.types";
+import { formatDateTimeToPtBR } from "@/utils/formatDate";
+import Image from "next/image";
 import { useState } from "react";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
+import { MdOutlineComment } from "react-icons/md";
 
 interface ReviewCardProps {
     review: Review;
@@ -11,6 +14,7 @@ interface ReviewCardProps {
 export default function ReviewCard({ review }: ReviewCardProps) {
 
     const [viewMore, setViewMore] = useState<boolean>(false);
+    const [viewReply, setViewReply] = useState<boolean>(false)
     const MAX_CHARACTERS = 120;
     const isLongText = review.comment ? review.comment.length > MAX_CHARACTERS : false;
     const renderRatingStars = (rating: number = 0) => {
@@ -57,7 +61,7 @@ export default function ReviewCard({ review }: ReviewCardProps) {
             <div>
                 <p className="font-light my-3 text-medium">
                     <span className={`italic mr-[.5rem] ${!viewMore && isLongText ? 'line-clamp-2' : ''}`}>
-                        "{review.comment}"
+                        <q>{review.comment}</q>
                     </span>
                     {isLongText && (
                         <button
@@ -70,6 +74,27 @@ export default function ReviewCard({ review }: ReviewCardProps) {
                     )}
                 </p>
             </div>
+            {review.reply && (
+                <div className="flex flex-col gap-3">
+                    <span 
+                        onClick={() => setViewReply((prev: boolean) => !prev)} 
+                        className={`cursor-pointer p-[.5rem] hover:bg-gray-100 duration-[.3s] inline-flex items-center gap-2 text-sm text-gray-600 font-medium`}>
+                            <MdOutlineComment />{viewReply ? 'Ocultar resposta do Lúmen' : 'Ver resposta do Lúmen'}
+                    </span>
+                    {viewReply && (
+                        <div className="my-[.5rem]">
+                            <div className="flex w-full justify-between">
+                                <div className="flex gap-2 items-center font-light text-sm">
+                                    <Image width={30} height={30} className="rounded-full" alt="Foto Lúmen Hotel" src="/images/logo_escura.png" />
+                                    Resposta do Lúmen hotel
+                                </div>
+                                <p className="text-sm font-light">Em {formatDateTimeToPtBR(review.repliedAt)}</p>
+                            </div>
+                            <p className="text-gray-600 mt-[1rem]"><q>{review.reply}</q></p>
+                        </div>
+                    )}
+                </div>
+            )}
         </div>
     );
 }

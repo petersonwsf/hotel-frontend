@@ -51,7 +51,7 @@ export default function RoomReviews({ room }: RoomReviewsProps) {
             </div>
             <hr className="text-gray-300" />
             <div className="my-[1rem]">
-                <div className="grid grid-cols-2 gap-[2rem]">
+                <div className="grid grid-cols-2 gap-[2rem] items-start">
                     {reviews.map((review) => (
                         <ReviewCard key={`review_${review.id}`} review={review} />
                     ))}

@@ -19,6 +19,16 @@ export default function useReview() {
         }
     }
 
+    async function replyComment(reply: string, id: number) {
+        
+        try {
+            const response = await api.patch(`/hotel/review/reply/${id}`, { reply })
+            return response.data
+        } catch (error : any) {
+            throw error
+        }
+    }
+
     async function getReviewsList(params: ReviewQueryParams) {
         
         const queryParams = buildQueryParams(params)
@@ -33,6 +43,7 @@ export default function useReview() {
 
     return {
         createReview,
-        getReviewsList
+        getReviewsList,
+        replyComment
     }
 }

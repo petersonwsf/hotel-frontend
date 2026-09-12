@@ -11,13 +11,14 @@ export interface ReviewBody {
 }
 
 export interface ReviewQueryParams {
-    page: number;
-    size: number;
-    userId?: number;
-    roomId?: number;
+    page: string | string[];
+    size: string | string[];
+    userId?: string | string[];
+    roomId?: string | string[];
     replied?: boolean;
     commented?: boolean,
-    sentiment?: Sentiment[];
+    createdAt?: string | string[];
+    sentiment?: string | string[];
 }
 
 export interface Review {
@@ -28,4 +29,6 @@ export interface Review {
     user: User;
     address: ContactInformation;
     category: RoomCategory;
+    reply?: string;
+    repliedAt?: string | Date;
 }

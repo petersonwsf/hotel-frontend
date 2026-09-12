@@ -12,7 +12,7 @@ export default async function Rooms({ searchParams }: RoomsProps) {
     const resolvedSearchParams = await searchParams;
     const currentPage = Number(resolvedSearchParams.page) || 1;
 
-    const rooms = await getRooms({page: currentPage - 1, size: 10, sort: 'id,desc'})
+    const rooms = await getRooms({page: (currentPage - 1).toString(), size: '10', sort: 'id,desc'})
 
     return (
         <div>
