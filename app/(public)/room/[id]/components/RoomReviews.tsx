@@ -1,5 +1,5 @@
 "use client";
-import { FaStar } from "react-icons/fa";
+import { FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import ReviewCard from "./ReviewCard";
 import { FaRegComments } from "react-icons/fa6";
@@ -21,11 +21,27 @@ export default function RoomReviews({ room }: RoomReviewsProps) {
 
     const { getReviewsList } = useReview()
 
+    const renderRatingStars = (rating: number = 0) => {
+        const stars = [];
+
+        for (let i = 1; i <= 5; i++) {
+            if (rating >= i) {
+                stars.push(<FaStar key={i} className="text-yellow-400 w-7 h-7" />);
+            } else if (rating >= i - 0.5) {
+                stars.push(<FaStarHalfAlt key={i} className="text-yellow-400 w-7 h-7" />);
+            } else {
+                stars.push(<FaRegStar key={i} className="text-gray-300 w-7 h-7" />);
+            }
+        }
+
+        return stars;
+    };
+
     useEffect(() => {
         const fetch = async () => {
             setLoading(true)
             try {
-                const response = await getReviewsList({ page: page, size: 4, roomId: room.id, commented: true })
+                const response = await getReviewsList({ page: page.toString(), size: '4', roomId: room.id.toString(), commented: true })
                 setReviews((prev: Review[]) => [...prev, ...response.content])
             } catch (error : any) {
                 handleToast(error.response.data.message, 'error')
@@ -41,11 +57,9 @@ export default function RoomReviews({ room }: RoomReviewsProps) {
         <section className="w-full p-[2rem]">
             <h3 className="text-3xl font-[600] font-sans text-gray-800 border-s-7 border-[#0033AD] ps-[1rem]">Avaliações sobre o quarto</h3>
             <div className="text-center p-[1.5rem] rounded-lg my-[1rem]">
-                <h4 className="text-4xl font-[650] font-sans text-[#002179] mb-2">{room.ratingSummary.averageRating}</h4>
+                <h4 className="text-4xl font-[650] font-sans text-[#002179] mb-2">{room.ratingSummary.averageRating.toFixed(1)}</h4>
                 <div className="inline-flex justify-center items-center gap-3">
-                    {Array.from({ length: 5 }).map((_, index) => (
-                        <FaStar key={index} className="w-7 h-7 text-yellow-400"/>
-                    ))}
+                    {renderRatingStars(room.ratingSummary.averageRating)}
                 </div>
                 <p className="text-center font-light text-gray-600 my-1">Baseado em {room.ratingSummary.totalReviews} avaliações</p>
             </div>
