@@ -1,7 +1,7 @@
-import RoomDescription from "@/components/reservation/RoomDescription"
+import RoomDescription from "./components/RoomDescription"
 import { getRoomById } from "@/lib/api/rooms"
 import { notFound } from "next/navigation"
-import ReservationDetails from "@/components/reservation/ReservationDetails"
+import ReservationDetails from "./components/ReservationDetails"
 
 export default async function Reservation({ params } : { params: Promise<{ id : string }>}) {
     

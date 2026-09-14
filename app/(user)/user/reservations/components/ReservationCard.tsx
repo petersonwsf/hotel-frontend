@@ -9,7 +9,7 @@ import { CiCalendar } from "react-icons/ci";
 import { FaPen, FaRegTrashAlt, FaUsers } from "react-icons/fa";
 import PaymentReservationCard from "./PaymentReservationCard";
 import { isPastDate } from "@/utils/isPasteDate";
-import StatusReservation from "@/components/reservation/StatusReservation";
+import StatusReservation from "@/components/ui/StatusReservation";
 import { IoEyeOutline } from "react-icons/io5";
 import { LuEyeClosed } from "react-icons/lu";
 import { User } from "@/contexts/AuthContext";
