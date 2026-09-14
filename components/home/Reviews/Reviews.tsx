@@ -1,6 +1,14 @@
+import { getReviews } from "../../../lib/api/review";
 import ReviewsSlide from "./ReviewsSlide";
 
 export default async function Reviews() {
+
+    const reviews = await getReviews({
+        page: '0',
+        size: '10',
+        commented: true,
+    })
+
     return (
         <section id="reviews" className="my-[4rem]" aria-label="Avaliações do hotel">
             <div className="w-[50%]">
@@ -9,7 +17,7 @@ export default async function Reviews() {
                 <p className="font-light text-gray-500">A satisfação e o conforto de quem já viveu a experiência Lúmen refletidos em cada relato espontâneo.</p>
             </div>
             <div className="my-5 pointer-events-none">
-                <ReviewsSlide />
+                <ReviewsSlide reviews={reviews?.content ?? []}/>
             </div>
         </section>
     )

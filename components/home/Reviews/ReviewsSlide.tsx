@@ -1,12 +1,17 @@
 "use client";
 import { Autoplay, FreeMode } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import Review from "../../ui/Review";
+import ReviewCardSlide from "../../ui/Review";
+import { Review } from "@/types/Review.types";
 
 import 'swiper/css';
 import 'swiper/css/free-mode';
 
-export default function ReviewsSlide() {
+interface ReviewsSlideProps {
+    reviews: Review[]
+}
+
+export default function ReviewsSlide({ reviews } : ReviewsSlideProps) {
     return (
         <Swiper
             modules={[Autoplay, FreeMode]}
@@ -23,9 +28,9 @@ export default function ReviewsSlide() {
             allowTouchMove={false}
             className="swiper-reviews"
         >
-            {Array.from({ length: 10 }).map((_, index) => (
-                <SwiperSlide key={index}>
-                    <Review />
+            {reviews.map((review) => (
+                <SwiperSlide key={review.id}>
+                    <ReviewCardSlide review={review} />
                 </SwiperSlide>
             ))}
         </Swiper>
