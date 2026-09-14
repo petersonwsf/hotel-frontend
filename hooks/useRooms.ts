@@ -17,8 +17,6 @@ export default function useRooms() {
     }
 
     async function editRoom(id: number, data: FormData) {
-        
-        console.log(data)
 
         try {
             const room = await api.patch(`/hotel/room/${id}`, data)

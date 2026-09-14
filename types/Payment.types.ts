@@ -11,6 +11,26 @@ export interface CreatePaymentData {
     customerEmail: string;
 }
 
+export interface PaymentSSEData {
+    userId: number;
+    reservationId: number;
+    payment: {
+        id: number;
+        reservationId: number;
+        status: string;
+        userId: number;
+        stripePaymentIntentId: string;
+        amountAuthorized: number;
+        amountCaptured: number;
+        currency: string;
+        captureMethod: CaptureMethod;
+        createdAt: Date;
+        updatedAt: Date;
+        boletoUrl: string | null;
+        codeBar?: string;
+    };
+}
+
 export interface Payment {
     id: number;
     amount: number;

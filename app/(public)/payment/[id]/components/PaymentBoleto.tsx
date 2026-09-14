@@ -14,9 +14,10 @@ import { copyToClipboard } from "@/utils/copyToClipboard";
 interface PaymentBoletoProps {
     reservation: Reservation;
     user: User;
+    startListening: () => void;
 }
 
-export default function PaymentBoleto({ reservation, user } : PaymentBoletoProps) {
+export default function PaymentBoleto({ reservation, user, startListening } : PaymentBoletoProps) {
 
     const [loading, setLoading] = useState<boolean>(false)
     const [checkTerm, setCheckTerm] = useState<boolean>(false)
@@ -36,6 +37,7 @@ export default function PaymentBoleto({ reservation, user } : PaymentBoletoProps
                 customerEmail: user?.login ?? '',
             })
             setPayment(paymentResponse.payment)
+            startListening()
         } catch (error : any) {
             handleToast(error.response.data.message, 'error')
         } finally {

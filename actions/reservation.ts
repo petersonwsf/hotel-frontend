@@ -10,7 +10,7 @@ export async function getReservationAction(id: number) : Promise<Resultado> {
         const reservation = await getReservation(id)
         return { success: true, data: reservation }
     } catch (error : any) {
-        console.log(error)
+        console.error(error)
         return { success: false, erro: error.response.data.message }
     }
 }

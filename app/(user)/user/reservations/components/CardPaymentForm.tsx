@@ -31,7 +31,7 @@ export default function CardPaymentForm({ payment } : CardPaymentFormProps) {
         })
 
         if (error) {
-            console.log(error)
+            console.error(error)
             handleToast(error.message ?? '', 'error')
         } else if (paymentIntent.status === 'succeeded') {
             handleToast('Pagamento realizado com sucesso', 'success')

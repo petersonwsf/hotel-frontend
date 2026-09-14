@@ -28,7 +28,7 @@ export default function ContactInformationForm({ setSection, isPending } : Conta
             setFieldValue('contactInformation.state', response.data.uf ? response.data.uf : values.contactInformation.state)
             setFieldValue('contactInformation.neighborhood', response.data.bairro ? response.data.bairro : values.contactInformation.neighborhood)
         } catch (error) {
-            console.log(error)
+            console.error(error)
         }
     }
 

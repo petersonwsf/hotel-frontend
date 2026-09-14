@@ -16,11 +16,12 @@ import PaymentCardForm from "./PaymentCardForm";
 interface PaymentCardProps {
     reservation: Reservation;
     user: User;
+    startListening: () => void;
 }
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY || '')
 
-export default function PaymentCard({ reservation, user } : PaymentCardProps) {
+export default function PaymentCard({ reservation, user, startListening } : PaymentCardProps) {
 
     const [checkTerm, setCheckTerm] = useState<boolean>(false)
     const [loading, setLoading] = useState<boolean>(false)
@@ -39,10 +40,10 @@ export default function PaymentCard({ reservation, user } : PaymentCardProps) {
                 currency: 'brl',
                 customerEmail: user.login
             })
-            console.log(paymentResponse.payment)
             setPayment(paymentResponse.payment)
+            startListening()
         } catch (error : any) {
-            console.log(error)
+            console.error(error)
             handleToast(error.response.data.message, 'error')
         } finally {
             setLoading(false)

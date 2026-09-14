@@ -13,9 +13,10 @@ interface ReservationsListProps {
     reservations: Reservation[];
     pagination : {page : number, totalPages: number}
     user: User | null;
+    token?: string;
 }
 
-export default function ReservationsList({ reservations, pagination, user } : ReservationsListProps) {
+export default function ReservationsList({ reservations, pagination, user, token } : ReservationsListProps) {
 
     const [selectedReservationId, setSelectedReservationId] = useState<number | undefined>(undefined)
     const [openModalEdit, setOpenModalEdit] = useState<boolean>(false)
@@ -56,7 +57,7 @@ export default function ReservationsList({ reservations, pagination, user } : Re
         <div>
             <div className="flex flex-col gap-[2rem] my-[1.5rem]">
                 {reservations.length > 0  ? reservations.map(reservation => (
-                    <ReservationCard reservation={reservation} key={reservation.id} openEditModal={handleOpenEdit} openDeleteModal={handleOpenDelete} user={user} />
+                    <ReservationCard token={token} reservation={reservation} key={reservation.id} openEditModal={handleOpenEdit} openDeleteModal={handleOpenDelete} user={user} />
                 )) : (
                     <div className="w-full flex justify-center items-center h-[150px]">
                         <p className="font-light text-gray-500 text-xl">Não há reservas</p>
