@@ -1,4 +1,4 @@
-import { getReviews } from "../../../lib/api/review";
+import { getReviews } from "../../../../lib/api/review";
 import ReviewsSlide from "./ReviewsSlide";
 
 export default async function Reviews() {
