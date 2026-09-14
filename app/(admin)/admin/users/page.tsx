@@ -1,6 +1,4 @@
 import { listUsers } from "@/lib/api/user";
-import { Suspense } from "react";
-import LoadingUsersTable from "./LoadingTableUsers";
 import TableUsers from "./components/TableUsers";
 import HeaderUsersPage from "./components/HeaderUsersPage";
 import FiltersUsers from "./components/FilterUsers";
@@ -29,9 +27,7 @@ export default async function Users({ searchParams } : PageProps) {
             <HeaderUsersPage />
             <FiltersUsers />
             <div>
-                <Suspense fallback={<LoadingUsersTable />}>
-                    <TableUsers users={users?.content ?? []} page={users?.pageable.pageNumber ?? 0} totalPages={users?.totalPages ?? 1} />
-                </Suspense>
+                <TableUsers users={users?.content ?? []} page={users?.pageable.pageNumber ?? 0} totalPages={users?.totalPages ?? 1} />
             </div>
         </div>
     )
