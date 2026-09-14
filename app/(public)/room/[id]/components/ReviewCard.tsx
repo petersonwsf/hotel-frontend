@@ -60,7 +60,7 @@ export default function ReviewCard({ review }: ReviewCardProps) {
 
             <div>
                 <p className="font-light my-3 text-medium">
-                    <span className={`italic mr-[.5rem] ${!viewMore && isLongText ? 'line-clamp-2' : ''}`}>
+                    <span className={`mr-[.5rem] ${!viewMore && isLongText ? 'line-clamp-2' : ''}`}>
                         <q>{review.comment}</q>
                     </span>
                     {isLongText && (

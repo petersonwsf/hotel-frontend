@@ -1,5 +1,4 @@
 import { Review as ReviewInterface } from "@/types/Review.types";
-import { getRoomCategoryLabel } from "@/utils/formatTextsRooms";
 import { FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
 
 interface ReviewProps {
@@ -27,7 +26,7 @@ export default function Review({ review } : ReviewProps) {
     console.log(review)
 
     return (
-        <div className="bg-gray-100 rounded-lg p-[1.5rem] h-[350px] flex flex-col justify-between">
+        <div className="bg-gray-100 rounded-lg p-[1.5rem] h-[300px] flex flex-col justify-between">
             <div className="flex flex-col gap-[1rem]">
                 <div>
                     <div className="flex gap-2 items-center font-light">

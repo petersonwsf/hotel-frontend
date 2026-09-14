@@ -7,22 +7,23 @@ import Modal from "@/components/ui/Modal";
 import EditReservation from "@/components/reservation/EditReservation/UpdateRerservation";
 import useReservation from "@/hooks/useReservation";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import { User } from "@/contexts/AuthContext";
+import { useAuthContext } from "@/contexts/AuthContext";
 
 interface ReservationsListProps {
     reservations: Reservation[];
     pagination : {page : number, totalPages: number}
-    user: User | null;
     token?: string;
 }
 
-export default function ReservationsList({ reservations, pagination, user, token } : ReservationsListProps) {
+export default function ReservationsList({ reservations, pagination, token } : ReservationsListProps) {
 
     const [selectedReservationId, setSelectedReservationId] = useState<number | undefined>(undefined)
     const [openModalEdit, setOpenModalEdit] = useState<boolean>(false)
     const [openModalDelete, setOpenModalDelete] = useState<boolean>(false)
 
     const [loadingDelete, setLoadingDelete] = useState<boolean>(false)
+
+    const { user } = useAuthContext()
 
     const { cancelReservation } = useReservation()
 

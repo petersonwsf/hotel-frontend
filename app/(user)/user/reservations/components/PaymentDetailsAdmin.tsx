@@ -1,5 +1,5 @@
 "use client"
-import PaymentStatus from "@/components/reservation/PaymentStatus";
+import PaymentStatus from "@/components/ui/PaymentStatus";
 import useReservation from "@/hooks/useReservation";
 import { Payment } from "@/types/Payment.types";
 import { Reservation } from "@/types/Reservation.types"

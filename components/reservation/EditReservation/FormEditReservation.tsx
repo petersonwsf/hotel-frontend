@@ -8,7 +8,7 @@ import { MdErrorOutline } from "react-icons/md";
 import { useFormikContext } from "formik";
 import useRooms from "@/hooks/useRooms";
 import { Room } from "@/types/Room.types";
-import StatusReservation from "../StatusReservation";
+import StatusReservation from "../../ui/StatusReservation";
 import { calcularDiferencaDias } from "@/utils/calculateDays";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 

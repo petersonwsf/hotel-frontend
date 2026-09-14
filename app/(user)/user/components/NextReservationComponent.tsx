@@ -1,4 +1,4 @@
-import StatusReservation from "@/components/reservation/StatusReservation";
+import StatusReservation from "@/components/ui/StatusReservation";
 import { Reservation } from "@/types/Reservation.types"
 import { calcularDiferencaDias } from "@/utils/calculateDays";
 import { formatShortDate } from "@/utils/formatDate";

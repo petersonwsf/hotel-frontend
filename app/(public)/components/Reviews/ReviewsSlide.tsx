@@ -1,7 +1,7 @@
 "use client";
 import { Autoplay, FreeMode } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import ReviewCardSlide from "../../ui/Review";
+import ReviewCardSlide from "../../../../components/ui/Review";
 import { Review } from "@/types/Review.types";
 
 import 'swiper/css';

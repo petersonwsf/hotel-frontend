@@ -3,7 +3,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import { Swiper as SwiperClass } from "swiper";
-import CardRoom from "../../ui/CardRoomSlide";
+import CardRoom from "../../../../components/ui/CardRoomSlide";
 import { Room } from "@/types/Room.types";
 import { useState } from "react";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";

@@ -2,6 +2,23 @@
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
+function isTokenExpired(token: string): boolean {
+    try {
+        const payloadBase64 = token.split('.')[1];
+        if (!payloadBase64) return true;
+        
+        const decodedJson = Buffer.from(payloadBase64, 'base64').toString('utf-8');
+        const payload = JSON.parse(decodedJson);
+        
+        if (!payload.exp) return false;
+
+        const currentTime = Math.floor(Date.now() / 1000);
+        return payload.exp < currentTime;
+    } catch {
+        return true;
+    }
+}
+
 const SERVICES: Record<string, string> = {
     hotel: process.env.URL_API_HOTEL!,
     payment: process.env.URL_API_PAYMENT!,
@@ -10,6 +27,8 @@ const SERVICES: Record<string, string> = {
 async function handler(req: NextRequest) {
     const cookiesStore = await cookies();
     const token = cookiesStore.get('token')?.value;
+
+    const isValidToken = token && !isTokenExpired(token);
 
     const path = req.nextUrl.pathname.replace('/api/proxy', '');
     const service = path.split('/')[1];
@@ -29,31 +48,34 @@ async function handler(req: NextRequest) {
 
     if (req.method !== 'GET' && req.method !== 'HEAD') {
         if (isFormData) {
-            body = req.body; // Repassa a stream nativa para manter os boundaries intactos
+            body = req.body;
         } else {
             const rawBody = await req.text();
             body = rawBody ? JSON.parse(rawBody) : undefined;
         }
     }
 
+    const headers: Record<string, string> = {
+        ...(isFormData
+            ? { 'Content-Type': contentType }
+            : { 'Content-Type': 'application/json' }),
+    };
+
+    if (isValidToken) {
+        headers['Authorization'] = `Bearer ${token}`;
+    }
+
     const response = await fetch(`${baseUrl}${servicePath}${search}`, {
         method: req.method,
-        headers: {
-            ...(isFormData
-                ? { 'Content-Type': contentType } // repassa com o boundary original
-                : { 'Content-Type': 'application/json' }),
-            Authorization: token ? `Bearer ${token}` : '',
-        },
+        headers,
         body: isFormData ? body : (body ? JSON.stringify(body) : undefined),
         duplex: isFormData ? 'half' : undefined,
     });
 
-    // 1. Caso o serviço externo retorne 204 (No Content)
     if (response.status === 204) {
         return new NextResponse(null, { status: 204 });
     }
 
-    // 2. Processa a resposta normal para os demais códigos de status
     const text = await response.text();
     let data;
 
