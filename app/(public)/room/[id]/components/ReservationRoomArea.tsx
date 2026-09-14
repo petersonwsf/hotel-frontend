@@ -35,7 +35,6 @@ export default function ReservationRoomArea({ room }: ReservationRoomAreaProps) 
         }
         setLoading(true);
         const isAvailable = await checkAvailability(dates.startDate, dates.endDate, room.id);
-        console.log(isAvailable)
         setDisponibility(isAvailable);
         setLoading(false);
     }

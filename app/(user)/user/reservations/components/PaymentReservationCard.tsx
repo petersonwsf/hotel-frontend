@@ -1,4 +1,5 @@
 "use client"
+
 import PaymentCardForm from "@/app/(public)/payment/[id]/components/PaymentCardForm";
 import usePayment from "@/hooks/usePayment";
 import { Payment, TypePayment } from "@/types/Payment.types";
@@ -13,17 +14,19 @@ import { IoIosInformationCircleOutline } from "react-icons/io";
 import { FaCheck } from "react-icons/fa";
 import { GrDocument } from "react-icons/gr";
 import { copyToClipboard } from "@/utils/copyToClipboard";
+import { usePaymentSSE } from "@/hooks/usePaymentSSE";
 
 interface PaymentReservationCardProps {
     reservation: Reservation;
     payment: Payment | null;
     setPayment: (payment: Payment | null) => void;
     loadingPayment: boolean;
+    token: string;
 }
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY || '')
 
-export default function PaymentReservationCard({ reservation, payment, setPayment, loadingPayment } : PaymentReservationCardProps) {
+export default function PaymentReservationCard({ reservation, payment, setPayment, loadingPayment, token } : PaymentReservationCardProps) {
 
     const diferencaDias = useMemo(() => calcularDiferencaDias(reservation.checkInDate, reservation.checkOutDate), [reservation])
 
@@ -39,14 +42,11 @@ export default function PaymentReservationCard({ reservation, payment, setPaymen
     }, [payment])
 
     const { createPayment } = usePayment()
+    const { paymentData, startListening, stopListening } = usePaymentSSE({ reservationId: reservation.id, token })
 
     function changePaymentMethod(type: TypePayment) {
         setPaymentMethod(type)
         setCheckTerm(false)
-    }
-
-    const afterPayment = () => {
-        setPaymentCompleted(true)
     }
 
     async function handleCreatePayment() {
@@ -62,6 +62,7 @@ export default function PaymentReservationCard({ reservation, payment, setPaymen
             })
             setPayment(paymentResponse.payment)
             handleToast("Pagamento gerado com sucesso", "success")
+            startListening()
         } catch (error : any) {
             handleToast(error.response.data.message, "error")
         } finally {
@@ -75,6 +76,14 @@ export default function PaymentReservationCard({ reservation, payment, setPaymen
             handleToast("Copiado com sucesso!", "success")
         }
     }
+
+    useEffect(() => {
+        if (paymentData) {
+            handleToast('Pagamento realizado com sucesso', 'success')
+            setPaymentCompleted(true)
+            stopListening()
+        }
+    }, [paymentData])
 
     return (
         <div className="flex">
@@ -132,7 +141,7 @@ export default function PaymentReservationCard({ reservation, payment, setPaymen
                                     </div>
                                 ) : (
                                     <Elements stripe={stripePromise} options={{ clientSecret: payment.clientSecret }}>
-                                        <PaymentCardForm afterPayment={afterPayment} clientSecret={payment.clientSecret} stripeWrapperClass="w-full rounded-lg border outline-none border-gray-300 bg-white p-[.5rem] text-[12px] transition focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-200"/>
+                                        <PaymentCardForm clientSecret={payment.clientSecret} stripeWrapperClass="w-full rounded-lg border outline-none border-gray-300 bg-white p-[.5rem] text-[12px] transition focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-200"/>
                                     </Elements>
                                 )}
                             </div>

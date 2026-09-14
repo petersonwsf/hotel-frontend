@@ -16,7 +16,7 @@ export default async function AddressPage() {
         const { payload } = await jwtVerify(token!, new TextEncoder().encode(process.env.SECRET_JWT));
         user = {id : payload.id as number, name: payload.name as string, login: payload.sub as string, role: payload.role as string};
     } catch (error : any) {
-        console.log(error.response)
+        console.error(error.response)
     }
     
     const client : Client = await getClientByUserId(user?.id)

@@ -65,7 +65,6 @@ export default function Notification() {
     }
 
     const sendReview = async () => {
-        console.log(notification)
         try {
             setLoading(true)
             await createReview(rating, comment, notification!.reservationInfos.id)

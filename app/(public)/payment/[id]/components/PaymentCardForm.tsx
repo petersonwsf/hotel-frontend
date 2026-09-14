@@ -6,11 +6,10 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 interface PaymentCardFormProps {
     clientSecret: string;
-    stripeWrapperClass?: string; // Estilo dos inputs do formulário
-    afterPayment: () => void;
+    stripeWrapperClass?: string;
 }
 
-export default function PaymentCardForm({ clientSecret, stripeWrapperClass, afterPayment } : PaymentCardFormProps) {
+export default function PaymentCardForm({ clientSecret, stripeWrapperClass } : PaymentCardFormProps) {
     
     const stripe = useStripe()
     const elements = useElements()
@@ -32,11 +31,10 @@ export default function PaymentCardForm({ clientSecret, stripeWrapperClass, afte
         })
 
         if (error) {
-            console.log(error)
+            console.error(error)
             handleToast(error.message ?? '', 'error')
         } else if (paymentIntent.status === 'succeeded') {
             handleToast('Pagamento realizado com sucesso', 'success')
-            afterPayment()
         }
         setIsProcessing(false)
     }

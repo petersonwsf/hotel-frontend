@@ -20,7 +20,7 @@ export default async function LayoutAdmin({ children } : { children: React.React
         const { payload } = await jwtVerify(token, new TextEncoder().encode(process.env.SECRET_JWT));
         isAuthorized = payload.role === 'ADMIN' || payload.role === 'ATTENDANT'
     } catch (error : any) {
-        console.log(error)
+        console.error(error)
         isAuthorized = false;
     }
 

@@ -23,7 +23,7 @@ export default async function LayoutAdmin({ children } : Readonly<{ children: Re
         const { payload } = await jwtVerify(token, new TextEncoder().encode(process.env.SECRET_JWT));
         isAuthorized = payload.role === 'CLIENT'
     } catch (error : any) {
-        console.log(error.response)
+        console.error(error.response)
         isAuthorized = false;
     }
 

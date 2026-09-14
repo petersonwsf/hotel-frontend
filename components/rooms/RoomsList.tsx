@@ -40,8 +40,6 @@ export default function RoomsList({ widthCard, rooms, action }: RoomsListProps) 
 
     async function edit(values : any) {
         const formData = new FormData()
-
-        console.log(values)
             
         const roomDataDto = {
             code: values.code,

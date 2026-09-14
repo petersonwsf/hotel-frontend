@@ -21,9 +21,10 @@ interface ReservationCardProps {
     openEditModal: (id: number) => void;
     openDeleteModal: (id: number) => void;
     user: User | null;
+    token?: string;
 }
 
-export default function ReservationCard({ reservation, openEditModal, openDeleteModal, user } : ReservationCardProps) {
+export default function ReservationCard({ reservation, openEditModal, openDeleteModal, user, token } : ReservationCardProps) {
 
     const [viewDetails, setViewDetails] = useState<boolean>(false)
     const [reservationPayment, setReservationPayment] = useState<Payment | null>(null)
@@ -94,7 +95,7 @@ export default function ReservationCard({ reservation, openEditModal, openDelete
                         {user?.role !== 'CLIENT' ? (
                             <PaymentDetailsAdmin reservation={reservation} payment={reservationPayment} loadingPayment={loadingPayment} />
                         ) : (
-                            <PaymentReservationCard loadingPayment={loadingPayment} setPayment={setReservationPayment} reservation={reservation} payment={reservationPayment} />
+                            <PaymentReservationCard token={token!} loadingPayment={loadingPayment} setPayment={setReservationPayment} reservation={reservation} payment={reservationPayment} />
                         )}
                     </div>
                 </div>

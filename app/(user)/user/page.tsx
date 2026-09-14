@@ -25,7 +25,7 @@ export default async function UserPage({ searchParams }: PageProps) {
         const { payload } = await jwtVerify(token!, new TextEncoder().encode(process.env.SECRET_JWT));
         user = {id : payload.id as number, name: payload.name as string, login: payload.sub as string, role: payload.role as string};
     } catch (error : any) {
-        console.log(error.response)
+        console.error(error.response)
     }
 
     const reservations = await getReservationsByUser(user?.id, { page: page ?? '0', checkInDate: new Date().toISOString().slice(0, 10), status: ['CONFIRMED', 'CHECKED_IN', 'PENDING'] })
