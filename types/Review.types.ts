@@ -28,7 +28,7 @@ export interface Review {
     sentiment: Sentiment;
     user: User;
     address: ContactInformation;
-    category: RoomCategory;
+    categoryRoom: RoomCategory;
     reply?: string;
     repliedAt?: string | Date;
 }
