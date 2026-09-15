@@ -9,10 +9,14 @@ import { MdAnalytics } from "react-icons/md";
 import Link from "next/link";
 import { IoPersonCircleOutline } from "react-icons/io5";
 import { MdOutlineComment } from "react-icons/md";
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+import useAuth from "@/hooks/useAuth";
+import { ImExit } from "react-icons/im";
 
 export default function Sidebar() {
 
     const { user } = useAuthContext()
+    const { logout } = useAuth()
 
     return (
         <aside className="flex flex-col h-screen w-[300px] bg-blue-950 px-[1rem] py-[1rem] sticky top-0">
@@ -33,11 +37,23 @@ export default function Sidebar() {
                     </ul>
                 </nav>
                 <div className="border-t-1 border-gray-400 pt-3">
-                    <div className="flex items-center gap-2 cursor-pointer">
-                        <img alt="Imagem de perfil" className="rounded-[50%] w-7 h-7 object-cover" src={user?.imageKey ? `${process.env.NEXT_PUBLIC_URL_MINIO}/${user.imageKey}` : '/images/icon_person.webp'}/>
-                        <span className="text-white truncate">{user?.name as string}</span>
-                        <FaCaretDown className="w-5 h-5 text-white" />
-                    </div>
+                    <DropdownMenu.Root>
+                        <DropdownMenu.Trigger className="inline-flex items-center gap-2 cursor-pointer outline-none">
+                            <img src={user?.imageKey ? `${process.env.NEXT_PUBLIC_URL_MINIO}/${user.imageKey}` : `/image/person.jpg`} alt="Foto de perfil" className='w-8 h-8 object-cover rounded-full'/>
+                            <span className="text-white truncate">{user?.name as string}</span>
+                             <FaCaretDown className="w-5 h-5 text-white" />
+                        </DropdownMenu.Trigger>
+                        <DropdownMenu.Portal>
+                            <DropdownMenu.Content
+                                sideOffset={5}
+                                className="z-50 min-w-[12rem] overflow-hidden rounded-md bg-white p-1 shadow-lg ring-1 ring-black/5 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95"
+                            >
+                                <DropdownMenu.Item onClick={logout} className="group flex w-full gap-2 cursor-default select-none items-center rounded-sm px-3 py-2 text-sm text-red-600 outline-none duration-[.3s] hover:bg-red-100 cursor-pointer">
+                                    <ImExit /> Sair
+                                </DropdownMenu.Item>
+                            </DropdownMenu.Content>
+                        </DropdownMenu.Portal> 
+                    </DropdownMenu.Root>
                 </div>
             </div>
         </aside>
