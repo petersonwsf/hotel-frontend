@@ -34,7 +34,7 @@ export default function CardRoom({ width, room, buttonFunction, admin }: CardRoo
     }
 
     return (
-        <div className={`flex ${width} my-3 gap-3 bg-gray-50 rounded-xl`}>
+        <div className={`flex ${width} my-3 gap-3 bg-gray-50 rounded-xl border-1 border-gray-200`}>
             <div className="flex items-center justify-center shrink-0">
                 <img src={mainImageUrl} alt="Image quarto" className="rounded-bl-xl rounded-tl-xl w-[300px] h-[300px] object-cover" />
             </div>
