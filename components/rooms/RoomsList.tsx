@@ -75,9 +75,13 @@ export default function RoomsList({ widthCard, rooms, action }: RoomsListProps) 
 
     return (
         <div className="w-full flex flex-col gap-3">
-            {rooms.map(room => (
+            {rooms.length > 0 ? rooms.map(room => (
                 <CardRoom key={room.id} width={widthCard} room={room} buttonFunction={action == 'EDIT' ? () => handleOpenModal(room.id) : () => redirectToPage(room.id)} admin={action === 'EDIT'} />
-            ))}
+            )) : (
+                <div className="flex items-center justify-center min-h-[300px] w-full">
+                    <p className="text-2xl font-light text-gray-600">Não há quartos</p>
+                </div>
+            )}
             {action === 'EDIT' && 
                 <Modal size="4xl" isOpen={openModal} onClose={closeModal} title={`Editar quarto ID: ${idSelected}`}>
                     <RoomForm submit={edit} id={idSelected}/>

@@ -12,6 +12,7 @@ export interface RoomQueryParams {
     checkInDate?: string | string[];
     checkOutDate?: string | string[];
     code?: string | string[];
+    active?: string | string[],
     floor?: string | string[];
     status?: string | string[];
     sort?: string | string[];
