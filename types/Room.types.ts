@@ -28,7 +28,7 @@ export interface RoomList {
     floor: string;
     description: string;
     id: number;
-    status: StatusRoom;
+    statusRoom: StatusRoom;
     image: string;
     ratingSummary: SummaryRating;
 }
@@ -62,7 +62,8 @@ export const optionsFloor = [
 
 export const optionsStatus = [
     {label : "Disponível", value: "AVAILABLE"},
-    {label : "Fora de ordem", value: "OUT_OF_ORDER"}
+    {label : "Fora de ordem", value: "OUT_OF_ORDER"},
+    {label : "Manutenção", value: "MAINENTANCE"}
 ]
 
 export const optionsCategory : { value: RoomCategory, label: string }[] = [

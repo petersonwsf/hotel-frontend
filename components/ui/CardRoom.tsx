@@ -7,6 +7,10 @@ import { RiGroupLine } from "react-icons/ri";
 import { FaArrowRight } from "react-icons/fa6";
 import { CiCalendar } from "react-icons/ci";
 import { useRouter } from "next/navigation";
+import useRooms from "@/hooks/useRooms";
+import { useState } from "react";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { PiBroomLight } from "react-icons/pi";
 
 interface CardRoom {
     width: string;
@@ -22,6 +26,9 @@ export default function CardRoom({ width, room, buttonFunction, admin }: CardRoo
     let mainImageUrl = ''
 
     const router = useRouter()
+    const [loadingCleaning, setLoadingCleaning] = useState<boolean>(false)
+
+    const { finishCleaning } = useRooms()
 
     if (room.image) {
         if (Array.isArray(room.image)) {
@@ -31,6 +38,12 @@ export default function CardRoom({ width, room, buttonFunction, admin }: CardRoo
         } else {
             mainImageUrl = `${minio_url}/${room.image}`
         }
+    }
+
+    const handleFinishCleaning = async () => {
+        setLoadingCleaning(true)
+        await finishCleaning(room.id)
+        setLoadingCleaning(false)
     }
 
     return (
@@ -59,6 +72,11 @@ export default function CardRoom({ width, room, buttonFunction, admin }: CardRoo
                     <div className="flex gap-3 items-center">
                         <button onClick={buttonFunction} className="text-[#002179] font-normal inline-flex gap-2 items-center cursor-pointer py-[.5rem] px-[1rem] rounded-lg duration-[.3s] hover:bg-gray-200">Ver detalhes <FaArrowRight /></button>
                         {!admin && <button onClick={() => router.push(`/reservation/${room.id}`)} className="text-white bg-[#002179] font-normal inline-flex gap-2 items-center cursor-pointer py-[.5rem] px-[1rem] rounded-lg duration-[.3s]">Reservar quarto <CiCalendar /></button>}
+                        {admin && room.statusRoom === 'CLEANING' && 
+                            <button onClick={handleFinishCleaning} className={`text-white bg-sky-400 hover:bg-sky-500 font-normal inline-flex gap-2 items-center cursor-pointer py-[.5rem] px-[1rem] rounded-lg duration-[.3s] ${loadingCleaning ? 'opacity-[.5] pointer-events-none' : ''}`}>
+                                {loadingCleaning ? 'Finalizando limpeza' : 'Finalizar limpeza'} {loadingCleaning ? <AiOutlineLoading3Quarters className="animate-spin" /> : <PiBroomLight />}
+                            </button>
+                        }
                     </div>
                 </div>
             </div>
