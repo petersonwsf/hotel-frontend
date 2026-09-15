@@ -9,6 +9,8 @@ export async function getRooms(params: RoomQueryParams) {
 
     const queryParams = buildQueryParams(params)
 
+    console.log(queryParams)
+
     try {
         const res = await api.get(`${URL}/room${queryParams}`)
         return res.data

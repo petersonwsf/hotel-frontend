@@ -36,6 +36,16 @@ export default function useRooms() {
         }
     }
 
+    async function finishCleaning(id: number) {
+        try {
+            await api.patch(`/hotel/room/finishCleaning/${id}`,);
+            handleToast('Limpeza do quarto feita com sucesso!', 'success');
+            router.refresh()
+        } catch (error : any) {
+            handleToast(error.response.data.message, 'error')
+        }
+    }
+
     async function checkAvailability(checkIn: string, checkOut: string, roomId: number, reservationId?: number) {
         try {
             const response = await api.get(`hotel/room/disponibility/${roomId}`, {
@@ -60,6 +70,7 @@ export default function useRooms() {
         createRoom,
         editRoom,
         getRoomById,
-        checkAvailability
+        checkAvailability,
+        finishCleaning
     }
 }
