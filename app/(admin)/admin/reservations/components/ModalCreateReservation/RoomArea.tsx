@@ -41,8 +41,8 @@ export default function RoomArea({ setRoomSelected } : RoomAreaProps) {
 
     return (
         <div className="border-1 flex-1 border-gray-300 rounded-lg p-[1.5rem] min-w-0">
-            <h4 className="font-semibold flex items-center gap-3 text-lg">
-                <LuDoorOpen /> Quarto para a reserva
+            <h4 className="font-semibold flex items-center gap-1 text-md">
+                <LuDoorOpen className="text-[#0033AD]" /> 2. Quarto para a reserva
             </h4>
             {loading ? (
                 <div className="w-full h-[100px] flex justify-center items-center">

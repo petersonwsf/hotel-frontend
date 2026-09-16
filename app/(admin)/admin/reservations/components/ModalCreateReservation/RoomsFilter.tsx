@@ -30,7 +30,6 @@ export default function RoomsFilter({ capacity, setCapacity, category, setCatego
 
     return (
         <div className="rounded-lg border p-[.5rem] border-gray-300 transition-all duration-300">
-            {/* Cabeçalho Clicável */}
             <div 
                 className="flex justify-between items-center cursor-pointer select-none"
                 onClick={() => setViewFilters((prev) => !prev)}

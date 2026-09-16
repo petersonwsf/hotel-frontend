@@ -61,9 +61,9 @@ export default function ClientArea({ clientSelected, setClientSelected } : Clien
 
     return (
         <div className="mb-[1.5rem] w-full rounded-xl border border-gray-300">
-            <div className="bg-[#0033AD] w-full p-[1rem] rounded-t-xl">
-                <h4 className="text-white font-semibold flex items-center gap-3 text-xl">
-                    <IoPersonOutline /> Hóspede titular da reserva
+            <div className="bg-[#0033AD] w-full py-[.5rem] px-[1rem] rounded-t-xl">
+                <h4 className="text-white font-semibold flex items-center gap-1 text-md">
+                    <IoPersonOutline /> 1. Hóspede titular da reserva
                 </h4>
             </div>
             <div className="p-[1.5rem]">
