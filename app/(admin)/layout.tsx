@@ -9,7 +9,7 @@ export const metadata : Metadata = {
 }
 
 export default async function LayoutAdmin({ children } : { children: React.ReactNode }) {
-    const cookiesStore = await cookies();
+   const cookiesStore = await cookies();
     const token = cookiesStore.get('token')?.value;
 
     if (!token) redirect('/login');
