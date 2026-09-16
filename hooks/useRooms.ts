@@ -1,10 +1,23 @@
 import { api } from "@/lib/api/api"
+import { RoomQueryParams } from "@/types/Room.types"
+import { buildQueryParams } from "@/utils/buildQueryParams"
 import { handleToast } from "@/utils/handleToast"
 import { useRouter } from "next/navigation"
 
 export default function useRooms() {
 
     const router = useRouter()
+
+    async function getRoomsList(params: RoomQueryParams) {
+        const queryParams = buildQueryParams(params)
+        try {
+            const response = await api.get(`/hotel/room${queryParams}`)
+            return response.data.content
+        } catch (error: any) {
+            handleToast(error.response.data.message, 'error')
+            return []
+        }
+    }
 
     async function createRoom(data: FormData) {
         try {
@@ -67,6 +80,7 @@ export default function useRooms() {
     }
 
     return {
+        getRoomsList,
         createRoom,
         editRoom,
         getRoomById,

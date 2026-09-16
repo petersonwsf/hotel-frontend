@@ -3,6 +3,8 @@ import Modal from "@/components/ui/Modal";
 import { useState } from "react";
 import ClientArea from "./ClientArea";
 import { ClientList } from "@/types/Client.types";
+import { RoomList } from "@/types/Room.types";
+import RoomArea from "./RoomArea";
 
 interface ModalCreateReservation {
     open: boolean;
@@ -11,7 +13,7 @@ interface ModalCreateReservation {
 
 export default function ModalCreateReservation({ open, onClose } : ModalCreateReservation) {
 
-    const [selectedRoom, setSelectedRoom] = useState<any | null>(null)
+    const [selectedRoom, setSelectedRoom] = useState<RoomList | null>(null)
     const [selectedClient, setSelectedClient] = useState<ClientList | null>(null)
 
     return (
@@ -20,7 +22,12 @@ export default function ModalCreateReservation({ open, onClose } : ModalCreateRe
             onClose={onClose}
             size='4xl'
         >
-            <ClientArea clientSelected={selectedClient} setClientSelected={setSelectedClient} />
+            <div className="overflow-auto">
+                <ClientArea clientSelected={selectedClient} setClientSelected={setSelectedClient} />
+                <div className="flex items-start gap-3">
+                    <RoomArea setRoomSelected={setSelectedRoom} />
+                </div>
+            </div>
         </Modal>
     )
 }

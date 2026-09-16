@@ -40,7 +40,7 @@ export default function Modal({ isOpen, onClose, title, children, size = "md" } 
                         <IoCloseOutline className="w-[25px] h-[25px]"/>
                     </button>
                 </div>
-                <div className="py-4 text-gray-600 px-[1rem] leading-relaxed overflow-visible">
+                <div className="py-4 text-gray-600 px-[1rem] leading-relaxed overflow-y-auto flex-1 min-h-0">
                     {children}
                 </div>
             </div>
