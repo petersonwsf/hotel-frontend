@@ -14,7 +14,6 @@ export default async function Layout({ children } : Readonly<{ children: React.R
             <body>
                 <Toast />
                 <AuthProvider user={user?.success ? user.user : null}>
-                    <Notification />
                     { children }
                 </AuthProvider>
             </body>
