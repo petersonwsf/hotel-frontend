@@ -1,11 +1,25 @@
 import { api } from "@/lib/api/api";
-import { ClientUpdate, ContactInformationUpdate } from "@/types/Client.types";
+import { ClientQueryParams, ClientUpdate, ContactInformationUpdate } from "@/types/Client.types";
+import { buildQueryParams } from "@/utils/buildQueryParams";
 import { handleToast } from "@/utils/handleToast";
 import { useRouter } from "next/navigation";
 
 export default function useClient() {
 
     const router = useRouter()
+
+    async function getClients(params: ClientQueryParams) {
+
+        const queryParams = buildQueryParams(params)
+
+        try {
+            const response = await api.get(`/hotel/client${queryParams}`)
+            return response.data.content
+        } catch (error : any) {
+            handleToast(error.response.data.message, 'error')
+            return []
+        }
+    }
 
     async function updateClient(id: number, data : ClientUpdate) {
         const { phoneNumber, ...restOdFata } = data;
@@ -58,5 +72,6 @@ export default function useClient() {
         updateClient,
         updateAddress,
         deleteClient,
+        getClients,
     }
 }
