@@ -7,7 +7,7 @@ export default function NotFound() {
         <div className="w-3xl m-auto flex justify-center gap-4 flex-col items-center min-h-[80vh]">
             <div className="relative">
                 <h3 className="text-gray-300 text-9xl font-bold opacity-[0.8] absolute top-[20%] left-[50%] transform -translate-x-1/2 -translate-y-1/2">404</h3>
-                <h2 className="relative text-[#002BB3] text-4xl text-center font-semibold" style={{zIndex: 1000000}}>Ops! Parece que você se perdeu nos nossos corredores</h2>
+                <h2 className="relative text-[#002BB3] text-4xl text-center font-semibold z-[1000000]">Ops! Parece que você se perdeu nos nossos corredores</h2>
             </div>
             <p className="font-light text-xl text-center text-gray-700">O quarto que você procura pode ter feito o check-out ou nunca existiu. Deixe-nos ajudar você a encontrar o caminho de volta para o conforto.</p>
             <Link href="/rooms" className="bg-[#002BB3] text-white py-2 px-[1rem] rounded-[10px] cursor-pointer hover:bg-[#001A80] transition-colors flex items-center gap-2">
