@@ -44,6 +44,7 @@ export default function RoomArea({ setRoomSelected } : RoomAreaProps) {
             <h4 className="font-semibold flex items-center gap-1 text-md">
                 <LuDoorOpen className="text-[#0033AD]" /> 2. Quarto para a reserva
             </h4>
+            <hr className="text-gray-300" />
             {loading ? (
                 <div className="w-full h-[100px] flex justify-center items-center">
                     <AiOutlineLoading3Quarters className="animate-spin" />

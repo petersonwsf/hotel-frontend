@@ -6,6 +6,7 @@ import { ClientList } from "@/types/Client.types";
 import { RoomList } from "@/types/Room.types";
 import RoomArea from "./RoomArea";
 import ReservationDatesArea from "./ReservationDatesArea";
+import PaymentArea from "./PaymentArea";
 
 interface ModalCreateReservation {
     open: boolean;
@@ -31,6 +32,7 @@ export default function ModalCreateReservation({ open, onClose } : ModalCreateRe
                     <RoomArea setRoomSelected={setSelectedRoom} />
                     <ReservationDatesArea room={selectedRoom} disponibility={disponibility} setDisponibility={setDisponibility} dates={dates} setDates={setDates} />
                 </div>
+                <PaymentArea room={selectedRoom} dates={dates} />
             </div>
         </Modal>
     )
