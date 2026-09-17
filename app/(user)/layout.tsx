@@ -27,7 +27,7 @@ export default async function LayoutAdmin({ children } : Readonly<{ children: Re
         isAuthorized = false;
     }
 
-    //if (!isAuthorized) redirect('/login');
+    if (!isAuthorized) redirect('/login');
 
     return (
         <div>
