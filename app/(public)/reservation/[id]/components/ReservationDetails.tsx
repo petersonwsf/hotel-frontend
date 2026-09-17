@@ -6,13 +6,16 @@ import { useState } from "react";
 import { useAuthContext } from "@/contexts/AuthContext";
 import useReservation from "@/hooks/useReservation";
 import { ReservationSaveDTO } from "@/types/Reservation.types";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
+import { handleToast } from "@/utils/handleToast";
 
 interface ReservationDetailsProps {
     room: Room;
 }
 
 export default function ReservationDetails({ room } : ReservationDetailsProps) {
+
+    const router = useRouter()
 
     const { user } = useAuthContext()
     const [totalDays, setTotalDays] = useState<number | undefined>(undefined)
@@ -22,16 +25,22 @@ export default function ReservationDetails({ room } : ReservationDetailsProps) {
 
     async function handleCreateReservation() {
         if (!user) redirect(`/login?redirect=/reservation/${room.id}`)
-        const data : ReservationSaveDTO = {
-            userId: user.id as number,
-            roomId: room.id,
-            checkInDate: dates.startDate!,
-            checkOutDate: dates.endDate!,
-            dailyRate: room.customPrice,
-            discountAmount: 0,
-            serviceFee: 50,
+        try {
+            const data : ReservationSaveDTO = {
+                userId: user.id as number,
+                roomId: room.id,
+                checkInDate: dates.startDate!,
+                checkOutDate: dates.endDate!,
+                dailyRate: room.customPrice,
+                discountAmount: 0,
+                serviceFee: 50,
+            }
+            const response = await createReservation(data);
+            handleToast('Reserva criada com sucesso', 'success')
+            router.push(`/payment/${response.id}`)
+        } catch (error : any) {
+            handleToast(error.response.data.message, 'error')
         }
-        await createReservation(data);
     }
 
     return (

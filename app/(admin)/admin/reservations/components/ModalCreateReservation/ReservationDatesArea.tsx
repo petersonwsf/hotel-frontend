@@ -38,7 +38,7 @@ export default function ReservationDatesArea({ room, disponibility, setDisponibi
     
     return (
         <div className="border-1 flex-1 border-gray-300 rounded-lg p-[1.5rem] min-w-0">
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center mb-1">
                 <h4 className="font-semibold flex items-center gap-1 text-md"><CiCalendar className="text-[#0033AD]" /> 3. Datas da reserva</h4>
                 {diffDays && (
                     <span className="py-[.2rem] font-medium text-sm px-[1rem] bg-blue-200 text-[#0033AD] inline-flex gap-1 items-center rounded-xl"><FaRegMoon /> {diffDays} {diffDays > 1 ? 'Noites' : 'Noite'}</span>

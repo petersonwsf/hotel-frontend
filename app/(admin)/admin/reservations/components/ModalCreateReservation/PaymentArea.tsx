@@ -32,7 +32,7 @@ export default function PaymentArea({ room, dates } : PaymentAreaProps) {
 
     return (
         <div className="border-1 w-full rounded-xl border-gray-300 p-[1.5rem] min-w-0 my-3">
-            <h4 className="font-semibold flex items-center gap-1 text-md"><MdAttachMoney className="text-[#0033AD]"/> 4. Pagamentos e valores</h4>
+            <h4 className="font-semibold flex items-center gap-1 mb-1 text-md"><MdAttachMoney className="text-[#0033AD]"/> 4. Pagamentos e valores</h4>
             <hr className="text-gray-200" />
             <div className="flex w-full gap-3 mt-3">
                 <div className="w-[50%]">
