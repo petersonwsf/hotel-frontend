@@ -17,7 +17,7 @@ export default async function Rooms({ searchParams } : PageProps) {
     const checkOutDate = resolvedSearchParams.checkOutDate || undefined;
     const capacity = resolvedSearchParams.capacity || undefined;
 
-    const rooms = await getRooms({ page: currentPage, size: '10', category: categories, floor: floors, checkInDate, checkOutDate, capacity });
+    const rooms = await getRooms({ page: currentPage, size: '10', category: categories, floor: floors, checkInDate, checkOutDate, capacity, status: ['AVAILABLE', 'OCCUPIED', 'CLEANING']});
 
     return (
         <section id="rooms" aria-label="Quartos disponíveis" className="my-[4rem] w-7xl m-auto">
