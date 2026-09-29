@@ -3,7 +3,7 @@ import { getRooms } from "@/lib/api/rooms";
 
 export default async function FeaturedRooms() {
 
-    const rooms = await getRooms({ page: '0', size: '10', order: 'createdAt,desc' })
+    const rooms = await getRooms({ page: '0', size: '10', status: ['AVAILABLE', 'OCCUPIED', 'CLEANING'] })
 
     return (
         <section id="featured-rooms" className="my-[4rem]" aria-label="Featured rooms">
