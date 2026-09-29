@@ -4,14 +4,12 @@ import { useAuthContext, User } from "@/contexts/AuthContext";
 import { UserRegister } from "@/types/User.types";
 import { handleToast } from "@/utils/handleToast";
 import { useRouter } from "next/navigation";
-import { useState, useTransition } from "react"
+import { useTransition } from "react"
 
 export default function useAuth() {
     const [isPending, startTransition] = useTransition()
     const { setUser } = useAuthContext()
     const router = useRouter()
-
-    const [loading, setLoading] = useState<boolean>(false)
 
     async function login(data: {login: string, password: string}) {
         startTransition(async () => {
