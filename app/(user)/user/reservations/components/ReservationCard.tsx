@@ -38,8 +38,8 @@ export default function ReservationCard({ reservation, openEditModal, openDelete
             setReservationPayment(payment)
             setLoadingPayment(false)
         }
-        fetchPayment()
-    }, [reservation])
+        if (viewDetails) fetchPayment()
+    }, [reservation, viewDetails])
 
     const allowedUpdate = useMemo(() => {
         const validStatus = ['CONFIRMED', 'PENDING', 'CANCELLED']
