@@ -22,9 +22,7 @@ export default function Review({ review } : ReviewProps) {
         
         return stars;
     };
-
-    console.log(review)
-
+    
     return (
         <div className="bg-gray-100 rounded-lg p-[1.5rem] h-[300px] flex flex-col justify-between">
             <div className="flex flex-col gap-[1rem]">
