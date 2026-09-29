@@ -21,6 +21,8 @@ export default function Header() {
         router.push(url)
     }
 
+    console.log(user)
+
     return (
         <header className="bg-[#002179] p-5 text-white">
             <nav className='flex items-center justify-between'>
@@ -47,7 +49,7 @@ export default function Header() {
                             <>
                                 <DropdownMenu.Root>
                                     <DropdownMenu.Trigger className="inline-flex items-center gap-2 cursor-pointer outline-none">
-                                         <img src={user.imageKey ? `${process.env.NEXT_PUBLIC_URL_MINIO}/${user.imageKey}` : `/image/person.jpg`} alt="Foto de perfil" className='w-8 h-8 object-cover rounded-full'/> <FaCaretDown className="w-5 h-5" />
+                                         <img src={user.imageKey ? `${process.env.NEXT_PUBLIC_URL_MINIO}/${user.imageKey}` : `/images/icon_person.webp`} alt="Foto de perfil" className='w-8 h-8 object-cover rounded-full'/> <FaCaretDown className="w-5 h-5" />
                                     </DropdownMenu.Trigger>
                                     <DropdownMenu.Portal>
                                         <DropdownMenu.Content
