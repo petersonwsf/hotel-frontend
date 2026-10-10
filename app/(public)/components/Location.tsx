@@ -17,7 +17,7 @@ const LocationMap = dynamic(() => import("./Location/LocationMap"), {
 
 export default function Location() {
 
-    const position: [number, number] = [-6.806262, -35.077934];
+    const position: [number, number] = [-6.812000, -34.805000];
 
     return (
         <section id="location" className="my-[5rem]" aria-label="Localização">
@@ -29,8 +29,8 @@ export default function Location() {
             <div className="flex h-[400px] gap-3 my-4">
                 <LocationMap position={position}/>
                 <div className="w-full p-5 flex flex-col justify-center">
-                    <p className="text-lg font-light flex items-center gap-2 p-[.5rem]"><IoLocationOutline className="w-10 h-10 text-[#002179] p-[.5rem] bg-blue-200 rounded-lg"/> Av. das Marés, 1.200 Enseada do Sol, Florianópolis – SC CEP: 88066-500</p>
-                    <p className="text-lg font-light flex items-center gap-2 p-[.5rem]"><CiMapPin className="w-10 h-10 text-[#002179] p-[.5rem] bg-blue-200 rounded-lg"/> Ao lado do Mirante das Rochas e a apenas 200m do Farol da Enseada.</p>
+                    <p className="text-lg font-light flex items-center gap-2 p-[.5rem]"><IoLocationOutline className="w-10 h-10 text-[#002179] p-[.5rem] bg-blue-200 rounded-lg"/> Rua das Gaivotas, 450 – Praia dos Cristais, Florianópolis – SC, CEP: 88069-120</p>
+                    <p className="text-lg font-light flex items-center gap-2 p-[.5rem]"><CiMapPin className="w-10 h-10 text-[#002179] p-[.5rem] bg-blue-200 rounded-lg"/> Ao lado do Parque das Dunas e a apenas 300m do Trapiche da Barra</p>
                     <p className="text-lg font-light flex items-center gap-2 p-[.5rem]"><LuPhone className="w-10 h-10 text-[#002179] p-[.5rem] bg-blue-200 rounded-lg"/>(89) 00000-0000</p>
                     <p className="text-lg font-light flex items-center gap-2 p-[.5rem]"><MdOutlineMail className="w-10 h-10 text-[#002179] p-[.5rem] bg-blue-200 rounded-lg"/>reserva@ficticio.com</p>
                 </div>

@@ -10,7 +10,7 @@ export default function HeroSection() {
         <section id="hero-section" aria-label="Sessão inicial">
             <div className="w-full relative">
                 <div className="w-full h-[500px]">
-                    <Image fill src="/images/hotel_model.webp" className="object-cover" alt="Hero image"/>
+                    <Image fill src="/images/image_hero_section.jpg" className="object-cover" alt="Hero image"/>
                 </div>
                 <div className="w-full absolute top-0 h-full w-full flex items-center justify-center bg-[#002179]/85">
                     <div className="flex flex-col items-center w-[60%]">
