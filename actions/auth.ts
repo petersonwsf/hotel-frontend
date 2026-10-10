@@ -18,7 +18,7 @@ export async function loginAction(prevState: unknown, data: {login: string, pass
 
         if (!response.ok) {
             const err = await response.json()
-            return { erro: err.message }
+            return { message: err.message, data: null }
         }
 
         const { token } = await response.json()
@@ -49,7 +49,7 @@ export async function logoutAction(prevState: unknown) {
     revalidatePath('/', 'layout')
 }
 
-export async function registerClientUser(prevState: unknown, data: UserRegister) : Promise<{ message: string, data: JwtPayload | null}> {
+export async function registerClientUser(prevState: unknown, data: UserRegister) : Promise<{ message: string, data: JWTPayload | null}> {
 
     try {
         const response = await fetch(`${URL_API_HOTEL}/client`, {

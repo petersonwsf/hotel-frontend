@@ -19,7 +19,7 @@ interface FormEditReservationProps {
 
 export default function FormEditReservation({ reservation } : FormEditReservationProps) {
 
-    const [disponibility, setDisponibility] = useState<boolean>(true)
+    const [disponibility, setDisponibility] = useState<boolean | null>(true)
     const [room, setRoom] = useState<Partial<Room>>(reservation.room)
 
     const { setFieldError, values, setFieldTouched, isSubmitting } = useFormikContext<Reservation>()
@@ -84,7 +84,7 @@ export default function FormEditReservation({ reservation } : FormEditReservatio
                             <InputText onBlur={() => {}} type="date" name="checkInDate" icon={CiCalendar} label="Data de chegada"/>
                             <InputText onBlur={() => {}} type="date" name="checkOutDate" icon={CiCalendar} label="Data de saída"/>
                         </div>
-                        {!disponibility && <p className="text-sm text-red-500 m-0 flex items-center gap-2"><MdErrorOutline fontSize={15}/> Quarto indisponível nesse intervalo de datas</p> }
+                        {( disponibility !== null && !disponibility ) && <p className="text-sm text-red-500 m-0 flex items-center gap-2"><MdErrorOutline fontSize={15}/> Quarto indisponível nesse intervalo de datas</p> }
                     </div>
                 </div>
             </div>

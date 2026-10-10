@@ -1,6 +1,6 @@
 "use client"
 import { optionsReservationStatus } from "@/types/Reservation.types";
-import { optionsCategory, optionsFloor } from "@/types/Room.types";
+import { optionsCategory, optionsFloor, RoomCategory } from "@/types/Room.types";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { CiFilter } from "react-icons/ci";
@@ -124,7 +124,7 @@ export default function ReservationFilterAdmin() {
         return () => clearTimeout(timer);
     }, [checkOutInput, pathname, router, searchParams]);
 
-    const filtersLabels: { label: string; value: string; onDelete: (name: string, value?: string) => void }[] = [];
+    const filtersLabels: { label: string; value: string; onDelete: () => void }[] = [];
 
     if (status.length > 0) {
         status.forEach(s => {
@@ -140,7 +140,7 @@ export default function ReservationFilterAdmin() {
 
     if (category.length > 0) {
         category.forEach(c => {
-            filtersLabels.push({ label: getRoomCategoryLabel(c), value: c, onDelete: () => onDeleteValueFilter('category', c) });
+            filtersLabels.push({ label: getRoomCategoryLabel(c as RoomCategory), value: c, onDelete: () => onDeleteValueFilter('category', c) });
         });
     }
 
