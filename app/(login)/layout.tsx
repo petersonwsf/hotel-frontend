@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function LoginLayout({ children }: Readonly<{ children: React.ReactNode }>) {
     return (
-        <main className="min-h-screen w-full bg-[url('/images/hotel_background.webp')] bg-cover bg-fixed bg-center bg-no-repeat overflow-hidden">
+        <main className="min-h-screen w-full bg-[url('/images/background_login.jpg')] bg-cover bg-fixed bg-center bg-no-repeat overflow-hidden">
             <div className="min-h-screen w-full bg-black/30 backdrop-blur-sm relative flex justify-center items-center">
                 <div
                     className="absolute inset-0 pointer-events-none"
