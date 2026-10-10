@@ -70,7 +70,7 @@ async function handler(req: NextRequest) {
         headers,
         body: isFormData ? body : (body ? JSON.stringify(body) : undefined),
         duplex: isFormData ? 'half' : undefined,
-    });
+    } as RequestInit & { duplex: string });
 
     if (response.status === 204) {
         return new NextResponse(null, { status: 204 });

@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -24,6 +25,12 @@ interface MapContentProps {
 }
 
 export default function LocationMap({ position }: MapContentProps) {
+  const markerRef = useRef<L.Marker>(null);
+
+  useEffect(() => {
+    markerRef.current?.openPopup();
+  }, []);
+
   return (
     <MapContainer
       center={position}
@@ -36,8 +43,8 @@ export default function LocationMap({ position }: MapContentProps) {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Marker position={position} icon={reactIconMarker}>
-        <Popup defaultOpen>
+      <Marker position={position} icon={reactIconMarker} ref={markerRef}>
+        <Popup>
           <div className="font-sans font-semibold text-gray-800">
             Lúmen Hotel
           </div>

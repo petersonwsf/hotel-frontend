@@ -163,7 +163,7 @@ export default function RoomsFilter() {
         return () => clearTimeout(timer);
     }, [capacityInput, pathname, router, searchParams]);
 
-    const filtersLabels: { label: string; value: string; onDelete: (name: string, value?: string) => void }[] = [];
+    const filtersLabels: { label: string; value: string; onDelete: () => void }[] = [];
 
     if (status.length > 0) {
         status.forEach(s => {
