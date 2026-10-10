@@ -11,23 +11,23 @@ export default async function Gallery() {
             <div className="my-2 w-full">
                 <div className="w-full flex gap-3 mt-3">
                     <div className="w-1/2 h-auto relative">
-                        <Image fill src={`/images/hotel_0.jpg`} alt="Foto do hotel" className="object-cover rounded-lg" />
+                        <Image fill src={`/images/hotel_image_0.jpg`} alt="Foto do hotel" className="object-cover rounded-lg" />
                     </div>
                     <div className="w-1/2 h-auto flex flex-col gap-3">
                         <div className="w-full flex gap-4">
                             <div className="h-[200px] w-1/2 relative">
-                                <Image fill src={`/images/hotel_4.webp`} alt="Foto do hotel" className="object-cover rounded-lg" />
+                                <Image fill src={`/images/hotel_image_1.jpg`} alt="Foto do hotel" className="object-cover rounded-lg" />
                             </div>
                             <div className="h-[200px] w-1/2 relative">
-                                <Image fill src={`/images/hotel_3.jpg`} alt="Foto do hotel" className="object-cover rounded-lg" />
+                                <Image fill src={`/images/hotel_image_3.jpg`} alt="Foto do hotel" className="object-cover rounded-lg" />
                             </div>
                         </div>
                         <div className="w-full flex gap-4">
                             <div className="h-[200px] w-1/2 relative">
-                                <Image fill src={`/images/hotel_2.jpg`} alt="Foto do hotel" className="object-cover rounded-lg" />       
+                                <Image fill src={`/images/hotel_image_2.jpg`} alt="Foto do hotel" className="object-cover rounded-lg" />       
                             </div>
                             <div className="h-[200px] w-1/2 relative">
-                                <Image fill src={`/images/hotel_1.webp`} alt="Foto do hotel" className="object-cover rounded-lg" />
+                                <Image fill src={`/images/hotel_image_4.jpg`} alt="Foto do hotel" className="object-cover rounded-lg" />
                             </div>
                         </div>
                     </div>

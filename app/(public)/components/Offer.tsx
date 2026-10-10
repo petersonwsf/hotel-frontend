@@ -36,7 +36,7 @@ export default function Offer() {
                         </div>
                     </div>
                     <div className="w-[400px] h-[250px] overflow-hidden rounded-xl relative hover:scale-[0.95] duration-[.3s]">
-                        <Image fill alt="Imagem" src="/images/spa.webp" className="object-cover" />
+                        <Image fill alt="Imagem" src="/images/spa.jpg" className="object-cover" />
                         <div className="bg-gray-200/80 z-100 absolute w-full h-full flex flex-col items-start p-[1rem] gap-3 justify-end">
                             <span className="p-[.5rem] bg-gray-200 rounded-lg"><MdSpa className="text-[#002179] w-7 h-7"/></span>
                             <h3 className="text-xl font-[500] text-gray-800 font-sans">Lúmen Spa & Terapias Holísticas</h3>
@@ -47,7 +47,7 @@ export default function Offer() {
                 </div>
                 <div className="flex justify-around my-2">
                     <div className="w-[400px] h-[250px] overflow-hidden rounded-xl relative hover:scale-[0.95] duration-[.3s]">
-                        <Image fill alt="Imagem" src="/images/eventos.jpeg" className="object-cover" />
+                        <Image fill alt="Imagem" src="/images/eventos.jpg" className="object-cover" />
                         <div className="bg-gray-200/80 z-100 absolute w-full h-full flex flex-col items-start p-[1rem] gap-3 justify-end">
                             <span className="p-[.5rem] bg-gray-200 rounded-lg"><LuDoorOpen className="text-[#002179] w-7 h-7"/></span>
                             <h3 className="text-xl font-[500] text-gray-800 font-sans">Salas de Eventos & Rooftop Lounge</h3>
@@ -56,7 +56,7 @@ export default function Offer() {
                         </div>
                     </div>
                     <div className="w-[400px] h-[250px] overflow-hidden rounded-xl relative hover:scale-[0.95] duration-[.3s]">
-                        <Image fill alt="Imagem" src="/images/concierge.webp" className="object-cover" />
+                        <Image fill alt="Imagem" src="/images/concierge.jpg" className="object-cover" />
                         <div className="bg-gray-200/80 z-100 absolute w-full h-full flex flex-col items-start p-[1rem] gap-3 justify-end">
                             <span className="p-[.5rem] bg-gray-200 rounded-lg"><LiaConciergeBellSolid className="text-[#002179] w-7 h-7"/></span>
                             <h3 className="text-xl font-[500] text-gray-800 font-sans">Concierge & Serviço de Quarto 24h</h3>
