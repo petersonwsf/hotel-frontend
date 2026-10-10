@@ -2,7 +2,7 @@
 import { Room } from "@/types/Room.types"
 import { formatFloor, getRoomCategoryLabel } from "@/utils/formatTextsRooms"
 import { useRouter } from "next/navigation"
-import { CiCalendar } from "react-icons/ci";
+import { IoIosInformationCircleOutline } from "react-icons/io";
 import { FaStar } from "react-icons/fa6";
 
 interface CardRoomSlideProps {
@@ -14,7 +14,7 @@ export default function CardRoomSlide({ room } : CardRoomSlideProps) {
     const router = useRouter()
 
     function handleRedirect() {
-        router.push(`/reservation/${room.id}`)
+        router.push(`/room/${room.id}`)
     }
 
     return (
@@ -31,7 +31,7 @@ export default function CardRoomSlide({ room } : CardRoomSlideProps) {
                 <h3 className="text-xl text-[#002179] font-[500]">{getRoomCategoryLabel(room.category)}</h3>
                 <p className="line-clamp-2 break-words font-light">{room.description}</p>
                 <p className="font-light"><span className="font-semibold text-2xl text-[#002179]">{new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'brl'}).format(room.customPrice)}</span> / dia</p>
-                <button onClick={handleRedirect} className="bg-[#002179] py-[.5rem] px-[1rem] text-white font-semibold rounded-lg cursor-pointer gap-2 inline-flex justify-center items-center"><CiCalendar /> Reservar quarto</button>
+                <button onClick={handleRedirect} className="bg-[#002179] py-[.5rem] px-[1rem] text-white font-semibold rounded-lg cursor-pointer gap-2 inline-flex justify-center items-center"><IoIosInformationCircleOutline /> Ver detalhes</button>
             </div>
         </div>
     )

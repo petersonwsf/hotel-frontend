@@ -34,7 +34,7 @@ export default function UserForm({ user, onSubmit, validationSchema } : UserForm
                     </div>
                     <div className='flex my-3 gap-3'>
                         <InputText label="Telefone" name="phoneNumber" type="text" icon={FiPhone} placeholder="Informe seu número de telefone"/>
-                        <InputSelect label="Papel" name="role" options={ROLE_OPTION}/>
+                        <InputSelect style={user?.role !== 'ADMIN' ? {opacity: '.5', pointerEvents: 'none'} : {}} label="Papel" name="role" options={ROLE_OPTION}/>
                     </div>
                     <div className='flex my-3 gap-3'>
                         <InputText label="Senha" name="password" type="password" icon={CiLock} placeholder="Informe sua senha" />

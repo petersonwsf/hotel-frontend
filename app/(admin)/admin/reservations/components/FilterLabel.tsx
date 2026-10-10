@@ -2,7 +2,7 @@ import { IoMdClose } from "react-icons/io";
 
 interface FilterLabelProps {
     label: string;
-    onDelete: (name: string, value?: string) => void;
+    onDelete: () => void;
 }
 
 export default function FilterLabel({ label, onDelete } : FilterLabelProps) {

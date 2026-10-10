@@ -39,7 +39,7 @@ export default function Sidebar() {
                 <div className="border-t-1 border-gray-400 pt-3">
                     <DropdownMenu.Root>
                         <DropdownMenu.Trigger className="inline-flex items-center gap-2 cursor-pointer outline-none">
-                            <img src={user?.imageKey ? `${process.env.NEXT_PUBLIC_URL_MINIO}/${user.imageKey}` : `/image/person.jpg`} alt="Foto de perfil" className='w-8 h-8 object-cover rounded-full'/>
+                            <img src={user?.imageKey ? `${process.env.NEXT_PUBLIC_URL_MINIO}/${user.imageKey}` : `/images/icon_person.webp`} alt="Foto de perfil" className='w-8 h-8 object-cover rounded-full'/>
                             <span className="text-white truncate">{user?.name as string}</span>
                              <FaCaretDown className="w-5 h-5 text-white" />
                         </DropdownMenu.Trigger>
