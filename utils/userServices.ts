@@ -6,10 +6,9 @@ export async function getUser() {
         const cookiesStore = await cookies()
         const token = cookiesStore.get('token')?.value
 
-        if (!token) return null
+        if (!token) return { user: null, success: false }
 
         const secret = new TextEncoder().encode(process.env.SECRET_JWT)
-
         const { payload } = await jwtVerify(token, secret)
 
         return {
@@ -22,9 +21,8 @@ export async function getUser() {
             },
             success: true
         }
-    } catch (error : any) {
-        if (error.code === 'ERR_JWT_EXPIRED') return { user: null , success : false }
-        throw error;
+    } catch (error: any) {
+        return { user: null, success: false }
     }
 }
 
