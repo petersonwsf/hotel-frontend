@@ -9,6 +9,7 @@ import LoadingReviews from "./components/loading/loadingReviews";
 import LoadingGallery from "./components/loading/loadingGallery";
 import { Suspense } from "react";
 
+export const dynamic = "force-dynamic";
 
 export default function Home() {
   return (
