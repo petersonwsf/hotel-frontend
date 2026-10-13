@@ -19,6 +19,8 @@ export default async function RoomPage({ params } : { params: Promise<{ id : str
         notFound()
     }
 
+    console.log(room)
+
     return (
         <div id="room-details" aria-label={`Detalhes do quarto ${id}`} className="w-7xl m-auto py-5 my-3">
             <div className="w-[60%] mb-[1rem]">
