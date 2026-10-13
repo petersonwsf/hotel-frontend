@@ -25,6 +25,10 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
+        build-args: |
+          NEXT_PUBLIC_STRIPE_PUBLIC_KEY=${{ secrets.NEXT_PUBLIC_STRIPE_PUBLIC_KEY }}
+          NEXT_PUBLIC_URL_API_PAYMENT=${{ secrets.NEXT_PUBLIC_URL_API_PAYMENT }}
+          NEXT_PUBLIC_URL_MINIO=${{ secrets.NEXT_PUBLIC_URL_MINIO }}
         tags: ${{ secrets.USERNAME_DOCKER_HUB }}/hotel_frontend:${{ github.ref_name }}
 
   deploy_vps:
