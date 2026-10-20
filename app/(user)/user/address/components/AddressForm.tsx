@@ -57,7 +57,7 @@ function PostalCodeWatcher() {
 export default function AddressForm({ address, onSubmit } : AddressFormProps) {
 
     return (
-        <div className="py-[1rem] px-[1.5rem]">
+        <div className="py-[1rem] px-4 sm:px-[1.5rem]">
             <Formik
                 validationSchema={validationSchema}
                 initialValues={{
@@ -74,26 +74,26 @@ export default function AddressForm({ address, onSubmit } : AddressFormProps) {
                 {({ isSubmitting }) => (
                     <Form>
                         <PostalCodeWatcher />
-                        <div className="flex gap-3">
-                            <div className="w-[30%]">
+                        <div className="flex flex-col sm:flex-row gap-3">
+                            <div className="w-full sm:w-[30%]">
                                 <InputText name="postalCode" label="CEP" placeholder="00000-000" icon={CiSearch}/>
                             </div>
-                            <div className="w-[70%]">
+                            <div className="w-full sm:w-[70%]">
                                 <InputText name="street" label="Endereço" placeholder="Ex: Rua da Aurora"/>
                             </div>
                         </div>
-                        <div className="flex gap-3 mt-4">
-                            <div className="w-[40%]">
+                        <div className="flex flex-col sm:flex-row gap-3 mt-4">
+                            <div className="w-full sm:w-[40%]">
                                 <InputText name="number" label="Número" placeholder="123..."/>
                             </div>
                             <InputText name="complement" label="Complemento" placeholder="Apto, Bloco, etc."/>
                             <InputText name="neighborhood" label="Bairro" placeholder="Ex: Jardins"/>
                         </div>
-                        <div className="flex gap-3 mt-4">
-                            <div className="w-[70%]">
+                        <div className="flex flex-col sm:flex-row gap-3 mt-4">
+                            <div className="w-full sm:w-[70%]">
                                 <InputText name="city" label="Cidade" placeholder="Ex: São Paulo" />
                             </div>
-                            <div className="w-[30%]">
+                            <div className="w-full sm:w-[30%]">
                                 <InputSelect options={UFS} name="state" label="UF" placeholder="PE, PB, CE, etc."/>
                             </div>
                         </div>

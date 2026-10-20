@@ -18,21 +18,21 @@ export default function SidebarUser() {
     }
 
     return (
-        <div className="h-full border-r-1 border-gray-300 min-w-[300px] px-[1rem]">
-            <div className="flex justify-center border-b-1 border-gray-300">
+        <div className="lg:h-full lg:border-r-1 border-gray-300 lg:min-w-[300px] lg:px-[1rem] shrink-0">
+            <div className="hidden lg:flex justify-center border-b-1 border-gray-300">
                 <Image width={100} height={100} src={`/images/logo_escura.png`} alt="Logo escura" />
             </div>
-            <div className="flex flex-col text-gray-600">
-                <div onClick={() => redirectToPage('/user')} className={`flex items-center gap-2 px-[1rem] py-[1rem] text-xl font-light border-b-1 border-gray-300 cursor-pointer duration-[.3s] ${pathname === '' ? 'font-normal border-b-3 rounded-lg border-b-[#002179] text-[#002179]' : ''} hover:border-b-3 hover:rounded-lg hover:font-normal hover:border-b-[#002179] hover:text-[#002179]`}>
+            <div className="flex flex-row lg:flex-col overflow-x-auto lg:overflow-visible text-gray-600 border-b-1 lg:border-b-0 border-gray-300 [&>div]:whitespace-nowrap [&>div]:shrink-0 lg:[&>div]:shrink">
+                <div onClick={() => redirectToPage('/user')} className={`flex items-center gap-2 px-3 lg:px-[1rem] py-3 lg:py-[1rem] text-base lg:text-xl font-light border-b-1 border-gray-300 cursor-pointer duration-[.3s] ${pathname === '' ? 'font-normal border-b-3 rounded-lg border-b-[#002179] text-[#002179]' : ''} hover:border-b-3 hover:rounded-lg hover:font-normal hover:border-b-[#002179] hover:text-[#002179]`}>
                     <GrOverview /> Início
                 </div>
-                <div onClick={() => redirectToPage('/user/reservations')} className={`flex items-center gap-2 px-[1rem] py-[1rem] text-xl font-light border-b-1 border-gray-300 cursor-pointer duration-[.3s] ${pathname === '/reservations' ? 'font-normal border-b-3 rounded-lg border-b-[#002179] text-[#002179]' : ''} hover:border-b-3 hover:rounded-lg hover:font-[400] hover:border-b-[#002179] hover:text-[#002179]`}>
+                <div onClick={() => redirectToPage('/user/reservations')} className={`flex items-center gap-2 px-3 lg:px-[1rem] py-3 lg:py-[1rem] text-base lg:text-xl font-light border-b-1 border-gray-300 cursor-pointer duration-[.3s] ${pathname === '/reservations' ? 'font-normal border-b-3 rounded-lg border-b-[#002179] text-[#002179]' : ''} hover:border-b-3 hover:rounded-lg hover:font-[400] hover:border-b-[#002179] hover:text-[#002179]`}>
                     <FaBed /> Minhas reservas
                 </div>
-                <div onClick={() => redirectToPage('/user/personalData')} className={`flex items-center gap-2 px-[1rem] py-[1rem] text-xl font-light border-b-1 border-gray-300 cursor-pointer duration-[.3s] ${pathname === '/dados' ? 'font-normal border-b-3 rounded-lg border-b-[#002179] text-[#002179]' : ''} hover:border-b-3 hover:rounded-lg hover:font-[400] hover:border-b-[#002179] hover:text-[#002179]`}>
+                <div onClick={() => redirectToPage('/user/personalData')} className={`flex items-center gap-2 px-3 lg:px-[1rem] py-3 lg:py-[1rem] text-base lg:text-xl font-light border-b-1 border-gray-300 cursor-pointer duration-[.3s] ${pathname === '/dados' ? 'font-normal border-b-3 rounded-lg border-b-[#002179] text-[#002179]' : ''} hover:border-b-3 hover:rounded-lg hover:font-[400] hover:border-b-[#002179] hover:text-[#002179]`}>
                     <IoPersonOutline /> Dados pessoais
                 </div>
-                <div onClick={() => redirectToPage('/user/address')} className={`flex items-center gap-2 px-[1rem] py-[1rem] text-xl font-light border-b-1 border-gray-300 cursor-pointer duration-[.3s] ${pathname === '/enderecos' ? 'font-normal border-b-3 rounded-lg border-b-[#002179] text-[#002179]' : ''} hover:border-b-3 hover:rounded-lg hover:font-[400] hover:border-b-[#002179] hover:text-[#002179]`}>
+                <div onClick={() => redirectToPage('/user/address')} className={`flex items-center gap-2 px-3 lg:px-[1rem] py-3 lg:py-[1rem] text-base lg:text-xl font-light border-b-1 border-gray-300 cursor-pointer duration-[.3s] ${pathname === '/enderecos' ? 'font-normal border-b-3 rounded-lg border-b-[#002179] text-[#002179]' : ''} hover:border-b-3 hover:rounded-lg hover:font-[400] hover:border-b-[#002179] hover:text-[#002179]`}>
                     <IoHome /> Meu endereço
                 </div>
             </div>

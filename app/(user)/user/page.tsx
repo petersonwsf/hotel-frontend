@@ -32,10 +32,10 @@ export default async function UserPage({ searchParams }: PageProps) {
     const nextReservation = calculateNextReservation(reservations?.content ?? [])
 
     return (
-        <div>
-            <h2 className="font-[650] text-[#002179] text-4xl">Minha conta</h2>
-            <p className="font-light text-gray-500 text-lg my-2">Tudo pronto por aqui! O que vamos explorar hoje?</p>
-            <div className="flex gap-[1rem] items-center">
+        <div className="min-w-0 w-full">
+            <h2 className="font-[650] text-[#002179] text-2xl sm:text-4xl">Minha conta</h2>
+            <p className="font-light text-gray-500 text-base sm:text-lg my-2">Tudo pronto por aqui! O que vamos explorar hoje?</p>
+            <div className="flex flex-col sm:flex-row gap-[1rem] sm:items-center">
                 <CardInfo icon={<FaBed className="w-7 h-7"/>} label="RESERVAS ATIVAS" value={reservations?.content?.length.toString() ?? '0'} />
                 <CardInfo icon={<CiCalendar className="w-7 h-7" />} label="PRÓXIMO CHECK-IN" value={nextReservation ? formatShortDate(nextReservation.checkInDate) : '-'} />
             </div>
@@ -43,8 +43,8 @@ export default async function UserPage({ searchParams }: PageProps) {
                 {nextReservation ? 
                     <NextReservationComponent nextReservation={nextReservation}/> 
                 : (
-                    <div className="h-[300px] max-w-[600px] flex justify-center items-center">
-                        <p className="text-gray-600 text-xl font-light text-center m-auto">Não há uma próxima reserva esperando você, faça já sua reserva e venha aproveitar</p>
+                    <div className="min-h-[200px] sm:h-[300px] max-w-[600px] flex justify-center items-center">
+                        <p className="text-gray-600 text-lg sm:text-xl font-light text-center m-auto">Não há uma próxima reserva esperando você, faça já sua reserva e venha aproveitar</p>
                     </div>
                 )}
             </div>

@@ -33,14 +33,14 @@ export default function ReservationFilter() {
     }
     
     return (
-        <div className="flex w-full border-b-1 border-gray-300 my-5 gap-[2rem]">
-            <div onClick={() => handleQueryParams('ACTIVE')} className={`pb-2 px-[1rem] font-light cursor-pointer duration-[.3s] ${filter === 'ACTIVE' ? 'border-b-3 text-[#002179] border-[#002179] font-semibold' : 'text-gray-700'}`}>
+        <div className="flex w-full border-b-1 border-gray-300 my-5 gap-2 sm:gap-[2rem] overflow-x-auto">
+            <div onClick={() => handleQueryParams('ACTIVE')} className={`pb-2 px-3 sm:px-[1rem] whitespace-nowrap font-light cursor-pointer duration-[.3s] ${filter === 'ACTIVE' ? 'border-b-3 text-[#002179] border-[#002179] font-semibold' : 'text-gray-700'}`}>
                 Ativas 
             </div>
-            <div onClick={() => handleQueryParams('COMPLETED')} className={`pb-2 px-[1rem] font-light cursor-pointer duration-[.3s] ${filter === 'COMPLETED' ? 'border-b-3 text-[#002179] border-[#002179] font-semibold' : 'text-gray-700'}`}>
+            <div onClick={() => handleQueryParams('COMPLETED')} className={`pb-2 px-3 sm:px-[1rem] whitespace-nowrap font-light cursor-pointer duration-[.3s] ${filter === 'COMPLETED' ? 'border-b-3 text-[#002179] border-[#002179] font-semibold' : 'text-gray-700'}`}>
                 Concluídas 
             </div>
-            <div onClick={() => handleQueryParams('CANCELED')} className={`pb-2 px-[1rem] font-light cursor-pointer duration-[.3s] ${filter === 'CANCELED' ? 'border-b-3 text-[#002179] border-[#002179] font-semibold' : 'text-gray-700'}`}>
+            <div onClick={() => handleQueryParams('CANCELED')} className={`pb-2 px-3 sm:px-[1rem] whitespace-nowrap font-light cursor-pointer duration-[.3s] ${filter === 'CANCELED' ? 'border-b-3 text-[#002179] border-[#002179] font-semibold' : 'text-gray-700'}`}>
                 Canceladas
             </div>
         </div>

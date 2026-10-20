@@ -49,7 +49,7 @@ export default function RoomsFilter({ capacity, setCapacity, category, setCatego
                 }`}
             >
                 <div className="overflow-hidden space-y-3">
-                    <div className="flex items-center gap-3">
+                    <div className="flex flex-col min-[420px]:flex-row min-[420px]:items-center gap-3">
                         <div>
                             <p className="font-medium text-sm text-gray-600 mb-1">Capacidade</p>
                             <div className="inline-flex">
@@ -100,7 +100,7 @@ export default function RoomsFilter({ capacity, setCapacity, category, setCatego
                     {/* Filtro de Custos */}
                     <div>
                         <p className="font-medium text-sm text-gray-600 mb-1">Custos do quarto</p>
-                        <div className="flex flex-wrap gap-5 pb-1">
+                        <div className="flex flex-wrap gap-x-5 gap-y-2 pb-1">
                             <div className="flex gap-1 items-center">
                                 <input 
                                     type="checkbox" 

@@ -20,9 +20,9 @@ export default async function AdminReviewsPage({ searchParams } : PageProps) {
     })
 
     return (
-        <div>
+        <div className="min-w-0">
             <div className="flex justify-between">
-                <h2 className="text-3xl">Avaliações</h2>
+                <h2 className="text-2xl md:text-3xl">Avaliações</h2>
             </div>
             <ReviewsFilter />
             <ReviewsContainer reviews={reviews?.content ?? []} />

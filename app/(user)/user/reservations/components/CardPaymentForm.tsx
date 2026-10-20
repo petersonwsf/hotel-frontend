@@ -60,7 +60,7 @@ export default function CardPaymentForm({ payment } : CardPaymentFormProps) {
         "w-full rounded-lg border outline-none border-gray-300 bg-white p-3 text-[17px] transition focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-200"
 
     return (
-        <form onSubmit={handleSubmit} className="p-[1.5rem] bg-blue-100 rounded-xl">
+        <form onSubmit={handleSubmit} className="p-4 sm:p-[1.5rem] bg-blue-100 rounded-xl">
             <div className="flex flex-col my-2">
                 <label className="font-light">Nome no Cartão</label>
                 <input type="text" value={name} className={stripeWrapperClass} onChange={(e) => setName(e.target.value)} required />
@@ -73,7 +73,7 @@ export default function CardPaymentForm({ payment } : CardPaymentFormProps) {
                 </div>
             </div>
 
-            <div className="row">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4">
                 <div className="flex flex-col my-2">
                 <label className="font-light">Validade</label>
                 <div className={stripeWrapperClass}>

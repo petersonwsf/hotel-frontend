@@ -4,6 +4,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { useState } from "react"
 
 import { HiOutlineAdjustmentsHorizontal } from "react-icons/hi2";
+import { IoCloseOutline } from "react-icons/io5";
 
 interface FilterState {
     category: string[]
@@ -20,6 +21,8 @@ export default function Filter() {
     const router = useRouter()
     const pathname = usePathname()
     const searchParams = useSearchParams()
+
+    const [drawerOpen, setDrawerOpen] = useState<boolean>(false)
 
     const [filters, setFilters] = useState<FilterState>({
         category: searchParams.get("category")?.split(",").filter(Boolean) || [],
@@ -88,12 +91,20 @@ export default function Filter() {
     }
 
     return (
-        <aside aria-label="Filtros" className="bg-gray-100 p-5 w-[30%] rounded-[10px] flex flex-col gap-4">
-            <h3 className="font-semibold text-lg mb-1 inline-flex gap-2 items-center"><HiOutlineAdjustmentsHorizontal className="text-[#002179]" /> Filtros de busca </h3>
+        <>
+        <button type="button" onClick={() => setDrawerOpen(true)} className="lg:hidden w-full inline-flex items-center justify-center gap-2 bg-[#002179] text-white py-[.6rem] px-[1rem] rounded-lg cursor-pointer">
+            <HiOutlineAdjustmentsHorizontal className="w-5 h-5" /> Filtros
+        </button>
+        <div onClick={() => setDrawerOpen(false)} className={`lg:hidden fixed inset-0 z-40 bg-gray-900/60 backdrop-blur-sm transition-opacity duration-300 ${drawerOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`} />
+        <aside aria-label="Filtros" className={`bg-gray-100 p-4 md:p-5 rounded-[10px] flex flex-col gap-4 fixed top-0 left-0 z-50 h-full w-[85%] max-w-[380px] overflow-y-auto rounded-l-none transition-transform duration-300 ${drawerOpen ? 'translate-x-0' : '-translate-x-full'} lg:static lg:z-auto lg:h-auto lg:w-[30%] lg:max-w-none lg:shrink-0 lg:overflow-visible lg:translate-x-0 lg:rounded-[10px]`}>
+            <div className="flex items-center justify-between">
+                <h3 className="font-semibold text-lg mb-1 inline-flex gap-2 items-center"><HiOutlineAdjustmentsHorizontal className="text-[#002179]" /> Filtros de busca </h3>
+                <button type="button" aria-label="Fechar filtros" onClick={() => setDrawerOpen(false)} className="lg:hidden p-1 rounded-lg hover:bg-gray-200 cursor-pointer"><IoCloseOutline className="w-6 h-6" /></button>
+            </div>
             <div className="w-full">
                 <h4 className="text-md font-semibold mb-1 tracking-[.05rem]">Período de estadia</h4>
-                <div className="flex gap-2 w-full ">
-                    <div>
+                <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-2 w-full ">
+                    <div className="flex-1 min-w-0">
                         <label htmlFor="checkin" className="text-xs font-light mb-1 text-gray-800">
                             Entrada
                         </label>
@@ -108,7 +119,7 @@ export default function Filter() {
                             />
                         </div>
                     </div>
-                    <div >
+                    <div className="flex-1 min-w-0">
                         <label htmlFor="checkout" className="text-xs font-light mb-1 text-gray-800">
                             Saída
                         </label>
@@ -200,8 +211,8 @@ export default function Filter() {
                         <input 
                             type="checkbox" 
                             id="preco_entre_700_1000" 
-                            checked={filters.minPrice === 701 && filters.maxPrice === 1000}
-                            onChange={(e) => handlePriceFilter("preco_entre_700_1000", 701, 1000, e.target.checked)}
+                            checked={filters.minPrice === 700 && filters.maxPrice === 1000}
+                            onChange={(e) => handlePriceFilter("preco_entre_700_1000", 700, 1000, e.target.checked)}
                         />
                         <label htmlFor="preco_entre_700_1000" className="font-light text-sm">R$ 700,00 - R$ 1.000,00</label>
                     </div>
@@ -209,8 +220,8 @@ export default function Filter() {
                         <input 
                             type="checkbox" 
                             id="preco_entre_1000_1500" 
-                            checked={filters.minPrice === 1001 && filters.maxPrice === 1500}
-                            onChange={(e) => handlePriceFilter("preco_entre_1000_1500", 1001, 1500, e.target.checked)}
+                            checked={filters.minPrice === 1000 && filters.maxPrice === 1500}
+                            onChange={(e) => handlePriceFilter("preco_entre_1000_1500", 1000, 1500, e.target.checked)}
                         />
                         <label htmlFor="preco_entre_1000_1500" className="font-light text-sm">R$ 1000,00 - R$ 1.500,00</label>
                     </div>
@@ -218,8 +229,8 @@ export default function Filter() {
                         <input 
                             type="checkbox" 
                             id="preco_maior_1500" 
-                            checked={filters.minPrice === 1501 && filters.maxPrice === undefined}
-                            onChange={(e) => handlePriceFilter("preco_maior_1500", 1501, undefined, e.target.checked)}
+                            checked={filters.minPrice === 1500 && filters.maxPrice === undefined}
+                            onChange={(e) => handlePriceFilter("preco_maior_1500", 1500, undefined, e.target.checked)}
                         />
                         <label htmlFor="preco_maior_1500" className="font-light text-sm">R$ 1.500,00 - ...</label>
                     </div>
@@ -227,12 +238,13 @@ export default function Filter() {
             </div>
             <div className="flex justify-center">
                 <button 
-                    onClick={applyFilters}
+                    onClick={() => { applyFilters(); setDrawerOpen(false) }}
                     className="mt-3 bg-[#002179] py-[.5rem] px-[1rem] text-white font-light rounded-lg cursor-pointer"
                 >
                     Aplicar Filtros
                 </button>
             </div>
         </aside>
+        </>
     )
 }

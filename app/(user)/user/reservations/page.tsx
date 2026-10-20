@@ -25,12 +25,11 @@ export default async function UserReservationsPage({ searchParams }: PageProps) 
     }
 
     const reservations = await getReservationsByUser(user?.id, { page: page ?? '0', size: '10', sort: 'createdAt,desc', status: status ? status : ['PENDING', 'CONFIRMED'] })
-    console.log(reservations)
 
     return (
-        <div className="w-full">
-            <h2 className="font-[650] text-[#002179] text-4xl">Minhas Reservas</h2>
-            <p className="font-light text-gray-500 text-lg my-2">fique por dentro das suas reservas no Lúmen Hotel</p>
+        <div className="w-full min-w-0">
+            <h2 className="font-[650] text-[#002179] text-2xl sm:text-4xl">Minhas Reservas</h2>
+            <p className="font-light text-gray-500 text-base sm:text-lg my-2">fique por dentro das suas reservas no Lúmen Hotel</p>
             <ReservationFilter />
             <ReservationsList token={token} reservations={reservations?.content ?? []} pagination={{page: reservations ? (reservations.pageable.pageNumber) : 0, totalPages: reservations ? reservations.totalPages : 0 }}/>
         </div>

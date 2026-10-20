@@ -27,7 +27,7 @@ export default function LoginForm() {
             validationSchema={validationSchema}
             onSubmit={login}
         >
-            <Form className="w-[80%]">
+            <Form className="w-full sm:w-[80%]">
                 <div className="mb-[.5rem]">
                     <InputText name="login" label="Email" placeholder="Insira seu email" icon={MdOutlineMail} />
                 </div>

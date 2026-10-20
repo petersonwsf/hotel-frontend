@@ -11,12 +11,15 @@ import { IoPersonOutline } from "react-icons/io5";
 import { FaDoorOpen } from "react-icons/fa6";
 import { useRouter } from 'next/navigation';
 import { RiAdminLine } from "react-icons/ri";
+import { useState } from 'react';
+import { HiMenu, HiX } from 'react-icons/hi';
 
 export default function Header() {
 
     const { user } = useAuthContext()
     const { logout } = useAuth()
     const router = useRouter()
+    const [menuOpen, setMenuOpen] = useState<boolean>(false)
 
     const redirectToPage = (url: string) => {
         router.push(url)
@@ -31,13 +34,13 @@ export default function Header() {
     }
 
     return (
-        <header className="bg-[#002179] p-5 text-white">
+        <header className="bg-[#002179] p-4 md:p-5 text-white relative">
             <nav className='flex items-center justify-between'>
                 <div>
-                    <Image alt='logo Lúmen Hotel' src="/images/logo.png" width={75} height={75} priority/>
+                    <Image alt='logo Lúmen Hotel' src="/images/logo.png" width={75} height={75} priority className='w-[60px] h-[60px] md:w-[75px] md:h-[75px]'/>
                 </div>
                 <div>
-                    <ul className='flex [&>*]:flex [&>*]:items-center [&>*]:gap-1 items-center gap-5'>
+                    <ul className={`${menuOpen ? 'flex' : 'hidden'} md:flex flex-col md:flex-row absolute md:static top-full left-0 right-0 z-40 bg-[#002179] p-4 pt-0 md:p-0 border-t border-white/20 md:border-0 [&>*]:flex [&>*]:items-center [&>*]:gap-1 md:items-center gap-4 md:gap-5 [&>li:not(:last-child)]:py-1`} onClick={() => setMenuOpen(false)}>
                         <li><Link href="/">Início</Link></li>
                         <li><Link href="/rooms">Quartos</Link></li>
                         <li>
@@ -94,6 +97,9 @@ export default function Header() {
                         }
                     </ul>
                 </div>
+                <button type="button" aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)} className="md:hidden p-2 rounded-lg hover:bg-white/10 cursor-pointer">
+                    {menuOpen ? <HiX className="w-7 h-7" /> : <HiMenu className="w-7 h-7" />}
+                </button>
             </nav>
         </header>
     )

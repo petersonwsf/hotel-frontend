@@ -34,12 +34,12 @@ export default function ReservationPrice({ totalDays, allowed, room, createReser
 
     return (
         <div className="w-full rounded-xl border-1 border-gray-400 rounded-b-xl">
-            <div className="rounded-t-xl bg-[#002BB3] p-[1.5rem]">
-                <h3 className="text-white font-semibold text-3xl">Resumo Financeiro</h3>
+            <div className="rounded-t-xl bg-[#002BB3] p-4 sm:p-[1.5rem]">
+                <h3 className="text-white font-semibold text-2xl sm:text-3xl">Resumo Financeiro</h3>
                 <p className="font-normal text-[#96aaff]">Sua reserva está quase pronta</p>
 
             </div>
-            <div className="flex flex-col px-[2rem] gap-3 py-3">
+            <div className="flex flex-col px-4 sm:px-[2rem] gap-3 py-3">
                 <div className="flex justify-between">
                     <p className="font-light text-lg">Total de dias</p>
                     <p className="text-lg">{totalDays ? totalDays : " - "}</p>
@@ -91,7 +91,7 @@ export default function ReservationPrice({ totalDays, allowed, room, createReser
                     <p className="font-light text-center text-gray-600 mt-[5px] mb-[.5rem]">Ao confirmar, você concorda com as políticas de cancelamento do Lúmen Hotel</p>
                 </div>
             </div>
-            <div className="bg-gray-100 p-[1.5rem] flex justify-center items-center gap-2 rounded-b-xl">
+            <div className="bg-gray-100 p-4 sm:p-[1.5rem] flex justify-center items-center gap-2 rounded-b-xl">
                 <MdLockOutline className="w-5 h-5 text-gray-500"/>
                 <p className="text-gray-600">Pagamento 100% seguro</p>
             </div>

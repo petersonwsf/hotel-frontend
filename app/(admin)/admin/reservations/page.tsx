@@ -24,7 +24,7 @@ export default async function AdminReservationPage({ searchParams }: PageProps) 
     })
 
     return (
-        <div>
+        <div className="min-w-0">
             <ReservationHeader />
             <ReservationFilterAdmin />
             <ReservationsList reservations={reservation.content ?? []} pagination={{page: reservation.pageable.pageNumber ?? 0, totalPages: reservation.totalPages ?? 0 }} />

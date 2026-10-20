@@ -20,7 +20,7 @@ export default function SearchRoom() {
     }
 
     return (
-        <div className="flex items-end gap-3 bg-white rounded-lg p-[1rem] w-full">
+        <div className="flex flex-col md:flex-row md:items-end gap-3 bg-white rounded-lg p-[1rem] w-full">
             <div className="flex flex-col flex-1">
                 <label htmlFor="checkin" className="text-sm font-medium mb-1 text-gray-700">
                     Data de Entrada
@@ -32,7 +32,7 @@ export default function SearchRoom() {
                         id="checkin"
                         value={checkIn}
                         onChange={(e) => setCheckIn(e.target.value)}
-                        className="w-full border border-gray-200 hover:border-gray-300 focus:border-blue-400 focus:ring-1 focus:ring-blue-100 rounded-xl py-4 px-4 pr-10 text-base outline-none transition-all text-gray-800 placeholder:text-gray-400"
+                        className="w-full border border-gray-200 hover:border-gray-300 focus:border-blue-400 focus:ring-1 focus:ring-blue-100 rounded-xl py-3 md:py-4 px-4 pr-10 text-base outline-none transition-all text-gray-800 placeholder:text-gray-400"
                     />
                 </div>
             </div>
@@ -47,11 +47,11 @@ export default function SearchRoom() {
                         id="checkout"
                         value={checkOut}
                         onChange={(e) => setCheckOut(e.target.value)}
-                        className="w-full border border-gray-200 hover:border-gray-300 focus:border-blue-400 focus:ring-1 focus:ring-blue-100 rounded-xl py-4 px-4 pr-10 text-base outline-none transition-all text-gray-800 placeholder:text-gray-400"
+                        className="w-full border border-gray-200 hover:border-gray-300 focus:border-blue-400 focus:ring-1 focus:ring-blue-100 rounded-xl py-3 md:py-4 px-4 pr-10 text-base outline-none transition-all text-gray-800 placeholder:text-gray-400"
                     />
                 </div>
             </div>
-            <div className="flex items-end gap-4 justify-between flex-wrap mt-3">
+            <div className="flex items-end gap-4 justify-between flex-wrap md:mt-3">
                 <div className="flex flex-col flex-1">
                     <label htmlFor="capacity" className="text-sm font-medium mb-1 text-gray-700">
                         Capacidade
@@ -63,13 +63,13 @@ export default function SearchRoom() {
                             id="capacity"
                             value={capacity}
                             onChange={(e) => setCapacity(e.target.value)}
-                            className="w-full border border-gray-200 hover:border-gray-300 focus:border-blue-400 focus:ring-1 focus:ring-blue-100 rounded-xl py-4 px-4 pr-10 text-base outline-none transition-all text-gray-800 placeholder:text-gray-400"
+                            className="w-full border border-gray-200 hover:border-gray-300 focus:border-blue-400 focus:ring-1 focus:ring-blue-100 rounded-xl py-3 md:py-4 px-4 pr-10 text-base outline-none transition-all text-gray-800 placeholder:text-gray-400"
                         />
                     </div>
                 </div>
             </div>
-            <div>
-                <button onClick={searchRooms} className="mt-3 bg-[#002179] py-[.5rem] px-[1rem] text-white font-light rounded-lg cursor-pointer flex items-center gap-2"><CiSearch /> Buscar quartos</button>
+            <div className="w-full md:w-auto">
+                <button onClick={searchRooms} className="w-full justify-center md:w-auto md:mt-3 bg-[#002179] py-[.5rem] px-[1rem] text-white font-light rounded-lg cursor-pointer flex items-center gap-2"><CiSearch /> Buscar quartos</button>
             </div>
         </div>
     )

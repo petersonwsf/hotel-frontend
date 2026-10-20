@@ -23,8 +23,8 @@ export default async function PersonalDataPage() {
 
     return (
         <div className="w-full">
-            <h2 className="font-[650] text-[#002179] text-4xl">Dados Pessoais</h2>
-            <p className="font-light text-gray-500 text-lg my-2">Atualize suas informações e documentação</p>
+            <h2 className="font-[650] text-[#002179] text-2xl sm:text-4xl">Dados Pessoais</h2>
+            <p className="font-light text-gray-500 text-base sm:text-lg my-2">Atualize suas informações e documentação</p>
             <PersonalData client={client} />
         </div>
     )

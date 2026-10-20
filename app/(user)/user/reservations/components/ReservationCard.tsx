@@ -42,25 +42,25 @@ export default function ReservationCard({ reservation, openEditModal, openDelete
     }, [reservation, viewDetails])
 
     const allowedUpdate = useMemo(() => {
-        const validStatus = ['CONFIRMED', 'PENDING', 'CANCELLED']
+        const validStatus = ['CONFIRMED', 'PENDING', 'CANCELED']
         const pasteDate = isPastDate(reservation.checkInDate)
         return validStatus.includes(reservation.status) && !pasteDate
     }, [reservation])
 
     return (
         <div className="w-full">
-            <div className={`flex gap-5 border border-gray-300 w-full transition-all duration-300 ${viewDetails ? 'rounded-t-lg' : 'rounded-lg'}`}>
-                <div className={`relative h-[250px] w-[250px] overflow-hidden transition-all duration-300 ${viewDetails ? 'rounded-tl-lg' : 'rounded-l-lg'}`}>
+            <div className={`flex flex-col md:flex-row gap-0 md:gap-5 border border-gray-300 w-full transition-all duration-300 ${viewDetails ? 'rounded-t-lg' : 'rounded-lg'}`}>
+                <div className={`relative h-[200px] md:h-[250px] w-full md:w-[250px] md:shrink-0 overflow-hidden transition-all duration-300 ${viewDetails ? 'rounded-t-lg md:rounded-tr-none' : 'rounded-t-lg md:rounded-tr-none md:rounded-l-lg'}`}>
                     <img src={`${process.env.NEXT_PUBLIC_URL_MINIO}/${reservation.room.image[0]}`} alt={`Foto do quarto ${reservation.room.code}`} className="h-full w-full object-cover"/>
                 </div>
-                <div className="p-[1rem] flex flex-col flex-1">
-                    <div className="flex justify-between items-center">
+                <div className="p-[1rem] flex flex-col flex-1 min-w-0">
+                    <div className="flex justify-between items-center gap-2 flex-wrap">
                         <p className="text-gray-400 text-xl tracking-[.1rem]">#{reservation.id}</p>
                         <StatusReservation status={reservation.status}/>
                     </div>
                     {user?.role !== 'CLIENT' && <p className="text-sm font-light my-2 text-lg tracking-[.05rem]"><span className="font-semibold">Cliente: </span> {reservation.user.name}</p>}
-                    <h3 className="text-[#002179] text-3xl font-[500] tracking-[.05rem]">{getRoomCategoryLabel(reservation.room.category)} - Lúmen Hotel</h3>
-                    <div className="flex gap-[2rem] border-b border-gray-300 pb-4">
+                    <h3 className="text-[#002179] text-xl sm:text-3xl font-[500] tracking-[.05rem]">{getRoomCategoryLabel(reservation.room.category)} - Lúmen Hotel</h3>
+                    <div className="flex flex-wrap gap-x-[2rem] border-b border-gray-300 pb-4">
                         <div className="flex gap-3 mt-5">
                             <div className="bg-blue-100 text-[#002179] p-[.5rem] rounded-[8px]">
                                 <CiCalendar className="w-7 h-7"/>

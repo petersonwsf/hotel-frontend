@@ -49,8 +49,8 @@ export default function RoomHeader() {
 
     return (
         <>
-            <div className="flex justify-between">
-                <h2 className="text-3xl">Quartos</h2>
+            <div className="flex justify-between items-center flex-wrap gap-3">
+                <h2 className="text-2xl md:text-3xl">Quartos</h2>
                 <button className="flex gap-2 bg-[#002BB3] hover:bg-[#001c78] duration-[.3s] items-center text-white py-2 px-4 rounded-[10px] cursor-pointer" onClick={() => setOpenModal(true)}><FaPlus className="w-3 h-3" /><BsHouses className="w-5 h-5"/> Adicionar Quarto</button>
             </div>
             <Modal size="4xl" isOpen={openModal} onClose={() => setOpenModal(false)} title="Criar quarto">

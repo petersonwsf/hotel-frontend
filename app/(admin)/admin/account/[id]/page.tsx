@@ -10,7 +10,7 @@ export default async function AccountPage({ params } : { params: Promise<{ id : 
     if (!user) notFound()
 
     return (
-        <div>
+        <div className="min-w-0">
             <div className="my-[1.5rem]">
                 <AccountData user={user} />
             </div>

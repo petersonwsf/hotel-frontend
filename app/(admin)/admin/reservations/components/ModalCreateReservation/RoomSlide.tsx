@@ -58,7 +58,7 @@ export default function RoomSlide({ rooms, setRoomSelected } : RoomSlideProps) {
                 {rooms.map((room) => (
                     <SwiperSlide key={room.id}>
                         <div className="w-full border-1 rounded-lg border-gray-300 flex gap-2 bg-gray-50">
-                            <div className="h-[100px] w-[150px] rounded-bl-lg rounded-tl-lg overflow-hidden">
+                            <div className="h-[100px] w-[110px] sm:w-[150px] shrink-0 rounded-bl-lg rounded-tl-lg overflow-hidden">
                                 <img src={`${process.env.NEXT_PUBLIC_URL_MINIO}/${room.image}`} alt="Foto do quarto" className="h-full w-full object-cover" />
                             </div>
                             <div className="flex flex-1 flex-col gap-1 pe-3">

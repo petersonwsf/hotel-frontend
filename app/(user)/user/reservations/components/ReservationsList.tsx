@@ -55,7 +55,7 @@ export default function ReservationsList({ reservations, pagination, token } : R
     }
 
     return (
-        <div>
+        <div className="min-w-0">
             <div className="flex flex-col gap-[2rem] my-[1.5rem]">
                 {reservations.length > 0  ? reservations.map(reservation => (
                     <ReservationCard token={token} reservation={reservation} key={reservation.id} openEditModal={handleOpenEdit} openDeleteModal={handleOpenDelete} user={user} />
@@ -84,7 +84,7 @@ export default function ReservationsList({ reservations, pagination, token } : R
                 size="xl"
             >
                 <p>Tem certeza que deseja cancelar a reserva? Essa ação não poderá ser defeita</p>
-                <div className="flex justify-end gap-3 mt-4">
+                <div className="flex flex-wrap justify-end gap-3 mt-4">
                     <button onClick={handleCloseDelete} className="bg-[#002179] text-white py-[.2rem] px-[2rem] cursor-pointer rounded-[7px] font-normal">Manter</button>
                     <button onClick={deleteReservation} className={`text-[#fff] bg-[#9A0526] py-[.2rem] px-[2rem] cursor-pointer rounded-[7px] font-normal ${loadingDelete ? 'opacity-[.5] pointer-events-none' : ''}`}>
                         {loadingDelete ? <span className="flex items-center gap-2"><AiOutlineLoading3Quarters className="animate-spin" fontSize={15}/> Cancelando</span> : 'Cancelar Reserva'}

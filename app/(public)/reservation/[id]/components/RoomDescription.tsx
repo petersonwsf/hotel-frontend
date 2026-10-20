@@ -1,5 +1,6 @@
 import { Room } from "@/types/Room.types";
 import { formatEnums, formatFloor, getAmenityIcon, getRoomCategoryLabel } from "@/utils/formatTextsRooms";
+import ExpandableText from "./ExpandableText";
 import { FaDoorOpen, FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 
 interface RoomDescriptnProps {
@@ -26,7 +27,7 @@ export default function RoomDescription({ room }: RoomDescriptnProps) {
 
     return (
         <div>
-            <div className="w-full h-[400px] relative">
+            <div className="w-full h-[240px] md:h-[400px] relative">
                 <img 
                     src={`${process.env.NEXT_PUBLIC_URL_MINIO}/${room.image[0]}`} 
                     alt="" 
@@ -37,10 +38,10 @@ export default function RoomDescription({ room }: RoomDescriptnProps) {
                 </div>
             </div>
             
-            <div className="flex flex-col py-[1rem] px-[1.5rem] border-1 border-gray-300 rounded-b-lg">
+            <div className="flex flex-col py-[1rem] px-4 sm:px-[1.5rem] border-1 border-gray-300 rounded-b-lg">
                 <h2 className="text-[#002BB3] font-semibold text-2xl">Quarto {room.code}</h2>
                 
-                <div className="flex justify-between [&>div]:flex [&>div]:items-center ">
+                <div className="flex justify-between flex-wrap gap-x-4 [&>div]:flex [&>div]:items-center ">
                     <div>
                         <p className="flex items-center m-[0px] text-[#002BB3] gap-2 text-lg my-[.5rem]">
                             <FaDoorOpen /> {formatFloor(room.floor)}
@@ -56,12 +57,10 @@ export default function RoomDescription({ room }: RoomDescriptnProps) {
                 </div>
 
                 <div className="border-b-1 pb-5 border-gray-300">
-                    <p className="text-gray-500 font-light">
-                        {room.description}
-                    </p>
+                    <ExpandableText text={room.description} />
                 </div>
 
-                <div className="my-[1rem] flex flex-wrap gap-3">
+                <div className="my-[1rem] hidden md:flex flex-wrap gap-3">
                     {room.amenities.map((amenity, index) => {
                         const Icon = getAmenityIcon(amenity)
                         return (

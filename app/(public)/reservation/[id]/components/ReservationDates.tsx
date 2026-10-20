@@ -53,14 +53,14 @@ export default function ReservationDates({ room, setTotalDays, allowed, setAllow
     }
 
     return (
-        <div className="flex flex-col py-[1rem] px-[1.5rem] border-1 border-gray-300 rounded-lg">
+        <div className="flex flex-col py-[1rem] px-4 sm:px-[1.5rem] border-1 border-gray-300 rounded-lg">
             <h2 className="text-[#002BB3] font-semibold text-2xl pb-4 border-b-1 border-gray-300">Detalhes da Estadia</h2>
             <div className="flex justify-between my-4 text-xl text-[#002BB3]">
                 <p className="m-0 tracking-[.04rem] font-semibold">Valor da diária:</p>
                 <p className="m-0">{room.customPrice.toLocaleString("pt-BR", {style: 'currency', currency: 'brl'})}</p>
             </div>
             <div>
-                <div className="flex gap-[3rem] w-full">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-[3rem] w-full">
                     <div className="flex flex-col w-full">
                         <label htmlFor="checkInDate" className="my-[.2rem] font-light">Data de chegada</label>
                         <input type="date" onChange={(e) => handleDateChanges({...dates, startDate: e.target.value})} className="border border-gray-300 font-light rounded-lg px-3 py-3 text-sm outline-none" id="checkInDate" />

@@ -8,7 +8,7 @@ export default function LoadingRooms() {
             <div className="flex flex-col gap-[1rem] mt-[2.5rem]">
                 <div className="w-full flex flex-wrap gap-4">
                     {Array.from({ length: 10}).map((_, index) => (
-                        <div key={index} className="bg-gray-200 animate-pulse w-[45%] h-[200px] rounded-[10px]"></div>
+                        <div key={index} className="bg-gray-200 animate-pulse w-full md:w-[45%] h-[200px] rounded-[10px]"></div>
                     ))}
                 </div>
             </div>

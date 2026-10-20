@@ -17,7 +17,7 @@ export default async function Page({ params } : { params: Promise<{ id : string 
     if (!reservation) notFound()
 
     return (
-        <div className="w-7xl m-auto py-5 my-3">
+        <div className="w-full max-w-7xl px-4 md:px-6 m-auto py-5 my-3">
             <PaymentContainer reservation={reservation} token={token} />
         </div>
     )

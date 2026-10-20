@@ -8,6 +8,7 @@ interface TableProps {
 export default function Table({ columns, data }: TableProps) {
 
     return (
+        <div className="w-full overflow-x-auto">
         <table className="w-full">
             <thead>
                 <tr className="border-b-1 border-gray-200">
@@ -32,5 +33,6 @@ export default function Table({ columns, data }: TableProps) {
                 ))}
             </tbody>
         </table>
+        </div>
     )
 }

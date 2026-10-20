@@ -50,11 +50,11 @@ export default function PersonalDataForm({ setSection } : PersonalDataFormProps)
             <div className="flex flex-col my-1 my-1">
                 <InputText type="emal" name="email" label="Email" placeholder="Insira seu email" icon={MdOutlineMail} />
             </div>
-            <div className="flex gap-[10px] my-1">
+            <div className="flex flex-col sm:flex-row gap-[10px] my-1">
                 <InputText type="password" name="password" label="Senha" placeholder="Insira sua senha" icon={CiLock} />
                 <InputText type="password" name="confirmPassword" label="Confirmar senha" placeholder="Confirme sua senha" icon={CiLock} />
             </div>
-            <div className="flex gap-[10px] my-1">
+            <div className="flex flex-col sm:flex-row gap-[10px] my-1">
                 <InputText name="pin" label="CPF" placeholder="Insira seu CPF" icon={TiBusinessCard} />
                 <InputText type="date" name="dateOfBirth" label="Data de nascimento" />
             </div>

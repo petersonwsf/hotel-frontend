@@ -32,7 +32,7 @@ export default async function LayoutAdmin({ children } : Readonly<{ children: Re
     return (
         <div>
             <Header />
-                <main className="min-h-[80vh] w-7xl m-auto my-[2rem] flex gap-[2rem]">
+                <main className="min-h-[80vh] w-full max-w-7xl m-auto my-4 md:my-[2rem] px-4 md:px-6 flex flex-col lg:flex-row gap-4 lg:gap-[2rem]">
                     <SidebarUser />
                     {children}
                 </main>

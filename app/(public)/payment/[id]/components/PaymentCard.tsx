@@ -57,8 +57,8 @@ export default function PaymentCard({ reservation, user, startListening } : Paym
                     <div className="bg-blue-100 rounded-lg p-4 border-[#002BB3] border-l-5">
                         <div className="flex items-start">
                             <IoIosInformationCircleOutline className="text-blue-500 w-7 h-7 shrink-0"/>
-                            <div className="px-[1rem] text-gray-900">
-                                <h4 className="flex items-center mb-3 font-light text-xl">Falta pouco para confirmar sua estadia!</h4>
+                            <div className="px-2 sm:px-[1rem] text-gray-900">
+                                <h4 className="flex items-center mb-3 font-light text-base sm:text-xl">Falta pouco para confirmar sua estadia!</h4>
                                 <p className="flex font-light items-center mb-3">
                                     Para carregar o nosso formulário de pagamento protegido pela Stripe, precisamos que você confirme a intenção de reserva concordando com os valores e termos abaixo.
                                     Assim que você clicar em Concordar e Avançar, os campos para inserir os dados do seu cartão aparecerão na tela de forma 100% segura.

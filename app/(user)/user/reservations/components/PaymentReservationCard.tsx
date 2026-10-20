@@ -87,26 +87,26 @@ export default function PaymentReservationCard({ reservation, payment, setPaymen
     }, [paymentData])
 
     return (
-        <div className="flex">
-            <div className="flex w-full flex-col gap-2 border-r-1 border-gray-400 px-[1rem]">
+        <div className="flex flex-col md:flex-row gap-5 md:gap-0">
+            <div className="flex w-full flex-col gap-2 md:border-r-1 border-b-1 md:border-b-0 border-gray-400 px-[1rem] pb-5 md:pb-0">
                 <h3 className="font-normal text-lg text-gray-600">RESUMO DO PAGAMENTO</h3>
                 <div className="h-full flex flex-col justify-end gap-3">
-                    <p className="flex text-lg text-gray-600 justify-between">
+                    <p className="flex text-base sm:text-lg text-gray-600 justify-between gap-2">
                         <span>{diferencaDias} noites x {new Intl.NumberFormat('pt-BR', { currency: 'brl', style: 'currency'}).format(reservation.dailyRate)}</span>
                         <span>{new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'brl'}).format(reservation.dailyRate * diferencaDias)}</span>
                     </p>
-                    <p className="flex text-lg text-gray-600 justify-between">
+                    <p className="flex text-base sm:text-lg text-gray-600 justify-between gap-2">
                         <span>Taxa de serviço</span>
                         <span>{new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'brl'}).format(reservation.serviceFee)}</span>
                     </p>
-                    <p className="flex text-lg text-gray-600 justify-between">
+                    <p className="flex text-base sm:text-lg text-gray-600 justify-between gap-2">
                         <span>Desconto</span>
                         <span> - {new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'brl'}).format(reservation.discountAmount)}</span>
                     </p>
                     <hr className="text-gray-500"/>
-                    <p className="flex text-3xl font-semibold text-gray-800 justify-between">
+                    <p className="flex text-2xl sm:text-3xl font-semibold text-gray-800 justify-between gap-2">
                         <span>Total</span>
-                        <span className="text-[#002179] tracking-[.1rem]">{new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'brl'}).format(reservation.totalAmount)}</span>
+                        <span className="text-[#002179] tracking-[.05rem] sm:tracking-[.1rem]">{new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'brl'}).format(reservation.totalAmount)}</span>
                     </p>
                 </div>
             </div>
@@ -151,7 +151,7 @@ export default function PaymentReservationCard({ reservation, payment, setPaymen
                                         <div className="flex flex-col justify-start text-[#002BB3] items-center my-[1rem]">
                                             <GrDocument fontSize={40} />
                                             <p className="flex items-center gap-1 mt-5 text-md font-light text-center"><FaCheck fontSize={20}/> Boleto gerado com sucesso! Copie o código de barras abaixo, ou acesse o boleto pelo link</p>
-                                            <p onClick={copyCodeBar} className="p-[.5rem] bg-gray-200 mt-5 text-gray-500 tracking-[.1rem] cursor-pointer">{payment.codeBar}</p>
+                                            <p onClick={copyCodeBar} className="p-[.5rem] bg-gray-200 mt-5 text-gray-500 tracking-[.05rem] break-all text-center text-sm cursor-pointer">{payment.codeBar}</p>
                                             <div className="flex justify-center mt-[1.5rem]">
                                                 <a href={payment.boletoUrl!} target="_blank" rel="noopener noreferrer" className="flex items-center px-[2rem] bg-[#002BB3] rounded-lg py-[.5rem] my-[.5rem] text-white font-semibold cursor-pointer duration-[.3s] flex items-center justify-center gap-2">
                                                     <GrDocument />
@@ -170,10 +170,10 @@ export default function PaymentReservationCard({ reservation, payment, setPaymen
                         : (
                             <div className="w-full flex flex-col">
                                 <h3 className="font-normal text-lg text-gray-600">ESCOLHA UMA FORMA DE PAGAMENTO</h3>
-                                <div className="flex justify-around my-2">
-                                    <div onClick={() => changePaymentMethod('card')} className={`${paymentMethod === 'card' ? 'bg-[#fff] text-[#002179] border-1 border-[#002179]' : 'bg-[#002179] text-white'} duration-[.3s] py-[.2rem] px-[2rem] cursor-pointer rounded-[7px] font-normal`}>Cartão</div>
-                                    <div onClick={() => changePaymentMethod('boleto')} className={`${paymentMethod === 'boleto' ? 'bg-[#fff] text-[#002179] border-1 border-[#002179]' : 'bg-[#002179] text-white'} duration-[.3s] py-[.2rem] px-[2rem] cursor-pointer rounded-[7px] font-normal`}>Boleto</div>
-                                    <div onClick={() => changePaymentMethod('pix')} className={`${paymentMethod === 'pix' ? 'bg-[#fff] text-[#002179] border-1 border-[#002179]' : 'bg-[#002179] text-white'} duration-[.3s] py-[.2rem] px-[2rem] cursor-pointer rounded-[7px] font-normal`}>Pix</div>
+                                <div className="flex justify-around gap-2 my-2">
+                                    <div onClick={() => changePaymentMethod('card')} className={`${paymentMethod === 'card' ? 'bg-[#fff] text-[#002179] border-1 border-[#002179]' : 'bg-[#002179] text-white'} duration-[.3s] py-[.2rem] px-4 sm:px-[2rem] cursor-pointer rounded-[7px] font-normal`}>Cartão</div>
+                                    <div onClick={() => changePaymentMethod('boleto')} className={`${paymentMethod === 'boleto' ? 'bg-[#fff] text-[#002179] border-1 border-[#002179]' : 'bg-[#002179] text-white'} duration-[.3s] py-[.2rem] px-4 sm:px-[2rem] cursor-pointer rounded-[7px] font-normal`}>Boleto</div>
+                                    <div onClick={() => changePaymentMethod('pix')} className={`${paymentMethod === 'pix' ? 'bg-[#fff] text-[#002179] border-1 border-[#002179]' : 'bg-[#002179] text-white'} duration-[.3s] py-[.2rem] px-4 sm:px-[2rem] cursor-pointer rounded-[7px] font-normal`}>Pix</div>
                                 </div>
                                 <div className="bg-blue-100 rounded-lg p-4 my-2 border-[#002BB3] flex gap-3 border-l-5">
                                     <IoIosInformationCircleOutline className="text-blue-500 w-5 h-5 shrink-0"/>
@@ -189,9 +189,9 @@ export default function PaymentReservationCard({ reservation, payment, setPaymen
                                             Concordo com as Políticas de Cancelamento e Termos de Uso do Lúmen Hotel.
                                         </span>
                                 </label>
-                                <button onClick={handleCreatePayment} className={`w-full bg-[#002BB3] rounded-lg py-[.75rem] my-[.5rem] text-white font-semibold cursor-pointer duration-[.3s] flex items-center justify-center gap-2 ${!checkTerm || loading ? 'opacity-[.5] pointer-events-none' : undefined}`}>
+                                <button onClick={handleCreatePayment} className={`w-full bg-[#002BB3] rounded-lg py-[.75rem] my-[.5rem] text-white font-semibold cursor-pointer duration-[.3s] flex items-center justify-center gap-2 ${!checkTerm || loading || paymentMethod === 'pix' ? 'opacity-[.5] pointer-events-none' : undefined}`} disabled={paymentMethod === 'pix'}>
                                     {loading && <div className="animate-spin"><AiOutlineLoading3Quarters fontSize={15}/></div>}
-                                    Confirmar e gerar boleto
+                                    {paymentMethod === 'card' ? 'Confirmar e preencher dados' : paymentMethod === 'boleto' ? 'Confirmar e gerar boleto' : 'Confirmar e gerar pix'}
                                 </button>
                             </div>
                         )

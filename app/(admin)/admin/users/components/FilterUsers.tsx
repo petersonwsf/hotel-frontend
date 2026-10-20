@@ -21,7 +21,7 @@ export default function FiltersUsers() {
     const [filterType, setFilterType] = useState<FilterType>('name')
     const [filterValue, setFilterValue] = useState<string>('')
     const [loading, setLoading] = useState<boolean>(false)
-    const [roleFilter, setRoleFilter] = useState<string | undefined>(undefined)
+    const [roleFilter, setRoleFilter] = useState<string>(searchParams.get('role') ?? 'all')
 
     useEffect(() => {
         const currentParam = searchParams.get(filterType) || "";
@@ -60,9 +60,9 @@ export default function FiltersUsers() {
     }
 
     return (
-        <div className="bg-white rounded-lg shadow-xl p-[1rem] gap-3 flex my-[1rem]">
-            <div className="flex gap-3 items-center w-full">
-                <div className="relative flex flex-col justify-center min-w-[200px]">
+        <div className="bg-white rounded-lg shadow-xl p-[1rem] gap-3 flex flex-col lg:flex-row my-[1rem]">
+            <div className="flex flex-col sm:flex-row gap-3 sm:items-center w-full">
+                <div className="relative flex flex-col justify-center w-full sm:w-auto sm:min-w-[200px]">
                     <label htmlFor="filterType" className="text-sm font-medium mb-1 text-gray-700">
                         Escolha o filtro
                     </label>
@@ -104,7 +104,7 @@ export default function FiltersUsers() {
                     </div>
                 </div>
             </div>
-            <div className="relative flex flex-col justify-center w-[30%]">
+            <div className="relative flex flex-col justify-center w-full lg:w-[30%]">
                 <label htmlFor="filterType" className="text-sm font-medium mb-1 text-gray-700">
                     Papel
                 </label>

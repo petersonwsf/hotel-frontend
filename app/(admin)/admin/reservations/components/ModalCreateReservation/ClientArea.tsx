@@ -66,7 +66,7 @@ export default function ClientArea({ clientSelected, setClientSelected } : Clien
                     <IoPersonOutline /> 1. Hóspede titular da reserva
                 </h4>
             </div>
-            <div className="p-[1.5rem]">
+            <div className="p-3 sm:p-[1.5rem]">
                 <div className="relative w-full" ref={containerRef}>
                     <div className="relative w-full">
                         <div className="relative flex items-center w-full">
@@ -99,22 +99,22 @@ export default function ClientArea({ clientSelected, setClientSelected } : Clien
                         )}
                     </div>
                     {clientSelected && (
-                        <div className="my-2 w-full p-[1.5rem] rounded-lg border border-gray-200 bg-gray-100">
-                            <div className="flex items-center gap-3">
+                        <div className="my-2 w-full p-3 sm:p-[1.5rem] rounded-lg border border-gray-200 bg-gray-100">
+                            <div className="flex items-center gap-3 flex-wrap sm:flex-nowrap">
                                 <img 
                                     src={clientSelected.user?.imageKey ? `${process.env.NEXT_PUBLIC_URL_MINIO}/${clientSelected.user.imageKey}` : '/images/icon_person.webp'} 
                                     alt="Imagem de perfil" 
-                                    className="rounded-full object-cover w-[40px] h-[40px]"
+                                    className="rounded-full object-cover w-[40px] h-[40px] shrink-0"
                                 />
-                                <div>
+                                <div className="min-w-0 flex-1">
                                     <span className="font-medium font-sans text-gray-800">{clientSelected.name}</span>
-                                    <div className="flex gap-3 text-gray-500 font-medium text-sm">
+                                    <div className="flex flex-wrap gap-x-3 gap-y-1 text-gray-500 font-medium text-sm break-all">
                                         <span className="flex items-center gap-1"><BsPersonVcard /> {formatCPF(clientSelected.pin)}</span>
                                         <span className="flex items-center gap-1"><MdOutlineEmail /> {clientSelected.email}</span>
                                         <span className="flex items-center gap-1"><LuPhone /> {formatPhone(clientSelected.user.phoneNumber)}</span>
                                     </div>
                                 </div>
-                                <div className="flex-1 flex items-center justify-end">
+                                <div className="flex items-center justify-end ml-auto">
                                     <button onClick={() => setClientSelected(null)} className="rounded-lg cursor-pointer border-1 border-red-500 p-[.5rem] text-red-500 hover:bg-red-500 hover:text-white duration-[.3s]"><IoMdClose /> </button>
                                 </div>
                             </div>

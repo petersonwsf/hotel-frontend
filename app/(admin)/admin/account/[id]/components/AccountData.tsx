@@ -72,7 +72,7 @@ export default function AccountData({ user } : AccountDataProps) {
     }
 
     return (
-        <div>
+        <div className="min-w-0">
             <UserProfile user={user} imEditingMySelf={true} />
             <UserForm user={user} onSubmit={handleEditUser} validationSchema={validationSchema} />
         </div>

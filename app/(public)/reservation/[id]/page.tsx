@@ -14,9 +14,9 @@ export default async function Reservation({ params } : { params: Promise<{ id : 
     }
 
     return (
-        <div id="reservation-page" className="w-7xl m-auto py-5 my-3">
-            <div className="flex gap-[2rem] items-start">
-                <div className="w-[70%] flex flex-col gap-5">
+        <div id="reservation-page" className="w-full max-w-7xl px-4 md:px-6 m-auto py-5 my-3">
+            <div className="flex flex-col lg:flex-row gap-[2rem] items-stretch lg:items-start">
+                <div className="w-full lg:w-[70%] flex flex-col gap-5">
                     <RoomDescription room={room} />
                 </div>
                 <ReservationDetails room={room}/>

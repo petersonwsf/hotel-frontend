@@ -34,7 +34,7 @@ export default function ReviewCard({ review }: ReviewCardProps) {
     };
 
     return (
-        <div className="my-[1.5rem] w-full py-[1rem] bg-gray-50 p-[1.5rem] rounded-lg shadow-lg">
+        <div className="my-[1.5rem] w-full py-[1rem] bg-gray-50 p-4 sm:p-[1.5rem] rounded-lg shadow-lg">
             <div className="flex gap-4 items-center">
                 <div className="text-center">
                     <img 
@@ -43,7 +43,7 @@ export default function ReviewCard({ review }: ReviewCardProps) {
                         alt="Imagem do usuário" 
                     />
                 </div>
-                <div className="w-full flex items-center justify-between">
+                <div className="w-full flex items-center justify-between gap-2 flex-wrap">
                     <div className="flex flex-col gap-1">
                         <h4 className="text-sm font-medium">{review.user.name}</h4>
                         <div className="flex gap-2 items-center">
@@ -83,7 +83,7 @@ export default function ReviewCard({ review }: ReviewCardProps) {
                     </span>
                     {viewReply && (
                         <div className="my-[.5rem]">
-                            <div className="flex w-full justify-between">
+                            <div className="flex w-full justify-between flex-wrap gap-1">
                                 <div className="flex gap-2 items-center font-light text-sm">
                                     <Image width={30} height={30} className="rounded-full" alt="Foto Lúmen Hotel" src="/images/logo_escura.png" />
                                     Resposta do Lúmen hotel

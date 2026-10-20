@@ -76,16 +76,17 @@ export default function TableUsers({ users, page, totalPages } : TableUsersProps
                     <p className="font-light text-xl">Não há usuários</p>
                 </div>
             )}
-            <div className="flex w-full justify-between py-[1rem] px-[1rem]">
-                <div className="w-full flex items-center gap-2">
+            <div className="flex flex-col sm:flex-row gap-3 w-full justify-between py-[1rem] px-[1rem]">
+                <div className="w-full flex items-center gap-2 flex-wrap">
                     <label htmlFor="rowsPerPage" >Usuários por página</label>
-                    <select onChange={(e) => changePageSize(e.target.value)} name="rowsPerPage" id="rowsPerPage"className="w-[70px] text-center border-1 border-gray-300 rounded-[5px] py-1 outline-none">
+                    <select defaultValue={searchParams.get('size') ?? '5'} onChange={(e) => changePageSize(e.target.value)} name="rowsPerPage" id="rowsPerPage"className="w-[70px] text-center border-1 border-gray-300 rounded-[5px] py-1 outline-none">
+                        <option value="5">5</option>
                         <option value="10">10</option>
                         <option value="25">25</option>
                         <option value="50">50</option>
                     </select>
                 </div>
-                <div className="w-full flex justify-end">
+                <div className="w-full flex sm:justify-end overflow-x-auto">
                     <Pagination page={page} totalPages={totalPages} />
                 </div>
             </div>
@@ -97,7 +98,7 @@ export default function TableUsers({ users, page, totalPages } : TableUsersProps
                     title={`Excluir usuário`} 
                 >
                     <p className="font-light text-lg">Tem certeza que deseja excluir o usuário {userSelected.name}</p>
-                    <div className="flex justify-end gap-3 mt-4">
+                    <div className="flex flex-wrap justify-end gap-3 mt-4">
                         <button onClick={handleCloseModalDelete} className="bg-[#002179] text-white py-[.2rem] px-[2rem] cursor-pointer rounded-[7px] font-normal">Manter</button>
                         <button onClick={handleDeleteUser} className={`text-[#fff] bg-[#9A0526] py-[.2rem] px-[2rem] cursor-pointer rounded-[7px] font-normal ${loadingDelete ? 'opacity-[.5] pointer-events-none' : ''}`}>
                             {loadingDelete ? <span className="flex items-center gap-2"><AiOutlineLoading3Quarters className="animate-spin" fontSize={15}/> Deletando</span> : 'Deletar usuário'}

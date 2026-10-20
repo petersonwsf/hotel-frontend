@@ -54,18 +54,18 @@ export default function RoomReviews({ room }: RoomReviewsProps) {
     }, [room, page])
 
     return (
-        <section className="w-full p-[2rem]">
-            <h3 className="text-3xl font-[600] font-sans text-gray-800 border-s-7 border-[#0033AD] ps-[1rem]">Avaliações sobre o quarto</h3>
+        <section className="w-full p-2 sm:p-[2rem]">
+            <h3 className="text-xl sm:text-3xl font-[600] font-sans text-gray-800 border-s-7 border-[#0033AD] ps-[1rem]">Avaliações sobre o quarto</h3>
             <div className="text-center p-[1.5rem] rounded-lg my-[1rem]">
                 <h4 className="text-4xl font-[650] font-sans text-[#002179] mb-2">{room.ratingSummary.averageRating.toFixed(1)}</h4>
-                <div className="inline-flex justify-center items-center gap-3">
+                <div className="inline-flex justify-center items-center gap-1 sm:gap-3">
                     {renderRatingStars(room.ratingSummary.averageRating)}
                 </div>
                 <p className="text-center font-light text-gray-600 my-1">Baseado em {room.ratingSummary.totalReviews} avaliações</p>
             </div>
             <hr className="text-gray-300" />
             <div className="my-[1rem]">
-                <div className="grid grid-cols-2 gap-[2rem] items-start">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 md:gap-x-[2rem] items-start">
                     {reviews.map((review) => (
                         <ReviewCard key={`review_${review.id}`} review={review} />
                     ))}

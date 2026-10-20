@@ -28,7 +28,7 @@ const validationSchema = Yup.object({
 export default function PersonalDataform({ client, onSubmit } : PersonalDataForm) {
 
     return (
-        <div className='w-full mt-[2rem] rounded-lg border-1 border-gray-300 p-[2rem]'>
+        <div className='w-full mt-[2rem] rounded-lg border-1 border-gray-300 p-4 sm:p-[2rem]'>
             <Formik
             validationSchema={validationSchema}
                 initialValues={{
@@ -43,11 +43,11 @@ export default function PersonalDataform({ client, onSubmit } : PersonalDataForm
                 {({ isSubmitting }) => (
                     <Form>
                         <InputText label="Nome" name="name" />
-                        <div className='flex my-3 gap-3'>
+                        <div className='flex flex-col sm:flex-row my-3 gap-3'>
                             <InputText label="Email" name="email" type="email" icon={MdOutlineEmail} />
                             <InputText label="Telefone" name="phoneNumber" type="text" icon={FiPhone} />
                         </div>
-                        <div className='flex my-3 gap-3'>
+                        <div className='flex flex-col sm:flex-row my-3 gap-3'>
                             <InputText label="CPF" name="pin" type="text" icon={HiOutlineIdentification} />
                             <InputText label="Data de nascimento" name="dateOfBirth" type="date" icon={CiCalendar} />
                         </div>

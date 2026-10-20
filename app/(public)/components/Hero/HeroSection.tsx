@@ -9,15 +9,15 @@ export default function HeroSection() {
     return (
         <section id="hero-section" aria-label="Sessão inicial">
             <div className="w-full relative">
-                <div className="w-full h-[500px]">
+                <div className="w-full h-[760px] sm:h-[620px] lg:h-[500px]">
                     <Image fill src="/images/image_hero_section.jpg" className="object-cover" alt="Hero image"/>
                 </div>
-                <div className="w-full absolute top-0 h-full w-full flex items-center justify-center bg-[#002179]/85">
-                    <div className="flex flex-col items-center w-[60%]">
-                        <p className="text-white bg-[#002179] text-lg rounded-xl px-[2rem] py-[.2rem] inline-flex items-center gap-3"><HiOutlineBadgeCheck /> HOSPITALIDADE DE ALTO PADRÃO EM FLORIANÓPOLIS</p>
-                        <h2 className="text-center text-white font-[650] text-4xl">Viva Momentos Inesquecíveis de Luxo e Conforto no Lúmen Hotel</h2>
-                        <p className="text-center text-lg font-light text-blue-300">O refúgio perfeito nos Jardins, unindo arquitetura contemporânea, alta gastronomia internacional e atendimento personalizado desenhado para o seu bem-estar supremo.</p>
-                        <div className="flex justify-between w-full my-3">
+                <div className="w-full absolute top-0 h-full w-full flex items-center justify-center bg-[#002179]/85 px-4 py-6">
+                    <div className="flex flex-col items-center gap-2 w-full lg:w-[60%]">
+                        <p className="text-white bg-[#002179] text-xs sm:text-lg text-center rounded-xl px-4 sm:px-[2rem] py-[.2rem] inline-flex items-center gap-3"><HiOutlineBadgeCheck /> HOSPITALIDADE DE ALTO PADRÃO EM FLORIANÓPOLIS</p>
+                        <h2 className="text-center text-white font-[650] text-2xl sm:text-4xl">Viva Momentos Inesquecíveis de Luxo e Conforto no Lúmen Hotel</h2>
+                        <p className="text-center text-sm sm:text-lg font-light text-blue-300">O refúgio perfeito nos Jardins, unindo arquitetura contemporânea, alta gastronomia internacional e atendimento personalizado desenhado para o seu bem-estar supremo.</p>
+                        <div className="flex flex-col sm:flex-row sm:flex-wrap gap-2 sm:justify-between w-full my-3 text-sm sm:text-base">
                             <span className="flex items-center gap-2 font-semibold text-white"><IoShieldCheckmarkOutline className="w-5 h-5" /> Melhor Tarifa garantida</span>
                             <span className="flex items-center gap-2 font-semibold text-white"><CiCalendar className="w-5 h-5" /> Cancelamento Flexível</span>
                             <span className="flex items-center gap-2 font-semibold text-white"><FaWifi className="w-5 h-5" /> Wi-FI 6 Ultra Rápido Grátis</span>

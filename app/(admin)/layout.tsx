@@ -27,9 +27,9 @@ export default async function LayoutAdmin({ children } : { children: React.React
     if (!isAuthorized) redirect('/login');
 
     return (
-        <div className="flex">
+        <div className="flex flex-col lg:flex-row">
             <Sidebar />
-            <main className='m-[2rem] p-[2rem] bg-white rounded-[10px] shadow-xl w-full'>
+            <main className='m-3 sm:m-4 lg:m-[2rem] p-4 sm:p-6 lg:p-[2rem] bg-white rounded-[10px] shadow-xl min-w-0 lg:flex-1'>
                 { children }
             </main>
         </div>

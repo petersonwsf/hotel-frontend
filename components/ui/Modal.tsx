@@ -28,9 +28,9 @@ export default function Modal({ isOpen, onClose, title, children, size = "md" } 
     const maxWithClass = sizeMap[size];
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4">
             <div className="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity duration-300 animate-fade-in" onClick={onClose} />
-            <div className={`flex flex-col relative bg-white rounded-xl shadow-xl w-full ${maxWithClass} max-h-[90vh] p-6 transform transition-all duration-300 scale-100 opacity-100 animate-zoom-in`}>
+            <div className={`flex flex-col relative bg-white rounded-xl shadow-xl w-full ${maxWithClass} max-h-[90vh] p-4 sm:p-6 transform transition-all duration-300 scale-100 opacity-100 animate-zoom-in`}>
                 <div className={`flex items-center justify-between ${title ? 'border-b border-gray-100' : ''} pb-3 shrink-0`}>
                     <h3 className="text-xl font-semibold text-gray-900">{title}</h3>
                     <button 
@@ -40,7 +40,7 @@ export default function Modal({ isOpen, onClose, title, children, size = "md" } 
                         <IoCloseOutline className="w-[25px] h-[25px]"/>
                     </button>
                 </div>
-                <div className="py-4 text-gray-600 px-[1rem] leading-relaxed overflow-y-auto flex-1 min-h-0">
+                <div className="py-4 text-gray-600 px-1 sm:px-[1rem] leading-relaxed overflow-y-auto flex-1 min-h-0">
                     {children}
                 </div>
             </div>

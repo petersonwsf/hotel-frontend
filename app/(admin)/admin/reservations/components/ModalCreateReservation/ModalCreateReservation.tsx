@@ -69,7 +69,7 @@ export default function ModalCreateReservation({ open, onClose } : ModalCreateRe
         >
             <div className="overflow-auto">
                 <ClientArea clientSelected={selectedClient} setClientSelected={setSelectedClient} />
-                <div className="flex items-start gap-3">
+                <div className="flex flex-col lg:flex-row items-stretch lg:items-start gap-3">
                     <RoomArea setRoomSelected={setSelectedRoom} />
                     <ReservationDatesArea room={selectedRoom} disponibility={disponibility} setDisponibility={setDisponibility} dates={dates} setDates={setDates} />
                 </div>

@@ -44,7 +44,7 @@ export default function ReservationDetails({ room } : ReservationDetailsProps) {
     }
 
     return (
-        <div className="w-[30%] flex flex-col gap-5">    
+        <div className="w-full lg:w-[30%] flex flex-col gap-5">    
             <ReservationPrice allowed={allowed} totalDays={totalDays} room={room} createReservationFunction={handleCreateReservation}/>
             <ReservationDates room={room} totalDays={totalDays} setTotalDays={setTotalDays} allowed={allowed} setAllowed={setAllowed} dates={dates} setDates={setDates} />
         </div>

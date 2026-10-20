@@ -28,15 +28,15 @@ export default function UserForm({ user, onSubmit, validationSchema } : UserForm
         >
             {({ isSubmitting}) => (
                 <Form>
-                    <div className='flex my-3 gap-3'>
+                    <div className='flex flex-col sm:flex-row my-3 gap-3'>
                         <InputText label="Nome" name="name" type="text" placeholder="Insira o nome"/>
                         <InputText label="Email" name="login" type="email" icon={MdOutlineEmail} placeholder="Insira o email/login" />
                     </div>
-                    <div className='flex my-3 gap-3'>
+                    <div className='flex flex-col sm:flex-row my-3 gap-3'>
                         <InputText label="Telefone" name="phoneNumber" type="text" icon={FiPhone} placeholder="Informe seu número de telefone"/>
                         <InputSelect style={user?.role !== 'ADMIN' ? {opacity: '.5', pointerEvents: 'none'} : {}} label="Papel" name="role" options={ROLE_OPTION}/>
                     </div>
-                    <div className='flex my-3 gap-3'>
+                    <div className='flex flex-col sm:flex-row my-3 gap-3'>
                         <InputText label="Senha" name="password" type="password" icon={CiLock} placeholder="Informe sua senha" />
                         <InputText label="Confirmar senha" name="confirmPassword" type="password" icon={CiLock} placeholder="Confirme sua senha" />
                     </div>

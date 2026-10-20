@@ -62,7 +62,7 @@ export default function ReviewCardAdmin({ reviewData }: ReviewCardProps) {
     }
 
     return (
-        <div className={`w-full py-[1rem] bg-gray-50 p-[1.5rem] rounded-lg shadow-lg border-1 ${reviewColor[review.sentiment]} ${reviewColor[review.sentiment]}`}>
+        <div className={`w-full py-[1rem] bg-gray-50 p-4 sm:p-[1.5rem] rounded-lg shadow-lg border-1 ${reviewColor[review.sentiment]} ${reviewColor[review.sentiment]}`}>
             <div className="flex gap-4 items-center">
                 <div className="text-center">
                     <img 
@@ -71,7 +71,7 @@ export default function ReviewCardAdmin({ reviewData }: ReviewCardProps) {
                         alt="Imagem do usuário" 
                     />
                 </div>
-                <div className="w-full flex items-center justify-between">
+                <div className="w-full flex items-center justify-between gap-2 flex-wrap">
                     <div className="flex flex-col gap-1">
                         <h4 className="text-sm font-medium">{review.user.name}</h4>
                         <div className="flex gap-2 items-center">
@@ -118,7 +118,7 @@ export default function ReviewCardAdmin({ reviewData }: ReviewCardProps) {
                         />
                     </div>
                 </div>
-                <div className="flex items-center justify-between w-full">
+                <div className="flex items-center justify-between gap-2 flex-wrap w-full">
                     <span 
                         onClick={() => setOpenReplyBox((prev: boolean) => !prev)} 
                         className={`cursor-pointer p-[.5rem] hover:bg-gray-100 duration-[.3s] inline-flex items-center gap-2 text-sm text-gray-600 font-medium`}>

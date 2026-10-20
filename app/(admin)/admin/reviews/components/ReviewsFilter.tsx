@@ -4,6 +4,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react"
 import { AiOutlineLoading3Quarters } from "react-icons/ai"
 import { CiFilter } from "react-icons/ci"
+import { IoCloseOutline } from "react-icons/io5"
 import FilterLabel from "../../reservations/components/FilterLabel"
 import { formatDateToPtBR } from "@/utils/formatDate"
 
@@ -21,6 +22,7 @@ const sentimentLabels: Record<string, string> = {
 
 export default function ReviewsFilter() {
     const searchParams = useSearchParams()
+    const [drawerOpen, setDrawerOpen] = useState<boolean>(false)
     const router = useRouter()
     const pathname = usePathname()
 
@@ -129,15 +131,21 @@ export default function ReviewsFilter() {
     }
 
     return (
-        <div className="w-full rounded-lg mt-[1.5rem] shadow-lg p-[1rem]">
+        <>
+        <button type="button" onClick={() => setDrawerOpen(true)} className="lg:hidden w-full mt-[1.5rem] inline-flex items-center justify-center gap-2 bg-[#002179] text-white py-[.6rem] px-[1rem] rounded-lg cursor-pointer">
+            <CiFilter className="w-5 h-5" /> Filtros
+        </button>
+        <div onClick={() => setDrawerOpen(false)} className={`lg:hidden fixed inset-0 z-40 bg-gray-900/60 backdrop-blur-sm transition-opacity duration-300 ${drawerOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`} />
+        <div className={`bg-white fixed top-0 left-0 z-50 h-full w-[88%] max-w-[420px] overflow-y-auto transition-transform duration-300 ${drawerOpen ? 'translate-x-0' : '-translate-x-full'} lg:static lg:z-auto lg:h-auto lg:w-full lg:max-w-none lg:overflow-visible lg:translate-x-0 lg:rounded-lg lg:mt-[1.5rem] lg:shadow-lg p-3 sm:p-[1rem]`}>
             <div className="flex justify-between items-center">
                 <h3 className="text-xl font-light mb-5 flex gap-1 items-center">
                     <CiFilter className="w-5 h-5" /> Filtros
                 </h3>
+                <button type="button" aria-label="Fechar filtros" onClick={() => setDrawerOpen(false)} className="lg:hidden mb-5 p-1 rounded-lg hover:bg-gray-100 cursor-pointer"><IoCloseOutline className="w-6 h-6" /></button>
             </div>
 
             <div className="flex items-center gap-4 justify-between flex-wrap mt-3">
-                <div className="flex flex-col flex-1 min-w-[200px]">
+                <div className="flex flex-col flex-1 min-w-[160px] sm:min-w-[200px]">
                     <label htmlFor="createdAt" className="text-sm font-medium mb-1 text-gray-700">
                         Avaliações a partir de
                     </label>
@@ -158,7 +166,7 @@ export default function ReviewsFilter() {
                     </div>
                 </div>
 
-                <div className="flex flex-col flex-1 min-w-[200px]">
+                <div className="flex flex-col flex-1 min-w-[160px] sm:min-w-[200px]">
                     <label htmlFor="sentiment" className="text-sm font-medium mb-1 text-gray-700">
                         Sentimento
                     </label>
@@ -186,7 +194,7 @@ export default function ReviewsFilter() {
                     </div>
                 </div>
 
-                <div className="flex flex-col justify-end min-w-[160px] self-end">
+                <div className="flex flex-col justify-end w-full sm:w-auto sm:min-w-[160px] sm:self-end">
                     <button
                         type="button"
                         onClick={handleToggleReplied}
@@ -207,12 +215,20 @@ export default function ReviewsFilter() {
             </div>
 
             {filtersLabels.length > 0 && (
-                <div className="flex items-end gap-4 flex-wrap mt-4">
+                <div className="hidden lg:flex items-end gap-4 flex-wrap mt-4">
                     {filtersLabels.map((filter) => (
                         <FilterLabel key={`filter_${filter.value}`} label={filter.label} onDelete={filter.onDelete} />
                     ))}
                 </div>
             )}
         </div>
+        {filtersLabels.length > 0 && (
+            <div className="lg:hidden flex items-end gap-2 flex-wrap mt-3">
+                {filtersLabels.map((filter) => (
+                    <FilterLabel key={`filter_mobile_${filter.value}`} label={filter.label} onDelete={filter.onDelete} />
+                ))}
+            </div>
+        )}
+        </>
     )
 }

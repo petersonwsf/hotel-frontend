@@ -37,15 +37,15 @@ export default function ReservationDatesArea({ room, disponibility, setDisponibi
     }, [dates])
     
     return (
-        <div className="border-1 flex-1 border-gray-300 rounded-lg p-[1.5rem] min-w-0">
-            <div className="flex justify-between items-center mb-1">
+        <div className="border-1 lg:flex-1 border-gray-300 rounded-lg p-3 sm:p-[1.5rem] min-w-0">
+            <div className="flex justify-between items-center gap-2 flex-wrap mb-1">
                 <h4 className="font-semibold flex items-center gap-1 text-md"><CiCalendar className="text-[#0033AD]" /> 3. Datas da reserva</h4>
                 {diffDays && (
                     <span className="py-[.2rem] font-medium text-sm px-[1rem] bg-blue-200 text-[#0033AD] inline-flex gap-1 items-center rounded-xl"><FaRegMoon /> {diffDays} {diffDays > 1 ? 'Noites' : 'Noite'}</span>
                 )}
             </div>
             <hr className="text-gray-300" />
-            <div className="flex gap-2 w-full my-2">
+            <div className="flex flex-col min-[420px]:flex-row gap-2 w-full my-2">
                 <div className="w-full">
                     <label htmlFor="checkin" className="text-xs font-medium mb-1 text-gray-800">
                         Entrada

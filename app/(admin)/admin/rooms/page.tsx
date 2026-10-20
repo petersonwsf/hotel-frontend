@@ -27,10 +27,10 @@ export default async function Rooms({ searchParams }: PageProps) {
     })
 
     return (
-        <div>
+        <div className="min-w-0">
             <RoomHeader />
             <RoomsFilter />
-            <div className="flex gap-[1rem] mt-[2.5rem]">
+            <div className="flex gap-[1rem] mt-6 md:mt-[2.5rem]">
                 <RoomsList widthCard="w-full" rooms={rooms.content} action="EDIT"/>
             </div>
             <div className="flex items-center justify-end mt-[1rem]">

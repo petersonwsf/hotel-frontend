@@ -15,18 +15,18 @@ export default function RoomImages({ images, room }: RoomImagesProps) {
     }, [mainImage, images]);
 
     return (
-        <div className="w-full h-[450px] flex gap-3">
-            <div className="w-[60%] h-full overflow-hidden relative">
-                <img src={`${process.env.NEXT_PUBLIC_URL_MINIO}/${mainImage}`} alt="Imagem principal" className="w-full h-full object-cover rounded-tl-xl rounded-bl-xl" />
-                <div className="bg-gray-100 py-[.2rem] px-[1.5rem] absolute top-8 left-8 rounded-lg font-medium text-gray-600 flex items-center gap-2">
+        <div className="w-full md:h-[450px] flex flex-col md:flex-row gap-3">
+            <div className="w-full md:w-[60%] h-[260px] sm:h-[340px] md:h-full overflow-hidden relative">
+                <img src={`${process.env.NEXT_PUBLIC_URL_MINIO}/${mainImage}`} alt="Imagem principal" className="w-full h-full object-cover rounded-t-xl md:rounded-tr-none md:rounded-bl-xl" />
+                <div className="bg-gray-100 py-[.2rem] px-3 sm:px-[1.5rem] absolute top-3 left-3 sm:top-8 sm:left-8 rounded-lg font-medium text-gray-600 flex items-center gap-2 text-sm sm:text-base">
                     Status Atual: <span className="font-normal inline-flex items-center gap-2"><div className={`w-3 h-3 ${roomStatusColor[room.status]} rounded-full`}></div>{roomStatusLabel[room.status]}</span>
                 </div>
-                <div className="bg-black/80 py-[.2rem] px-[1.5rem] absolute bottom-8 left-8 rounded-lg text-white flex items-center gap-2 text-sm">
+                <div className="bg-black/80 py-[.2rem] px-3 sm:px-[1.5rem] absolute bottom-3 left-3 sm:bottom-8 sm:left-8 rounded-lg text-white flex items-center gap-2 text-sm">
                     #{room.code}
                 </div>
             </div>
-            <div className="w-[40%] h-full flex flex-col justify-between gap-3">
-                <div className="flex h-[calc(50%-0.375rem)] gap-3">
+            <div className="w-full md:w-[40%] md:h-full flex flex-col justify-between gap-3">
+                <div className="flex h-[110px] sm:h-[150px] md:h-[calc(50%-0.375rem)] gap-3">
                     {remainingImages.slice(0, 2).map((image, index) => {
                         const listLength = remainingImages.slice(0, 2).length;
                         return (
@@ -40,7 +40,7 @@ export default function RoomImages({ images, room }: RoomImagesProps) {
                         );
                     })}
                 </div>
-                <div className="flex h-[calc(50%-0.375rem)] gap-3">
+                <div className="flex h-[110px] sm:h-[150px] md:h-[calc(50%-0.375rem)] gap-3">
                     {remainingImages.slice(2, 4).map((image, index) => {
                         const listLength = remainingImages.slice(2, 4).length;
                         return (

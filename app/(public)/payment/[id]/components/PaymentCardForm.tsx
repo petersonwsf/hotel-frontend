@@ -57,7 +57,7 @@ export default function PaymentCardForm({ clientSecret, stripeWrapperClass } : P
     };
 
     return (
-        <form onSubmit={handleSubmit} className="p-[1.5rem] bg-blue-100 rounded-xl">
+        <form onSubmit={handleSubmit} className="p-4 sm:p-[1.5rem] bg-blue-100 rounded-xl">
             <div className="flex flex-col my-2">
                 <label className="font-light">Nome no Cartão</label>
                 <input type="text" value={name} className={stripeWrapperClass} onChange={(e) => setName(e.target.value)} required />
@@ -70,7 +70,7 @@ export default function PaymentCardForm({ clientSecret, stripeWrapperClass } : P
                 </div>
             </div>
 
-            <div className="row">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4">
                 <div className="flex flex-col my-2">
                 <label className="font-light">Validade</label>
                 <div className={stripeWrapperClass}>
@@ -87,7 +87,7 @@ export default function PaymentCardForm({ clientSecret, stripeWrapperClass } : P
             </div>
             
             <div className="flex justify-center items-center w-full mt-[2rem]">
-                 <button type="submit" disabled={isProcessing || !stripe} className={`px-[4rem] py-[.5rem] rounded-xl bg-[#0022B3] flex items-center justify-center font-light text-lg text-white ${isProcessing ? 'opacity-[.5] pointer-events-none' : 'cursor-pointer'}`}>
+                 <button type="submit" disabled={isProcessing || !stripe} className={`px-[3rem] sm:px-[4rem] py-[.5rem] rounded-xl bg-[#0022B3] flex items-center justify-center font-light text-lg text-white ${isProcessing ? 'opacity-[.5] pointer-events-none' : 'cursor-pointer'}`}>
                     {isProcessing && <div className="animate-spin"><AiOutlineLoading3Quarters fontSize={15}/></div>}
                     {isProcessing ? 'Pagando' : 'Pagar'}
                 </button>

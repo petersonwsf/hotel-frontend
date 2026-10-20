@@ -9,8 +9,8 @@ export default function HeaderUsersPage() {
 
     return (
         <>
-            <div className="flex justify-between">
-                <h2 className="text-3xl">Usuários</h2>
+            <div className="flex justify-between items-center flex-wrap gap-3">
+                <h2 className="text-2xl md:text-3xl">Usuários</h2>
                 <button onClick={() => setOpenModalCreateUser(true)} className="flex gap-2 bg-[#002BB3] hover:bg-[#001c78] duration-[.3s] items-center text-white py-2 px-4 rounded-[10px] cursor-pointer"><IoPersonAdd className="w-5 h-5"/> Adicionar usuário</button>
             </div>
             <ModalUser open={openModalCreateUser} onClose={() => setOpenModalCreateUser(false)} editMode={false} />

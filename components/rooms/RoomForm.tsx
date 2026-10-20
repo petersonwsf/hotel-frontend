@@ -103,24 +103,24 @@ export default function RoomForm({ submit, id } : RoomFormProps) {
 
                         return (
                             <Form>
-                                <div className="flex gap-[1rem] my-[1rem]">
+                                <div className="flex flex-col sm:flex-row gap-[1rem] my-[1rem]">
                                     <InputText name="code" placeholder="Código do quarto" label="Código"/>
                                     <InputSelect name="floor" label="Andar" options={optionsFloor}/>
                                 </div>
-                                <div className="flex gap-[1rem] my-[1rem]">
+                                <div className="flex flex-col sm:flex-row gap-[1rem] my-[1rem]">
                                     <InputSelect name="status" label="Status" options={optionsStatus} />
                                     <InputSelect name="category" label="Categoria" options={optionsCategory} />
                                 </div>
-                                <div className="flex gap-[1rem] my-[1rem]">
+                                <div className="flex flex-col sm:flex-row gap-[1rem] my-[1rem]">
                                     <InputCurrency name="customPrice" placeholder="Preço da diária" label="Preço da diária"/>
                                     <InputText name="capacity" label="Capacidade" type="number" placeholder="Capacidade de pessoas"/>
                                 </div>
-                                <div className="my-[1rem] bg-gray-50 p-4 rounded-xl border border-gray-100">
+                                <div className="my-[1rem] bg-gray-50 p-3 sm:p-4 rounded-xl border border-gray-100">
                                     <label className="block text-sm font-semibold text-gray-900 mb-3">
                                         Comodidades do Quarto
                                     </label>
                                     
-                                    <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                                    <div className="grid grid-cols-1 min-[420px]:grid-cols-2 md:grid-cols-3 gap-3">
                                         {COMODIDADES.map((option) => (
                                             <label 
                                                 key={option.value} 

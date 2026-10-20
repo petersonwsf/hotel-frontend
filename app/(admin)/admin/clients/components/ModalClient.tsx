@@ -38,12 +38,12 @@ export default function ModalClient({ client, open, onClose } : ModalClientProps
             title={`Editar dados do cliente`}
             size="3xl"
         >   
-            <div className="border-b-1 border-gray-300 mb-[.5rem] flex">
+            <div className="border-b-1 border-gray-300 mb-[.5rem] flex text-sm sm:text-base">
                 <div onClick={() => setSection('PERSONAL')} className={`h-full py-[.5rem] w-full flex items-center justify-center gap-3 duration-[.3s] cursor-pointer ${section === 'PERSONAL' ? 'font-semibold text-[#002BB3] border-b-3 border-[#002BB3]' : ''}`}><IoPersonOutline /> Dados pessoais</div>
                 <div onClick={() => setSection('CONTACT')} className={`h-full py-[.5rem] w-full flex items-center justify-center gap-3 duration-[.3s] cursor-pointer ${section === 'CONTACT' ? 'font-semibold text-[#002BB3] border-b-3 border-[#002BB3]' : ''}`}><BsHouse /> Endereço</div>
             </div>
             {section === 'PERSONAL' && <PersonalDataForm client={client} onSubmit={handleEditClient} />}
-            {section === 'CONTACT' && <div className="p-[1rem] border-1 border-gray-300 rounded-lg mt-[1.5rem]"><AddressForm address={client.contactInformation} onSubmit={handleUpdateAddress} /></div>}
+            {section === 'CONTACT' && <div className="p-2 sm:p-[1rem] border-1 border-gray-300 rounded-lg mt-[1.5rem]"><AddressForm address={client.contactInformation} onSubmit={handleUpdateAddress} /></div>}
         </Modal>
     )
 }

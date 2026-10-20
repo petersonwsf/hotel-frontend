@@ -106,7 +106,7 @@ export default function Notification() {
                     ))}
                 </div>
 
-                <div className="w-[80%]">
+                <div className="w-full sm:w-[80%]">
                     <textarea 
                         name="comment" 
                         id="comment" 
@@ -117,7 +117,7 @@ export default function Notification() {
                     />
                 </div>
 
-                <div className="w-full flex justify-end items-center gap-3">
+                <div className="w-full flex flex-wrap justify-end items-center gap-3">
                     <button onClick={onCloseModal} className="text-[#002179] font-normal inline-flex gap-2 items-center cursor-pointer py-[.5rem] px-[1rem] rounded-lg duration-[.3s] hover:bg-gray-100">
                         Lembrar mais tarde
                     </button>

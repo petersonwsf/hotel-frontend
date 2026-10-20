@@ -64,13 +64,13 @@ export default function FormEditReservation({ reservation } : FormEditReservatio
 
     return (
         <div className="w-full">
-            <div className="flex gap-3 mb-4 items-center">
-                <div className="rounded-lg overflow-hidden relative w-full h-[250px]">
+            <div className="flex flex-col md:flex-row gap-3 mb-4 md:items-center">
+                <div className="rounded-lg overflow-hidden relative w-full h-[200px] md:h-[250px]">
                     <img src={`${process.env.NEXT_PUBLIC_URL_MINIO}/${reservation.room.image[0]}`} alt="" className="h-full w-full object-cover" />
                     <span className="py-[.05rem] px-[1rem] rounded-xl bg-[#002179] absolute top-[20px] left-[10px] text-white">{getRoomCategoryLabel(reservation.room.category)}</span>
                 </div>
-                <div className="flex flex-1 flex-col gap-1 text-black">
-                    <div className="w-full flex justify-between items-center">
+                <div className="flex w-full md:w-auto md:flex-1 flex-col gap-1 text-black">
+                    <div className="w-full flex justify-between items-center gap-2 flex-wrap">
                         <h5 className="text-xl font-semibold">Reserva n° {reservation.id}</h5>
                         <StatusReservation status={reservation.status} />
                     </div>
@@ -80,7 +80,7 @@ export default function FormEditReservation({ reservation } : FormEditReservatio
                     <p className="text-md"><span className="font-semibold">Andar:</span> {formatFloor(reservation.room.floor)}</p>
                     <p className="text-md"><span className="font-semibold">Valor da diária:</span> {new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'brl'}).format(reservation.dailyRate)}</p>
                     <div>
-                        <div className="flex gap-2 my-3">
+                        <div className="flex flex-col sm:flex-row gap-2 my-3">
                             <InputText onBlur={() => {}} type="date" name="checkInDate" icon={CiCalendar} label="Data de chegada"/>
                             <InputText onBlur={() => {}} type="date" name="checkOutDate" icon={CiCalendar} label="Data de saída"/>
                         </div>

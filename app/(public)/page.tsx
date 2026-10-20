@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <>
       <HeroSection/>
-      <div className="m-auto w-7xl py-5">
+      <div className="m-auto w-full max-w-7xl px-4 md:px-6 py-5">
         <Suspense fallback={<LoadingFeaturedRooms />}>
           <FeaturedRooms />
         </Suspense>

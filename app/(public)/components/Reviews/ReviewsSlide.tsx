@@ -15,7 +15,8 @@ export default function ReviewsSlide({ reviews } : ReviewsSlideProps) {
     return (
         <Swiper
             modules={[Autoplay, FreeMode]}
-            slidesPerView={3}
+            slidesPerView={1.2}
+            breakpoints={{ 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }}
             loop
             freeMode
             spaceBetween={20}

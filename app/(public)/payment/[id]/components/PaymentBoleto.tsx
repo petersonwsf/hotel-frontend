@@ -58,14 +58,14 @@ export default function PaymentBoleto({ reservation, user, startListening } : Pa
                 {payment ? (
                     <div className="flex flex-col justify-start text-[#002BB3] items-center my-[1rem]">
                         <GrDocument fontSize={70} />
-                        <p className="flex items-center gap-3 mt-5 text-2xl font-light text-center"><FaCheck fontSize={30}/> Boleto gerado com sucesso! Copie o código de barras abaixo, ou acesse o boleto pelo link</p>
-                        <p onClick={copyCodeBar} className="p-[.5rem] bg-gray-200 mt-5 text-gray-500 tracking-[.12rem] cursor-pointer">{payment.codeBar}</p>
+                        <p className="flex items-center gap-3 mt-5 text-lg sm:text-2xl font-light text-center"><FaCheck fontSize={30}/> Boleto gerado com sucesso! Copie o código de barras abaixo, ou acesse o boleto pelo link</p>
+                        <p onClick={copyCodeBar} className="p-[.5rem] bg-gray-200 mt-5 text-gray-500 tracking-[.05rem] sm:tracking-[.12rem] break-all text-center text-sm sm:text-base cursor-pointer">{payment.codeBar}</p>
                     </div>
                 ) : (
                     <div className={`flex items-start`}>
                         <IoIosInformationCircleOutline className="text-blue-500 w-7 h-7 shrink-0"/>
-                        <div className="px-[1rem] text-gray-900 font-light">
-                            <h4 className="flex items-center mb-3 text-gray-900 text-xl">O boleto será gerado após a confirmação. Lembre-se que a compensação bancária pode levar até 72h úteis. </h4>
+                        <div className="px-2 sm:px-[1rem] text-gray-900 font-light">
+                            <h4 className="flex items-center mb-3 text-gray-900 text-base sm:text-xl">O boleto será gerado após a confirmação. Lembre-se que a compensação bancária pode levar até 72h úteis. </h4>
                             <ul className="list-disc flex flex-col gap-2">
                                 <li>Pagável em qualquer banco ou via internet banking.</li>
                                 <li>A reserva será confirmada apenas após a compensação.</li>

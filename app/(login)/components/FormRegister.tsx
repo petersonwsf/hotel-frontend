@@ -60,7 +60,7 @@ export default function FormRegister() {
             validationSchema={validationSchem}
             onSubmit={registerClient}
         >
-            <Form className="w-[90%]">
+            <Form className="w-full sm:w-[90%]">
                 {section === 'PERSONAL'  ? (
                     <PersonalDataForm setSection={setSection} />
                 ) : (

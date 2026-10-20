@@ -91,7 +91,7 @@ export default function FormUploadImage({ onSubmit, id } : FormUploadImageProps)
                 onDrop={handleDrop}
                 className={`flex flex-col items-center justify-center border-2 border-dashed rounded-xl cursor-pointer transition-all p-4 relative overflow-hidden
                 ${isDragActive ? "border-blue-500 bg-blue-50/50" : "border-gray-300 bg-gray-50 hover:bg-gray-100"}
-                ${preview ? "border-solid border-gray-200 bg-white w-full h-[500px]" : ""}
+                ${preview ? "border-solid border-gray-200 bg-white w-full h-[300px] sm:h-[500px]" : ""}
                 `}
             >
                 {preview ? (
@@ -124,7 +124,7 @@ export default function FormUploadImage({ onSubmit, id } : FormUploadImageProps)
                     </div>
                 )}
             </label>
-            <div className="mt-3 flex justify-end">
+            <div className="mt-3 flex justify-end max-sm:[&>button]:w-full">
                 <button onClick={handleSubmit} className={`text-[#002179] mt-[1rem] border text-white py-[.3rem] bg-[#002179] px-[2rem] cursor-pointer rounded-[7px] font-normal ${loading ? 'opacity-[.5] pointer-events-none' : ''}`}> 
                     {loading ? <span className="flex items-center gap-3"><AiOutlineLoading3Quarters className="animate-spin"/> Atualizando</span> : 'Atualizar foto de perfil'}
                 </button>

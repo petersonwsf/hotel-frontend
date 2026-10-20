@@ -39,8 +39,8 @@ export default function UserProfile({ user, imEditingMySelf } : UserProfileProps
             <div className="bg-[#002179] h-[100px]"></div>
             <div className="h-[100px]"></div>
             <div className="absolute top-1/2 -translate-y-1/2 flex gap-3 h-full w-full justify-between">
-                <div className="flex h-full items-center gap-4 px-[1rem]">
-                    <div className="w-[100px] h-[100px] flex justify-center items-center rounded-lg border-4 border-white shadow-xl relative">
+                <div className="flex h-full items-center gap-3 sm:gap-4 px-[1rem] min-w-0">
+                    <div className="w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] shrink-0 flex justify-center items-center rounded-lg border-4 border-white shadow-xl relative">
                         {user?.imageKey ? (
                             <img className="w-full h-full object-cover" src={`${process.env.NEXT_PUBLIC_URL_MINIO}/${user.imageKey}`} alt="Imagem de perfil" />
                         ) : (
@@ -50,11 +50,11 @@ export default function UserProfile({ user, imEditingMySelf } : UserProfileProps
                             <FaCamera className="w-4 h-4"/>
                         </div>
                     </div>
-                    <div className="pt-[2.5rem]">
-                        <h2 className="text-3xl font-light">{user?.name}</h2>
+                    <div className="pt-[2.5rem] min-w-0">
+                        <h2 className="text-xl sm:text-3xl font-light truncate">{user?.name}</h2>
                     </div>
                 </div>
-                <div className="flex h-full items-end">
+                <div className="hidden sm:flex h-full items-end">
                     <button className="text-[#002179] m-[1rem] border border-[#002179] py-[.2rem] px-[2rem] cursor-pointer rounded-[7px] font-normal" onClick={() => setOpenModalUpdatePicture(true)} >Atualizar Avatar</button>
                 </div>
             </div>

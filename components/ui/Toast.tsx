@@ -42,7 +42,7 @@ export default function Toast() {
     if (!visible) return null;
 
     return (
-        <div className={`flex gap-2  items-center fixed top-5 right-5 z-[1000] py-3 px-[2rem] ${handleBackground(typeMessage)} rounded-[10px]`}>
+        <div className={`flex gap-2  items-center fixed top-3 left-3 right-3 sm:left-auto sm:top-5 sm:right-5 z-[1000] py-3 px-4 sm:px-[2rem] ${handleBackground(typeMessage)} rounded-[10px]`}>
             {renderIcon(typeMessage)}
             <p className="text-white">{message}</p>
         </div>

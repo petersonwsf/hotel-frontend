@@ -25,7 +25,6 @@ export default function CardRoomSlide({ room } : CardRoomSlideProps) {
                     <span className="rounded-xl bg-[#002179] text-white px-[1rem] py-[.1rem] inline-flex items-center gap-2 text-sm">{formatFloor(room.floor)}</span>
                     <span className="rounded-xl bg-gray-200 px-[1rem] py-[.1rem] inline-flex items-center gap-2 text-sm"><FaStar className="w-3 h-3 text-[#002179]"/> {room.ratingSummary.averageRating}</span>
                 </div>
-                <span className="rounded-xl bg-gray-200 px-[1rem] py-[.1rem] flex items-center gap-2"><FaStar className="w-3 h-3 text-[#002179]"/> 5.0</span>
             </div>
             <div className="w-full p-[1rem] flex flex-col gap-3">
                 <h3 className="text-xl text-[#002179] font-[500]">{getRoomCategoryLabel(room.category)}</h3>

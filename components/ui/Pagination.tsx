@@ -50,7 +50,7 @@ export default function Pagination({ page, totalPages }: PaginationProps) {
     }
 
     return (
-        <div className="flex mt-3 items-center gap-2">
+        <div className="flex flex-wrap mt-3 items-center gap-2">
             {page === 0 ? (
                 <button disabled className="p-2 text-white rounded-[5px] bg-[#002BB3] opacity-[.5] cursor-not-allowed">
                     <IoIosArrowBack />

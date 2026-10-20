@@ -11,7 +11,7 @@ export default function ReviewContainer({ reviews } : ReviewsContainerProps) {
     return (
         <div className="my-[1.5rem]">
             {reviews.length > 0 ? (
-                <div className="grid grid-cols-2 gap-[2rem] items-start">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-[2rem] items-start">
                     {reviews.map((review) => (
                         <ReviewCardAdmin  key={review.id} reviewData={review} />
                     ))}

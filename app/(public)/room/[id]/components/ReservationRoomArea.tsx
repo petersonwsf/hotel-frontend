@@ -44,13 +44,13 @@ export default function ReservationRoomArea({ room }: ReservationRoomAreaProps) 
     }
 
     return (
-        <div className="flex-1 bg-gray-50 p-[1.2rem] rounded-lg shadow-lg flex flex-col">
+        <div className="w-full lg:w-auto lg:flex-1 bg-gray-50 p-4 sm:p-[1.2rem] rounded-lg shadow-lg flex flex-col">
             <span className="text-sm text-gray-600 font-light">Valor por Noite</span>
             <h4 className="text-3xl font-semibold text-[#0033AD]">{new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'brl' }).format(room.customPrice)}</h4>
             <div className="bg-gray-200 rounded-lg my-[1rem] p-[.5rem] py-[1.5rem] flex flex-col">
                 <h4 className="text-sm tracking-[.05rem] text-[#0033AD] font-medium">VERIFICAÇÃO DE PERÍODO</h4>
                 <div className="flex gap-2 w-full my-3">
-                    <div>
+                    <div className="flex-1 min-w-0">
                         <label htmlFor="checkin" className="text-xs font-light mb-1 text-gray-800">
                             Entrada
                         </label>
@@ -65,7 +65,7 @@ export default function ReservationRoomArea({ room }: ReservationRoomAreaProps) 
                             />
                         </div>
                     </div>
-                    <div >
+                    <div className="flex-1 min-w-0">
                         <label htmlFor="checkout" className="text-xs font-light mb-1 text-gray-800">
                             Saída
                         </label>

@@ -37,26 +37,26 @@ export default function PaymentDetailsAdmin({ reservation, payment, loadingPayme
     }
 
     return (
-        <div className="flex">
-            <div className="flex w-full flex-col gap-2 border-r-1 border-gray-400 px-[1rem]">
+        <div className="flex flex-col md:flex-row gap-5 md:gap-0">
+            <div className="flex w-full flex-col gap-2 md:border-r-1 border-b-1 md:border-b-0 border-gray-400 px-[1rem] pb-5 md:pb-0">
                 <h3 className="font-normal text-lg text-gray-600">RESUMO DO PAGAMENTO</h3>
                 <div className="h-full flex flex-col justify-end gap-3">
-                    <p className="flex text-lg text-gray-600 justify-between">
+                    <p className="flex text-base sm:text-lg text-gray-600 justify-between gap-2">
                         <span>{daysDiff} noites x {new Intl.NumberFormat('pt-BR', { currency: 'brl', style: 'currency'}).format(reservation.dailyRate)}</span>
                         <span>{new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'brl'}).format(reservation.dailyRate * daysDiff)}</span>
                     </p>
-                    <p className="flex text-lg text-gray-600 justify-between">
+                    <p className="flex text-base sm:text-lg text-gray-600 justify-between gap-2">
                         <span>Taxa de serviço</span>
                         <span>{new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'brl'}).format(reservation.serviceFee)}</span>
                     </p>
-                    <p className="flex text-lg text-gray-600 justify-between">
+                    <p className="flex text-base sm:text-lg text-gray-600 justify-between gap-2">
                         <span>Desconto</span>
                         <span> - {new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'brl'}).format(reservation.discountAmount)}</span>
                     </p>
                     <hr className="text-gray-500"/>
-                    <p className="flex text-3xl font-semibold text-gray-800 justify-between">
+                    <p className="flex text-2xl sm:text-3xl font-semibold text-gray-800 justify-between gap-2">
                         <span>Total</span>
-                        <span className="text-[#002179] tracking-[.1rem]">{new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'brl'}).format(reservation.totalAmount)}</span>
+                        <span className="text-[#002179] tracking-[.05rem] sm:tracking-[.1rem]">{new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'brl'}).format(reservation.totalAmount)}</span>
                     </p>
                 </div>
             </div>
@@ -70,10 +70,10 @@ export default function PaymentDetailsAdmin({ reservation, payment, loadingPayme
                 ) : payment ? (
                     <div className="flex flex-col justify-between h-full gap-3">
                         <div className="flex flex-col gap-2">
-                            <p className="flex justify-between"><span className="text-md">Pagamento: </span> <PaymentStatus status={payment.status} /></p>
-                            <p className="flex justify-between"><span className="text-md">Pagamento Realizado em: </span> ...</p>
-                            <p className="flex justify-between"><span className="text-md">Check In: </span> ...</p>
-                            <p className="flex justify-between"><span className="text-md">Check Out: </span> ...</p>
+                            <p className="flex justify-between gap-2 flex-wrap items-center"><span className="text-md">Pagamento: </span> <PaymentStatus status={payment.status} /></p>
+                            <p className="flex justify-between gap-2 flex-wrap items-center"><span className="text-md">Pagamento Realizado em: </span> ...</p>
+                            <p className="flex justify-between gap-2 flex-wrap items-center"><span className="text-md">Check In: </span> ...</p>
+                            <p className="flex justify-between gap-2 flex-wrap items-center"><span className="text-md">Check Out: </span> ...</p>
                         </div>
                         <div className="border-t-1 border-gray-300 pt-[.5rem] text-end">
                             {reservation.status === 'CONFIRMED' && <button onClick={handleCheckIn} className={`inline-flex items-center gap-2 px-[1.5rem] py-[.25rem] text-white bg-[#0022B3] rounded-lg cursor-pointer ${loadingAction ? 'opacity-[.5] pointer-events-none' : ''}`}>{loadingAction ? <AiOutlineLoading3Quarters className="w-4 h-4 animate-spin"/> : <IoEnterOutline className="w-4 h-4"/>} Realizar Check In</button>}

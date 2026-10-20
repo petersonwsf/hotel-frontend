@@ -37,16 +37,16 @@ export default function PaymentContainer({ reservation, token } : PaymentContain
     }, [error])
     
     return (
-        <div className="flex gap-3 items-start w-full">
-            <div className="w-[70%]">
+        <div className="flex flex-col lg:flex-row gap-3 items-stretch lg:items-start w-full">
+            <div className="w-full lg:w-[70%]">
                 <PaymentHeader typePayment={typePayment} setTypePayment={setTypePayment} />
-                <div className="w-full bg-gray-100 px-[2rem] py-[1rem]">
+                <div className="w-full bg-gray-100 px-4 sm:px-[2rem] py-[1rem]">
                     {typePayment === 'boleto' && <PaymentBoleto reservation={reservation} user={user!} startListening={startListening}/>}
                     {typePayment === 'pix' && <PaymentPix />}
                     {typePayment === 'card' && <PaymentCard reservation={reservation} user={user!} startListening={startListening} />}
                 </div>
             </div>
-            <div className="w-[30%]">
+            <div className="w-full lg:w-[30%]">
                 <InfosReservation reservation={reservation} />
             </div>
             {paymentData && <ModalPaymentConfirm />}

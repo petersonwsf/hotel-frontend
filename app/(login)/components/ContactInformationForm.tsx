@@ -64,20 +64,20 @@ export default function ContactInformationForm({ setSection, isPending } : Conta
             <div className="flex flex-col my-1">
                 <InputText name="contactInformation.phoneNumber" label="Número de telefone" placeholder="Informe seu número de telefone" icon={LuPhone} />
             </div>
-            <div className="flex gap-[10px] my-1">
+            <div className="flex flex-col sm:flex-row gap-[10px] my-1">
                 <InputText name="contactInformation.postalCode" label="CEP" placeholder="Informe seu CEP" />
                 <InputText name="contactInformation.neighborhood" label="Bairro" placeholder="Informe seu bairro" />
             </div>
             <div className="flex gap-[10px] my-1">
-                <div className="w-[80%]">
+                <div className="w-[65%] sm:w-[80%]">
                     <InputText name="contactInformation.street" label="Endereço" placeholder="Informe seu endereço" />
                 </div>
-                <div className="w-[20%]">
+                <div className="w-[35%] sm:w-[20%]">
                    <InputText name="contactInformation.number" label="Número" />
                 </div>
             </div>
             <InputText name="contactInformation.complement" label="Complemento" placeholder="Ex: Casa, Apto..." />
-            <div className="flex gap-[10px] my-1">
+            <div className="flex flex-col sm:flex-row gap-[10px] my-1">
                 <InputText name="contactInformation.city" label="Cidade" placeholder="Informe sua cidade" />
                 <InputText name="contactInformation.state" label="Estado" placeholder="Informe seu estado" />
             </div>

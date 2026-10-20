@@ -47,19 +47,19 @@ export default function CardRoom({ width, room, buttonFunction, admin }: CardRoo
     }
 
     return (
-        <div className={`flex ${width} my-3 gap-3 bg-gray-50 rounded-xl border-1 border-gray-200`}>
-            <div className="flex items-center justify-center shrink-0">
-                <img src={mainImageUrl} alt="Image quarto" className="rounded-bl-xl rounded-tl-xl w-[300px] h-[300px] object-cover" />
+        <div className={`flex flex-col md:flex-row ${width} my-3 gap-3 bg-gray-50 rounded-xl border-1 border-gray-200`}>
+            <div className="flex items-center justify-center shrink-0 w-full md:w-auto">
+                <img src={mainImageUrl} alt="Image quarto" className="rounded-t-xl md:rounded-tr-none md:rounded-bl-xl w-full md:w-[300px] h-[220px] md:h-[300px] object-cover" />
             </div>
             <div className="flex flex-col flex-1 min-w-0 p-[1rem] gap-2">
-                <div className="flex justify-between">
+                <div className="flex justify-between flex-wrap gap-1">
                     <span className="flex items-center gap-2 text-gray-600"><RiHotelLine /> {formatFloor(room.floor)}</span>
                     <span className="flex items-center gap-2 font-light text-sm "><FaStar className="text-yellow-400"/> {room.ratingSummary.averageRating.toFixed(1)} ( {room.ratingSummary.totalReviews} avalições )</span>
                 </div>
-                <h4 className="text-2xl font-[600] font-sans text-[#002179]">{getRoomCategoryLabel(room.category)}</h4>
+                <h4 className="text-xl md:text-2xl font-[600] font-sans text-[#002179]">{getRoomCategoryLabel(room.category)}</h4>
                 <span className="flex items-center gap-2 font-light text-md"><RiGroupLine className="text-[#002179]" /> Até {room.capacity} {room.capacity > 1 ? 'Adulto' : 'Adultos'}</span>
                 <p className="font-light line-clamp-2 text-md text-gray-500">{room.description}</p>
-                <div className="flex gap-2 items-center flex-wrap">
+                <div className="hidden md:flex gap-2 items-center flex-wrap">
                     {room.amenities.slice(0,4).map((amenity, index) => {
                         const Icon = getAmenityIcon(amenity)
                         return (
@@ -67,9 +67,9 @@ export default function CardRoom({ width, room, buttonFunction, admin }: CardRoo
                         )
                     })}
                 </div>
-                <div className="flex justify-between items-end flex-1">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-3 flex-1">
                     <p className="flex items-center font-light text-sm gap-2"><span className="text-2xl text-[#002179] font-semibold">{new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'brl'}).format(room.customPrice)}</span> / dia</p>
-                    <div className="flex gap-3 items-center">
+                    <div className="flex gap-2 sm:gap-3 items-center flex-wrap">
                         <button onClick={buttonFunction} className="text-[#002179] font-normal inline-flex gap-2 items-center cursor-pointer py-[.5rem] px-[1rem] rounded-lg duration-[.3s] hover:bg-gray-200">Ver detalhes <FaArrowRight /></button>
                         {!admin && <button onClick={() => router.push(`/reservation/${room.id}`)} className="text-white bg-[#002179] font-normal inline-flex gap-2 items-center cursor-pointer py-[.5rem] px-[1rem] rounded-lg duration-[.3s]">Reservar quarto <CiCalendar /></button>}
                         {admin && room.statusRoom === 'CLEANING' && 

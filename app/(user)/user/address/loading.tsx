@@ -1,33 +1,33 @@
 export default function LoadingAddressPage() {
     return (
         <div className="w-full">
-            <h2 className="font-[650] text-[#002179] text-4xl">Meu endereço</h2>
-            <p className="font-light text-gray-500 text-lg my-2">Atualize suas informações de endereço</p>
+            <h2 className="font-[650] text-[#002179] text-2xl sm:text-4xl">Meu endereço</h2>
+            <p className="font-light text-gray-500 text-base sm:text-lg my-2">Atualize suas informações de endereço</p>
             <div className="py-[1rem] w-full">
                 <div className="rounded-xl overflow-hidden border-1 border-gray-300">
-                    <div className="w-full bg-[#002179] py-[1rem] px-[3rem]"></div>
-                    <div className="py-[1rem] px-[1.5rem]">
+                    <div className="w-full bg-[#002179] py-[1rem] px-6 sm:px-[3rem]"></div>
+                    <div className="py-[1rem] px-4 sm:px-[1.5rem]">
                         <div>
-                            <div className="flex gap-3">
-                                <div className="w-[30%]">
+                            <div className="flex flex-col sm:flex-row gap-3">
+                                <div className="w-full sm:w-[30%]">
                                     <div className="w-full bg-gray-300 p-[1.5rem] animate-pulse rounded-lg my-2"></div>
                                 </div>
-                                <div className="w-[70%]">
+                                <div className="w-full sm:w-[70%]">
                                     <div className="w-full bg-gray-300 p-[1.5rem] animate-pulse rounded-lg my-2"></div>
                                 </div>
                             </div>
-                            <div className="flex gap-3 mt-4">
-                                <div className="w-[40%]">
+                            <div className="flex flex-col sm:flex-row gap-3 mt-4">
+                                <div className="w-full sm:w-[40%]">
                                     <div className="w-full bg-gray-300 p-[1.5rem] animate-pulse rounded-lg my-2"></div>
                                 </div>
                                 <div className="w-full bg-gray-300 p-[1.5rem] animate-pulse rounded-lg my-2"></div>
                                 <div className="w-full bg-gray-300 p-[1.5rem] animate-pulse rounded-lg my-2"></div>
                             </div>
-                            <div className="flex gap-3 mt-4">
-                                <div className="w-[70%]">
+                            <div className="flex flex-col sm:flex-row gap-3 mt-4">
+                                <div className="w-full sm:w-[70%]">
                                     <div className="w-full bg-gray-300 p-[1.5rem] animate-pulse rounded-lg my-2"></div>
                                 </div>
-                                <div className="w-[30%]">
+                                <div className="w-full sm:w-[30%]">
                                     <div className="w-full bg-gray-300 p-[1.5rem] animate-pulse rounded-lg my-2"></div>
                                 </div>
                             </div>

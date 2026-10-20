@@ -3,9 +3,9 @@ import ClientFilters from "./components/ClientFilters";
 
 export default function LoadingClientsPage() {
     return (
-        <div>
+        <div className="min-w-0">
             <div className="flex justify-between">
-                <h2 className="text-3xl">Clientes</h2>
+                <h2 className="text-2xl md:text-3xl">Clientes</h2>
             </div>
             <ClientFilters />
             <div className="w-full min-h-[500px] flex justify-center items-center gap-3">

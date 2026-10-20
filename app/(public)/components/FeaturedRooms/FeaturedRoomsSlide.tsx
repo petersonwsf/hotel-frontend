@@ -36,8 +36,9 @@ export default function FeaturedRoomsSlide({ rooms }: FeaturedRoomsSlideProps) {
       </div>
       <Swiper
         modules={[Pagination]}
-        slidesPerView={4}
+        slidesPerView={1}
         spaceBetween={20}
+        breakpoints={{ 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 }, 1280: { slidesPerView: 4 } }}
         loop={true}
         onSwiper={(swiper) => setSwiperInstance(swiper)}
         className="[&_.swiper-button-next]:hidden [&_.swiper-button-prev]:hidden"

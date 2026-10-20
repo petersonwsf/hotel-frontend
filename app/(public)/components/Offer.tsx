@@ -10,14 +10,14 @@ import { LiaConciergeBellSolid } from "react-icons/lia";
 export default function Offer() {
     return (
         <section id="offer" className="my-[4rem]" aria-label="Oferecimento Hotel">
-            <div className="w-[50%]">
+            <div className="w-full lg:w-[50%]">
                 <span className="text-[#002179] font-[500] text-sm">COMODIDADES DE CLASSE MUNDIAL</span>
-                <h3 className="text-3xl font-[650] text-gray-800 font-sans">Tudo o que Você Precisa para uma Estadia Extraordinária</h3>
+                <h3 className="text-2xl md:text-3xl font-[650] text-gray-800 font-sans">Tudo o que Você Precisa para uma Estadia Extraordinária</h3>
                 <p className="font-light text-gray-500">Das manhãs revigorantes à atmosfera sofisticada do anoitecer, desfrute de infraestrutura impecável concebida para atender aos mais altos padrões globais.</p>
             </div>
             <div className="flex flex-col my-5">
-                <div className="flex justify-around my-2">
-                    <div className="w-[400px] h-[250px] overflow-hidden rounded-xl relative hover:scale-[0.95] duration-[.3s]">
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 my-2">
+                    <div className="w-full h-[340px] sm:h-[290px] xl:h-[250px] overflow-hidden rounded-xl relative hover:scale-[0.95] duration-[.3s]">
                         <Image fill alt="Imagem" src="/images/piscina.jpg" className="object-cover" />
                         <div className="bg-gray-200/80 z-100 absolute w-full h-full flex flex-col items-start p-[1rem] gap-3 justify-end">
                             <span className="p-[.5rem] bg-gray-200 rounded-lg"><MdOutlinePool className="text-[#002179] w-7 h-7"/></span>
@@ -26,7 +26,7 @@ export default function Offer() {
                             <span className="text-[#002179] font-[500] text-sm">Aberta diariamente das 06h às 22h</span>
                         </div>
                     </div>
-                    <div className="w-[400px] h-[250px] overflow-hidden rounded-xl relative hover:scale-[0.95] duration-[.3s]">
+                    <div className="w-full h-[340px] sm:h-[290px] xl:h-[250px] overflow-hidden rounded-xl relative hover:scale-[0.95] duration-[.3s]">
                         <Image fill alt="Imagem" src="/images/restaurante.jpg" className="object-cover" />
                         <div className="bg-gray-200/80 z-100 absolute w-full h-full flex flex-col items-start p-[1rem] gap-3 justify-end">
                             <span className="p-[.5rem] bg-gray-200 rounded-lg"><IoRestaurantOutline className="text-[#002179] w-7 h-7"/></span>
@@ -35,7 +35,7 @@ export default function Offer() {
                             <span className="text-[#002179] font-[500] text-sm">Sommelier residente & Adega de 400 rótulos</span>
                         </div>
                     </div>
-                    <div className="w-[400px] h-[250px] overflow-hidden rounded-xl relative hover:scale-[0.95] duration-[.3s]">
+                    <div className="w-full h-[340px] sm:h-[290px] xl:h-[250px] overflow-hidden rounded-xl relative hover:scale-[0.95] duration-[.3s]">
                         <Image fill alt="Imagem" src="/images/spa.jpg" className="object-cover" />
                         <div className="bg-gray-200/80 z-100 absolute w-full h-full flex flex-col items-start p-[1rem] gap-3 justify-end">
                             <span className="p-[.5rem] bg-gray-200 rounded-lg"><MdSpa className="text-[#002179] w-7 h-7"/></span>
@@ -45,8 +45,8 @@ export default function Offer() {
                         </div>
                     </div>
                 </div>
-                <div className="flex justify-around my-2">
-                    <div className="w-[400px] h-[250px] overflow-hidden rounded-xl relative hover:scale-[0.95] duration-[.3s]">
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 my-2">
+                    <div className="w-full h-[340px] sm:h-[290px] xl:h-[250px] overflow-hidden rounded-xl relative hover:scale-[0.95] duration-[.3s]">
                         <Image fill alt="Imagem" src="/images/eventos.jpg" className="object-cover" />
                         <div className="bg-gray-200/80 z-100 absolute w-full h-full flex flex-col items-start p-[1rem] gap-3 justify-end">
                             <span className="p-[.5rem] bg-gray-200 rounded-lg"><LuDoorOpen className="text-[#002179] w-7 h-7"/></span>
@@ -55,7 +55,7 @@ export default function Offer() {
                             <span className="text-[#002179] font-[500] text-sm">Capacidade até 180 convidados</span>
                         </div>
                     </div>
-                    <div className="w-[400px] h-[250px] overflow-hidden rounded-xl relative hover:scale-[0.95] duration-[.3s]">
+                    <div className="w-full h-[340px] sm:h-[290px] xl:h-[250px] overflow-hidden rounded-xl relative hover:scale-[0.95] duration-[.3s]">
                         <Image fill alt="Imagem" src="/images/concierge.jpg" className="object-cover" />
                         <div className="bg-gray-200/80 z-100 absolute w-full h-full flex flex-col items-start p-[1rem] gap-3 justify-end">
                             <span className="p-[.5rem] bg-gray-200 rounded-lg"><LiaConciergeBellSolid className="text-[#002179] w-7 h-7"/></span>
@@ -64,7 +64,7 @@ export default function Offer() {
                             <span className="text-[#002179] font-[500] text-sm">Atendimento em 4 idiomas</span>
                         </div>
                     </div>
-                    <div className="w-[400px] h-[250px] overflow-hidden rounded-xl relative hover:scale-[0.95] duration-[.3s]">
+                    <div className="w-full h-[340px] sm:h-[290px] xl:h-[250px] overflow-hidden rounded-xl relative hover:scale-[0.95] duration-[.3s]">
                         <Image fill alt="Imagem" src="/images/academia.jpg" className="object-cover" />
                         <div className="bg-gray-200/80 z-100 absolute w-full h-full flex flex-col items-start p-[1rem] gap-3 justify-end">
                             <span className="p-[.5rem] bg-gray-200 rounded-lg"><CgGym className="text-[#002179] w-7 h-7"/></span>

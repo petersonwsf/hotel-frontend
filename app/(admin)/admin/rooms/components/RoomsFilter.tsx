@@ -3,6 +3,7 @@ import { optionsCategory, optionsFloor, optionsStatus, RoomCategory } from "@/ty
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { CiFilter } from "react-icons/ci";
+import { IoCloseOutline } from "react-icons/io5";
 import FilterLabel from "../../reservations/components/FilterLabel";
 import { formatEnums, getRoomCategoryLabel } from "@/utils/formatTextsRooms";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
@@ -27,6 +28,7 @@ const optionsActive = [
 export default function RoomsFilter() {
 
     const searchParams = useSearchParams();
+    const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
     const router = useRouter();
     const pathname = usePathname();
 
@@ -238,15 +240,21 @@ export default function RoomsFilter() {
     };
 
     return (
-        <div className="w-full rounded-lg mt-[1.5rem] shadow-lg p-[1rem]">
+        <>
+        <button type="button" onClick={() => setDrawerOpen(true)} className="lg:hidden w-full mt-[1.5rem] inline-flex items-center justify-center gap-2 bg-[#002179] text-white py-[.6rem] px-[1rem] rounded-lg cursor-pointer">
+            <CiFilter className="w-5 h-5" /> Filtros
+        </button>
+        <div onClick={() => setDrawerOpen(false)} className={`lg:hidden fixed inset-0 z-40 bg-gray-900/60 backdrop-blur-sm transition-opacity duration-300 ${drawerOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`} />
+        <div className={`bg-white fixed top-0 left-0 z-50 h-full w-[88%] max-w-[420px] overflow-y-auto transition-transform duration-300 ${drawerOpen ? 'translate-x-0' : '-translate-x-full'} lg:static lg:z-auto lg:h-auto lg:w-full lg:max-w-none lg:overflow-visible lg:translate-x-0 lg:rounded-lg lg:mt-[1.5rem] lg:shadow-lg p-3 sm:p-[1rem]`}>
             <div className="flex justify-between items-center">
                 <h3 className="text-xl font-light mb-5 flex gap-1 items-center">
                     <CiFilter className="w-5 h-5"/> Filtros
                 </h3>
+                <button type="button" aria-label="Fechar filtros" onClick={() => setDrawerOpen(false)} className="lg:hidden mb-5 p-1 rounded-lg hover:bg-gray-100 cursor-pointer"><IoCloseOutline className="w-6 h-6" /></button>
             </div>
 
             <div className="flex items-end gap-4 justify-between flex-wrap mt-3">
-                <div className="flex flex-col flex-1">
+                <div className="flex flex-col flex-1 min-w-[140px]">
                     <label htmlFor="code" className="text-sm font-medium mb-1 text-gray-700">
                         Código
                     </label>
@@ -267,7 +275,7 @@ export default function RoomsFilter() {
                     </div>
                 </div>
 
-                <div className="flex flex-col flex-1">
+                <div className="flex flex-col flex-1 min-w-[140px]">
                     <label htmlFor="capacity" className="text-sm font-medium mb-1 text-gray-700">
                         Capacidade
                     </label>
@@ -291,7 +299,7 @@ export default function RoomsFilter() {
             </div>
 
             <div className="flex items-end gap-4 justify-between flex-wrap mt-3">
-                <div className="flex flex-col flex-1">
+                <div className="flex flex-col flex-1 min-w-[140px]">
                     <label htmlFor="checkInDate" className="text-sm font-medium mb-1 text-gray-700">
                         Data de Entrada
                     </label>
@@ -312,7 +320,7 @@ export default function RoomsFilter() {
                     </div>
                 </div>
 
-                <div className="flex flex-col flex-1">
+                <div className="flex flex-col flex-1 min-w-[140px]">
                     <label htmlFor="checkOutDate" className="text-sm font-medium mb-1 text-gray-700">
                         Data de Saída
                     </label>
@@ -333,7 +341,7 @@ export default function RoomsFilter() {
                     </div>
                 </div>
 
-                <div className="flex flex-col flex-1">
+                <div className="flex flex-col flex-1 min-w-[140px]">
                     <div className="relative flex items-center w-full">
                         <select
                             name="category"
@@ -357,7 +365,7 @@ export default function RoomsFilter() {
                     </div>
                 </div>
 
-                <div className="flex flex-col flex-1">
+                <div className="flex flex-col flex-1 min-w-[140px]">
                     <div className="relative flex items-center w-full">
                         <select
                             name="floor"
@@ -381,7 +389,7 @@ export default function RoomsFilter() {
                     </div>
                 </div>
 
-                <div className="flex flex-col flex-1">
+                <div className="flex flex-col flex-1 min-w-[140px]">
                     <div className="relative flex items-center w-full">
                         <select
                             name="status"
@@ -405,7 +413,7 @@ export default function RoomsFilter() {
                     </div>
                 </div>
 
-                <div className="flex flex-col flex-1">
+                <div className="flex flex-col flex-1 min-w-[140px]">
                     <div className="relative flex items-center w-full">
                         <select
                             name="active"
@@ -430,11 +438,19 @@ export default function RoomsFilter() {
                 </div>
             </div>
 
-            <div className="flex items-end gap-4 flex-wrap mt-4">
+            <div className="hidden lg:flex items-end gap-4 flex-wrap mt-4">
                 {filtersLabels.map(filter => (
                     <FilterLabel key={`filter_${filter.value}`} label={filter.label} onDelete={filter.onDelete}/>
                 ))}
             </div>
         </div>
+        {filtersLabels.length > 0 && (
+            <div className="lg:hidden flex items-end gap-2 flex-wrap mt-3">
+                {filtersLabels.map(filter => (
+                    <FilterLabel key={`filter_mobile_${filter.value}`} label={filter.label} onDelete={filter.onDelete}/>
+                ))}
+            </div>
+        )}
+        </>
     );
 }
